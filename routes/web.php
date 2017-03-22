@@ -10,10 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+$agent = new Jenssegers\Agent\Agent();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+/*Route for Desktop*/
+if ($agent->isDesktop()) {
+	Route::get('/', function () {
+	    return view('home');
+	});
+}
+
+/*Route for Mobile*/
+else {
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+}
+
 
 
 Route::group(['prefix' => 'admin'], function () {
