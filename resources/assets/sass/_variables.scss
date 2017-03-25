@@ -29,10 +29,10 @@ $font-family-sans-serif: "Raleway", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: $hitam;
-$link-color: $main-color
+$link-color: $main-color;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg: $putih;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -44,3 +44,7 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+// Links
+$link-hover-color		: none !default;
+$link-hover-decoration	: none !default;

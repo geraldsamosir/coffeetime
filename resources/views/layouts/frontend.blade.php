@@ -6,8 +6,7 @@
 		<link rel="stylesheet" href="css/app.css">
 		@yield('stylesheet')
 	</head>
-	<body >
-
+	<body>
 		@include('frontend.components.header')
 
 		@include('frontend.components.navbar')

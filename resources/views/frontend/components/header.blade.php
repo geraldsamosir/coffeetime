@@ -33,20 +33,20 @@
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">Your Account <i class="fa fa-caret-down"></i></a>
                             <div class="dropdown-menu">
                                 <div class="dropdown-inner dropdown-inner-profile">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a tabindex="-1" href="/login">
-                                                    <span class="fa fa-sign-in"></span>
-                                                    Login
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a tabindex="-1" href="/register">
-                                                   <span class="fa fa-user-o"></span>
-                                                   Register
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a tabindex="-1" href="/login">
+                                                <span class="fa fa-sign-in"></span>
+                                                Login
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="-1" href="/register">
+                                               <span class="fa fa-user-o"></span>
+                                               Register
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </li>
