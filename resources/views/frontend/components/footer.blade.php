@@ -31,22 +31,22 @@
                 <div class="menu-footer-list">
                     <ul>
                         <li>
-                            <a href="">Resep</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="">Home</a>
+                            <a href="/resep">Resep</a>
                         </li>
                         <li>
-                            <a href="">About</a>
+                            <a href="/about">About</a>
                         </li>
                         <li>
-                            <a href="">Terms</a>
+                            <a href="/terms">Terms</a>
                         </li>
                         <li>
-                            <a href="">Contact Us</a>
+                            <a href="/contact">Contact Us</a>
                         </li>
                         <li>
-                            <a href="">Careers</a>
+                            <a href="/carrers">Careers</a>
                         </li>
                     </ul>
                 </div>
