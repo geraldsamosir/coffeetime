@@ -16,7 +16,7 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
 	Route::get('/', function () {
-	    return view('home');
+	    return view('frontend.pages.home');
 	});
 }
 

@@ -8,14 +8,15 @@
 	</head>
 	<body >
 
-		@include('frontend.component.header')
+		@include('frontend.components.header')
 
-		@include('frontend.component.navbar')
+		@include('frontend.components.navbar')
 			
 		@yield('content', '')
 
-		@include('frontend.component.footer')
+		@include('frontend.components.footer')
 		
 		<script src="/js/app.js"></script>
+		@yield('js')
 	</body>
 </html>
