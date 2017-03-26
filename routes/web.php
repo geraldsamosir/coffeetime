@@ -30,6 +30,10 @@ if ($agent->isDesktop()) {
 	Route::get('/detail-resep', function(){
 		return view('frontend.pages.detailResep');
 	});
+
+	Route::get('/list-coffee', function(){
+		return view('frontend.pages.listCoffee');
+	});
 }
 
 /*Route for Mobile*/
