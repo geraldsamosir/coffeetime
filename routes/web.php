@@ -34,6 +34,10 @@ if ($agent->isDesktop()) {
 	Route::get('/list-coffee', function(){
 		return view('frontend.pages.listCoffee');
 	});
+
+	Route::get('/list-mesin', function(){
+		return view('frontend.pages.listMesin');
+	});
 }
 
 /*Route for Mobile*/
