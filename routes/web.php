@@ -42,6 +42,10 @@ if ($agent->isDesktop()) {
 	Route::get('/list-resep', function(){
 		return view('frontend.pages.listResep');
 	});
+
+	Route::get('/komparasi', function(){
+		return view('frontend.pages.komparasi');
+	});
 }
 
 /*Route for Mobile*/
