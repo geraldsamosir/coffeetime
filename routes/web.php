@@ -26,6 +26,10 @@ if ($agent->isDesktop()) {
 	Route::get('/detail-mesin', function(){
 		return view('frontend.pages.detailMesin');
 	});
+
+	Route::get('/detail-resep', function(){
+		return view('frontend.pages.detailResep');
+	});
 }
 
 /*Route for Mobile*/
