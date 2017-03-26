@@ -38,6 +38,10 @@ if ($agent->isDesktop()) {
 	Route::get('/list-mesin', function(){
 		return view('frontend.pages.listMesin');
 	});
+
+	Route::get('/list-resep', function(){
+		return view('frontend.pages.listResep');
+	});
 }
 
 /*Route for Mobile*/
