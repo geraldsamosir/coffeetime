@@ -46,6 +46,14 @@ if ($agent->isDesktop()) {
 	Route::get('/komparasi', function(){
 		return view('frontend.pages.komparasi');
 	});
+
+	Route::get('/checkout', function(){
+		return view('frontend.pages.checkout');
+	});
+
+	Route::get('/pembayaran', function(){
+		return view('frontend.pages.pembayaran');
+	});
 }
 
 /*Route for Mobile*/
