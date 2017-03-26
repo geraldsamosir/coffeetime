@@ -18,6 +18,10 @@ if ($agent->isDesktop()) {
 	Route::get('/', function () {
 	    return view('frontend.pages.home');
 	});
+
+	Route::get('/detail-coffee', function(){
+		return view('frontend.pages.detailCoffee');
+	});
 }
 
 /*Route for Mobile*/

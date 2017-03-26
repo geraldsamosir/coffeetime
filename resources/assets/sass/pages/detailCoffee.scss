@@ -1,0 +1,112 @@
+.section-details-coffee, .section-resep-coffee, .section-related-coffee {
+	margin: 25px 0px;
+}
+
+.section-details-coffee{
+
+	.details-pembelian {
+		.panel-card-body{
+			.coffee-brew{
+				margin: 10px 0px;
+				.dropdown-brew {
+				width: 100%;
+					a  {
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section-resep-coffee{
+	.resep-coffee-list{
+
+	}
+	
+}
+
+.section-related-coffee{
+	.panel-default-header {
+		display: flex;
+		justify-content: space-between;
+		.panel-header-title{
+			padding: 0px 15px;	
+		}
+
+		.panel-header-link{
+			padding: 0px 15px;
+			a {
+				color: $main-color;
+			}
+		}
+	}
+}
+
+.section-cart-coffee{
+	.modal-cart{
+		.modal-content{
+			.modal-header {
+				border-bottom: 5px solid $main-color;
+			}
+			.modal-body{
+				thead{
+					text-align: center;
+					color: $grey;
+				}
+				tbody{
+					.cart-item-preview{
+						text-align: center;
+						img {
+							width: 100%;
+						}
+					}
+					.cart-item-name{
+						a{
+							font-weight: bold;
+							font-size: 20px;
+						}
+					}
+					.cart-item-price{
+						text-align: center;
+						.cart-item-price-new{
+							font-size: 15px;
+							color: $brand-danger;
+						}
+						.cart-item-price-old{
+							font-size: 12px;
+							text-decoration: line-through;
+						}
+					}
+					.cart-item-quantity{
+						width: 20%;
+						text-align: center;
+						input{
+							width: 30%;
+							padding-left: 5%;
+							border: 1px solid $grey-line;
+						}
+					}
+					.cart-item-subtotal{
+						text-align: center;
+						.cart-subtotal{
+							font-size: 15px;
+							color: $brand-danger;
+						}
+					}
+					.cart-item-delete{
+						.btn-cart-delete{
+							background: transparent;
+							font-size: 20px;
+							color: $hitam;
+						}
+					}
+				}
+
+			}
+			.modal-footer{
+
+			}
+		}
+	}
+}
