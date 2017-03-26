@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title','| Homepage')
+@section('title','| Detail Coffee')
 
 @section('content')
 	<div class="section-details-coffee">

@@ -166,7 +166,7 @@
 	                    <div class="col-md-3">
 	                         <div class="product-col">       
 	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/details-mesin">
+	                                <a class="voucher-link" href="/detail-mesin">
 	                                    <div class="image">
 	                                        <i class="fa fa-search overlayhover"></i>
 	                                        <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
