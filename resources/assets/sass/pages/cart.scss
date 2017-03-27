@@ -1,0 +1,98 @@
+.section-cart-list{
+	.panel-cart{
+		margin-top: 20px;
+		.panel-cart-count{
+
+		}
+		.panel-cart-header{
+			background: $putih;
+			font-weight: 700;
+			table{
+				margin-bottom: 0px;
+				td{
+					text-align: center;
+				}
+			}
+
+		}
+		.panel-cart-body{
+			background: $putih;
+			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+			border: 4px;
+			td{
+				vertical-align: middle;
+			}
+			.cart-item-preview{
+				text-align: center;
+				img {
+					width: 100%;
+				}
+			}
+			.cart-item-name{
+				a{
+					font-weight: bold;
+					font-size: 20px;
+				}
+			}
+			.cart-item-price{
+				text-align: center;
+				.cart-item-price-new{
+					font-size: 15px;
+					color: $main-color;
+				}
+				.cart-item-price-old{
+					font-size: 12px;
+					text-decoration: line-through;
+				}
+			}
+			.cart-item-quantity{
+				width: 20%;
+				text-align: center;
+				input{
+					width: 30%;
+					padding-left: 5%;
+					border: 1px solid $grey-line;
+				}
+			}
+			.cart-item-subtotal{
+				text-align: center;
+				.cart-subtotal{
+					font-size: 15px;
+					color: $main-color;
+				}
+			}
+			.cart-item-delete{
+				.btn-cart-delete{
+					background: transparent;
+					font-size: 20px;
+					color: $hitam;
+				}
+			}
+		}
+
+
+		.panel-cart-footer{
+			padding: 10px 0px;
+			.btn-tohome{
+
+			}
+
+			.btn-tocheckout{
+
+			}
+		}
+
+		.f1{
+			width: 40%;
+			text-align: center;
+		}
+		.f2{
+			width: 20%;
+			text-align: center;
+		}
+
+		.cart-kosong{
+			padding: 10px;
+		}
+	}
+}

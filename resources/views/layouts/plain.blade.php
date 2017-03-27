@@ -7,8 +7,20 @@
 		@yield('stylesheet')
 	</head>
 	<body>
-			
+
 		@yield('content', '')
+
+	   	<div class="section-footer-checkout">
+			<div class="container">
+				<div class="row">
+					<p>
+				   		<a href="/policy">Privacy Policy</a> | 
+				   		<a href="/term">Term & Condition</a>
+				   	</p>
+				   	<p>Copyright &copy; EduCoffee 2017</p>
+				</div>
+			</div>
+	   	</div>
 
 		<script src="/js/app.js"></script>
 		@yield('js')
