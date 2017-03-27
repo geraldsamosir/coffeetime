@@ -1,0 +1,87 @@
+.section-pembayaran{
+	.pembayaran-bank{
+
+	}
+
+	.final-alamat{
+		.checkout-address{
+			h3{
+				font-weight: 700;
+			}
+			p{
+				margin: 0px;
+				color: $grey;
+			}
+		}
+	}
+
+	.finish-checkout{
+		table{
+			.cart-item-bottom{
+				border-bottom: 1px solid $grey-line;
+			}
+			td{
+				border: 0px;
+			}
+			.cart-item-preview{
+				vertical-align: middle;
+			}
+
+			.cart-item-name{
+				width: 45%;
+				font-size: 20px;
+				.cart-item-brew-method{
+					font-size: 15px;
+				}
+			}
+
+			.cart-item-subtotal{
+				font-size: 17px;
+				vertical-align: middle;
+				.cart-item-price-old{
+					font-size: 15px;
+					text-decoration: line-through;
+					color: $grey;
+				}
+			}
+			.cart-item-quantity{
+				input{
+					width: 30%;
+					padding-left:10px;
+				}
+				color: $grey;
+			}
+
+			.cart-item-total{
+				td{
+					font-size: 20px;
+					font-weight: 700;
+				}
+			}
+		}
+	}
+
+	.pembayaran-bank{
+		blockquote{
+			p{
+				font-size: 14px;
+			}
+		}
+		.rek{
+			p{
+				padding-left: 20px;
+			}
+			p.no{
+				font-size: 15px;
+				font-weight: 700;
+				padding-top: 20px;
+				margin-bottom: 0px;
+			}
+			p.an{
+				color: $grey;
+				font-style: italic;
+			}
+		}
+		
+	}
+}

@@ -71,6 +71,7 @@
 										<label for="inputAtelp" class="control-label">Nomor Telepon</label>
 										<input type="text" class="form-control" id="inputAtelp" placeholder="Nomor Telepon" name="nomorTelp" required>
 									</div>
+									<button class="btn btn-block btn-primary" type="submit">Lanjut Ke Pembayaran</button>
 								</form>
 							</div>
 						</div>
@@ -127,7 +128,6 @@
 													<input type="number" min="0" value="1">
 													<button class="btn btn-clean">hapus</button>
 													<p class="cart-item-price-new">x Rp. 250.000</p>
-													<p class="cart-item-price-old">Rp. 500.000</p>
 												</td>
 											</tr>
 
@@ -138,11 +138,6 @@
 											<tr class="cart-item-total">
 												<td colspan="2">Total Pembayaran</td>
 												<td>Rp. 500.000</td>
-											</tr>
-											<tr>
-												<td colspan="3">
-													<button class="btn btn-block btn-primary">Lanjut Ke Pembayaran</button>
-												</td>
 											</tr>
 										</tbody>
 									</table>
