@@ -1,0 +1,32 @@
+.section-panel{
+	.section-panel-sidebar{
+		margin-top: 70px;
+		ul{
+			li{
+				padding: 2px 0px;
+				list-style-type: none;
+
+			}
+		}
+	}
+
+	.section-panel-informasi{
+		h3{
+			margin: 10px 0px;
+			a{
+				font-size: 14px;
+			}
+		}
+	}
+
+	.modal-edit-info{
+
+	}
+}
+
+.modal-subscribe{
+	text-align: center;
+	.modal-body{
+		padding: 30px;
+	}
+}

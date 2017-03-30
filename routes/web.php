@@ -58,6 +58,10 @@ if ($agent->isDesktop()) {
 	Route::get('/cart', function(){
 		return view('frontend.pages.cart');
 	});
+
+	Route::get('/customer', function(){
+		return view('frontend.pages.panelAkun');
+	});
 }
 
 /*Route for Mobile*/
