@@ -16,13 +16,13 @@
 								<tr>
 									<td colspan="2" class="f1">&nbsp;</td>
 									<td>
-										<p>Harga</p>
+										Harga
 									</td>
 									<td class="cart-item-quantity">
-										<p>Jumlah</p>
+										Jumlah
 									</td>
 									<td>
-										<p>Subtotal</p>
+										Subtotal
 									</td>
 									<td>&nbsp;</td>
 								</tr>
