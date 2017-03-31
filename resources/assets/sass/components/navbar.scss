@@ -1,8 +1,10 @@
 .section-menu{
-	overflow: hidden;
+	// overflow: hidden;
 	background-color : $hitam;
 	nav { 
 		margin-bottom: 0px !important;
+		border-radius: 0px;
+		border: 0px;
 		.container-menu {
 			padding-left: 190px;
 		}
