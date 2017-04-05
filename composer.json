@@ -10,7 +10,7 @@
         "jenssegers/agent": "^2.5",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "tcg/voyager": "^0.11.7"
+        "tcg/voyager": "^0.11.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -49,5 +49,11 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
-    }
+    },
+    "repositories": [{
+            "type": "composer",
+            "url": "https://packagist.org"
+        },
+        { "packagist": false }
+    ]
 }

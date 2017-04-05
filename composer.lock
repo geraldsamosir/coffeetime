@@ -2719,7 +2719,7 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.7",
+            "version": "v0.11.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
