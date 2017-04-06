@@ -18,6 +18,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$category->exists) {
             $category->fill([
                 'name'       => 'Category 1',
+                'image'            => 'pages/AAgCCnqHfLlRub9syUdw.jpg',
             ])->save();
         }
 
@@ -27,6 +28,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$category->exists) {
             $category->fill([
                 'name'       => 'Category 2',
+                'image'            => 'pages/AAgCCnqHfLlRub9syUdw.jpg',
             ])->save();
         }
     }
