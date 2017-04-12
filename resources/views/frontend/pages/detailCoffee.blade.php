@@ -2,6 +2,43 @@
 
 @section('title','| Detail Coffee')
 
+@section('stylesheet')
+	<link rel="stylesheet" href="/css/swiper.min.css">
+	<style>
+		html, s {
+            position: relative;
+            height: 100%;
+        }
+		.swiper-container {
+	        width: 100%;
+	        height: 300px;
+	        margin-left: auto;
+	        margin-right: auto;
+	    }
+	    .swiper-slide {
+	        background-size: cover;
+	        background-position: center;
+	    }
+	    .gallery-top {
+	        height: 80%;
+	        width: 100%;
+	    }
+	    .gallery-thumbs {
+	        height: 20%;
+	        box-sizing: border-box;
+	        padding: 10px 0;
+	    }
+	    .gallery-thumbs .swiper-slide {
+	        width: 25%;
+	        height: 100%;
+	        opacity: 0.4;
+	    }
+	    .gallery-thumbs .swiper-slide-active {
+	        opacity: 1;
+	    }
+	</style>
+@endsection
+
 @section('content')
 	<div class="section-details-coffee">
 		<div class="container">
@@ -9,7 +46,7 @@
 			<div class="row">
 				{{-- Detail Kiri Start --}}
 				<div class="col-md-7">	
-					<div class="details-slide">
+					{{-- <div class="details-slide">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="row">
@@ -37,7 +74,7 @@
 
 											</div>
 
-										  	<!-- Controls -->
+										  	Controls
 										  	<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 										    	<span class="glyphicon glyphicon-chevron-left"></span>
 										  	</a>
@@ -61,6 +98,24 @@
 								  	<!-- Thumbnails End -->
 								</div>
 							
+							</div>
+						</div>
+					</div> --}}
+
+					<div class="s">
+						<div class="row">
+							<div class="swiper-container gallery-top">
+							    <div class="swiper-wrapper">
+							        <div class="swiper-slide" style="background-image:url(/images/logo.png)"></div>
+							    </div>
+							    <!-- Add Arrows -->
+							    <div class="swiper-button-next swiper-button-white"></div>
+							    <div class="swiper-button-prev swiper-button-white"></div>
+							</div>
+							<div class="swiper-container gallery-thumbs">
+							    <div class="swiper-wrapper">
+							        <div class="swiper-slide" style="background-image:url(/images/logo.png)"></div>
+							    </div>
 							</div>
 						</div>
 					</div>
@@ -458,4 +513,24 @@
       </div>
 	</div>
 	
+@endsection
+
+@section('js')
+	{{-- <script src="/js/swiper.min.js"></script> --}}
+	<script type="text/javascript">
+		var galleryTop = new Swiper('.gallery-top', {
+	        nextButton: '.swiper-button-next',
+	        prevButton: '.swiper-button-prev',
+	        spaceBetween: 10,
+	    });
+	    var galleryThumbs = new Swiper('.gallery-thumbs', {
+	        spaceBetween: 10,
+	        centeredSlides: true,
+	        slidesPerView: 'auto',
+	        touchRatio: 1,
+	        slideToClickedSlide: true
+	    });
+	    galleryTop.params.control = galleryThumbs;
+	    galleryThumbs.params.control = galleryTop;
+	</script>
 @endsection
