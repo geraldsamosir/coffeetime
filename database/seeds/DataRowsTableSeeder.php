@@ -679,21 +679,6 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($categoryDataType, 'image');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'image',
-                'display_name' => 'image',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => '',
-            ])->save();
-        }
-
         $dataRow = $this->dataRow($categoryDataType, 'slug');
         if (!$dataRow->exists) {
             $dataRow->fill([
