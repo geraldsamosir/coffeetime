@@ -10,11 +10,14 @@
             </div>
             <div class="col-md-5">
                 <div class="nav-search">
-                    <form action="" method="post">
+                    {!! Form::open(['url'=>'']) !!}
+                    {{-- <form action="" method="post"> --}}
                         <div id="search">
                             <div class="input-group">
-                                <input type="text" class="form-control input-lg" placeholder="Pencarian" name="keyword" autocomplete="off">
+                                {!! Form::text('keyword',null,['class'=>'form-control input-lg', 'placeholder'=>'Pencarian']) !!}
+                                {{-- <input type="text" class="form-control input-lg" placeholder="Pencarian" name="keyword" autocomplete="off"> --}}
                                 <span class="input-group-btn">
+                                    {{-- {!! Form::submit(null,['class'=>'btn btn-lg btn-danger']) !!} --}}
                                     <button class="btn btn-lg btn-danger" type="submit">
                                     <i class="fa fa-search"></i>
                                     </button>
@@ -22,7 +25,8 @@
 
                             </div>
                         </div>
-                    </form>
+                    {{-- </form> --}}
+                    {!! Form::close() !!}
                 </div>
             </div>
             <div class="col-md-2">

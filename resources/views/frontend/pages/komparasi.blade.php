@@ -23,16 +23,26 @@
 						&nbsp;
 					</div>
 					<div class="col-md-3">
+						{!! Form::open() !!}
 						<div class="komparasi-kopi-title">
-							<input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Pencarian...">
+							{!! Form::text('kopi1',null,['class'=>'form-control','placeholder'=>'Cari Kopi...']) !!}
+							{{-- <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Pencarian..."> --}}
 							Drip Coffee 10g Arabica Flores "Manggarai"
 						</div>
+						{!! Form::close() !!}
 					</div>
 					<div class="col-md-3">
+						{!! Form::open() !!}
 						<div class="komparasi-kopi-title">
-							<input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Pencarian...">
+							{!! Form::text('kopi1',null,['class'=>'form-control','placeholder'=>'Cari Kopi...']) !!}
+							{{-- <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Pencarian..."> --}}
 							Drip Coffee 10g Arabica Flores "Manggarai"
 						</div>
+						{!! Form::close() !!}
+						{{-- <div class="komparasi-kopi-title">
+							<input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Pencarian...">
+							Drip Coffee 10g Arabica Flores "Manggarai"
+						</div> --}}
 					</div>
 					<div class="col-md-3">
 						<div class="komparasi-kopi-tambah">

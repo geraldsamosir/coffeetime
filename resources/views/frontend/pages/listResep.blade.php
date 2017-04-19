@@ -8,14 +8,17 @@
 			<div class="panel-search">
 				<div class="row">
 					<div class="col-md-4">
+						{!! Form::open(['url'=>'']) !!}
 						<div class="form-group">
 			                <div class="input-group input-group-md">
 			                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
 			                    <div class="icon-addon addon-md">
-			                        <input type="text" placeholder="Cari Resep..." class="form-control" id="email">
+			                        {{-- <input type="text" placeholder="Cari Resep..." class="form-control" name="keyword""> --}}
+			                        {!! Form::text('keyword',null,['class'=>'form-control','placeholder'=>'Cari Resep...',]) !!}
 			                    </div>
 			                </div>
 			            </div>
+			            {!! Form::close() !!}
 			        </div>
 
 			        <div class="col-md-2">

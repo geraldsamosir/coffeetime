@@ -17,7 +17,8 @@
 								<h3 class="panel-title">Alamat</h3>
 							</div>
 							<div class="panel-card-body">
-								<form action="" method="POST" class="form-horizontal" role="form">
+								{{-- <form action="" method="POST" class="form-horizontal" role="form"> --}}
+								{!! Form::open() !!}
 									<div class="form-group">
 										<label for="inputAlabel" class="control-label">Label Alamat <span class="required-input">*</span></label>
 										<input type="text" class="form-control" id="inputAlabel" placeholder="Contoh: Alamat Rumah, Alamat Kantor" name="lblAlamat" required>
@@ -71,8 +72,10 @@
 										<label for="inputAtelp" class="control-label">Nomor Telepon</label>
 										<input type="text" class="form-control" id="inputAtelp" placeholder="Nomor Telepon" name="nomorTelp" required>
 									</div>
-									<button class="btn btn-block btn-primary" type="submit">Lanjut Ke Pembayaran</button>
-								</form>
+									{!! Form::submit('Lanjut Ke Pembayaran',['class'=>'btn btn-block btn-primary']) !!}
+									{{-- <button class="btn btn-block btn-primary" type="submit">Lanjut Ke Pembayaran</button> --}}
+								{{-- </form> --}}
+								{!! Form::close() !!}
 							</div>
 						</div>
 					</div>

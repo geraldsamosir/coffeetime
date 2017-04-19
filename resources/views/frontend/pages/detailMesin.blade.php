@@ -9,58 +9,41 @@
 			<div class="row">
 				{{-- Detail Kiri Start --}}
 				<div class="col-md-7">	
+
 					<div class="details-slide">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="row">
 									<div class="details-slide-header">
 										<div class="col-md-12">
-										<div id="carousel-details" class="carousel slide" data-ride="carousel" data-interval="false">
+											<div id="carousel-details" class="carousel slide" data-ride="carousel" data-interval="false">
 
-										  	<!-- Wrapper for slides -->
-											<div class="carousel-inner">
+											  	<!-- Wrapper for slides -->
+												<div class="carousel-inner">
 
-											    <div class="item active srle">
-											      <img src="images/coffee/example1.jpg" alt="1.jpg" class="img-responsive">
-											      <div class="carousel-caption">
-											        <p> 1.jpg </p>
-											      </div>
-											    </div>
+												    <div class="item active srle">
+												      <img src="images/coffee/example1.jpg" alt="1.jpg" class="img-responsive carousel-detail">
+												    </div>
 
-											    <div class="item">
-											      <img src="images/coffee/example8.jpg" alt="2.jpg" class="img-responsive">
-											      <div class="carousel-caption">
-											        <p> 2.jpg </p>
-											      </div>
-											    </div>
+												    <div class="item">
+												      <img src="images/coffee/example8.jpg" alt="2.jpg" class="img-responsive carousel-detail">
+												    </div>
 
+
+												</div>
+
+											  	<!-- Controls -->
+											  	<a class="left carousel-control" href="#carousel-details" role="button" data-slide="prev">
+											    	<span class="glyphicon glyphicon-chevron-left"></span>
+											  	</a>
+											  	<a class="right carousel-control" href="#carousel-details" role="button" data-slide="next">
+											    	<span class="glyphicon glyphicon-chevron-right"></span>
+											  	</a>
 
 											</div>
-
-										  	<!-- Controls -->
-										  	<a class="left carousel-control" href="#carousel-details" role="button" data-slide="prev">
-										    	<span class="glyphicon glyphicon-chevron-left"></span>
-										  	</a>
-										  	<a class="right carousel-control" href="#carousel-details" role="button" data-slide="next">
-										    	<span class="glyphicon glyphicon-chevron-right"></span>
-										  	</a>
-
 										</div>
 									</div>
-									</div>
 								</div>
-
-								<div class="row">
-									<!-- Thumbnails --> 
-									<div class="details-slide-body">
-										<ul class="thumbnails-carousel clearfix col-md-12">
-										  	<li class="col-md-3"><img src="/images/coffee/example6.jpg" alt="1_tn.jpg"></li>
-											<li class="col-md-3"><img src="/images/coffee/example7.jpg" alt="1_tn.jpg"></li>
-									  	</ul>
-									</div>
-								  	<!-- Thumbnails End -->
-								</div>
-							
 							</div>
 						</div>
 					</div>
@@ -101,6 +84,7 @@
 									<div class="panel-card-header">
 										<h3 class="panel-title">Lakukan Pembelian</h4>									
 									</div>
+									{!! Form::open(['url'=>'']) !!}
 									<div class="panel-card-body">
 										<div class="coffee-title">
 											<div class="row">
@@ -124,11 +108,13 @@
 															</div>
 														</div>
 														<div class="col-md-5">
-															<div class="btn-count-pembelian flex-between">
+
+															{{-- <div class="btn-count-pembelian flex-between">
 																<button type="button" class="btn btn-primary btn-count">-</button>
 																<div class="count-pembelian">1</div>
 																<button type="button" class="btn btn-primary btn-count">+</button>
-															</div>
+															</div> --}}
+															{!! Form::number('qty',1,['class'=>'qty']) !!}
 														</div>
 													</div>
 												</div>
@@ -138,14 +124,16 @@
 										<div class="coffee-button">
 											<div class="row">
 												<div class="col-md-12">
-													<button type="button" class="btn btn-block btn-success" id="addtoCart">
+													{!! Form::submit('Beli Sekarang',['class'=>'btn btn-block btn-success']) !!}
+													{{-- <button type="button" class="btn btn-block btn-success" id="addtoCart">
 														<i class="fa fa-shopping-cart"></i> 
 														Beli Sekarang
-													</button>
+													</button> --}}
 												</div>
 											</div>
-										</div>	
+										</div>
 									</div>
+									{!! Form::close() !!}
 								</div>
 							</div>
 						</div>
