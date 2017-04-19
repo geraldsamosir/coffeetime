@@ -70,6 +70,11 @@ if ($agent->isDesktop()) {
 	Route::get('/customer/edit', function(){
 		return view('frontend.pages.editAkun');
 	});
+
+	// Untuk Social Media
+	Route::get('/user/albert',function(){
+		return view('frontend.pages.socialAkun');
+	});
 }
 
 /*Route for Mobile*/
