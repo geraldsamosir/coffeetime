@@ -60,12 +60,21 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.cart');
 	});
 
-	Route::get('/customer', function(){
+	Route::get('/customer/akun', function(){
 		return view('frontend.pages.panelAkun');
 	});
 
-	Route::get('/panelcart', function(){
+	Route::get('/customer/cart', function(){
 		return view('frontend.pages.panelCart');
+	});
+
+	Route::get('/customer/edit', function(){
+		return view('frontend.pages.editAkun');
+	});
+
+	// Untuk Social Media
+	Route::get('/user/albert',function(){
+		return view('frontend.pages.socialAkun');
 	});
 }
 

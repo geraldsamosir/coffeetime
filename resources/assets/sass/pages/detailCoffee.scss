@@ -8,10 +8,9 @@
 		.panel-card-body{
 			.coffee-brew{
 				margin: 10px 0px;
-				.dropdown-brew {
-				width: 100%;
-					a  {
-						padding: 10px;
+				.brew-select {
+					option {
+						padding : 10px 5px;
 					}
 				}
 			}

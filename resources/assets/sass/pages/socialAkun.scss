@@ -1,0 +1,54 @@
+.section-profil{
+	.card-social-left{
+		background: $putih;
+		padding: 20px 0px;
+		text-align: center;
+		img{
+			width: 150px;
+			margin: 10px 0px;
+		}
+		ul.card-social-akun{
+			padding: 0px;
+			margin: 10px;
+			li{
+				list-style-type: none;
+				display: inline-block;
+				padding: 0px 15px;
+				a{
+
+				}
+			}
+		}
+	}
+
+	.card-social-right{
+		table {
+			td {
+				font-size: 13px;
+			}
+		}
+
+		ul.list-resep{
+			padding-left: 0px;
+			li {
+				list-style-type: none;
+			    padding: 8px;
+			    font-weight: bold;
+			}
+
+			.list-resep-favorited li, .list-resep-created li{
+				font-size: 13px;
+				font-weight: 400;
+			}
+			
+			.list-resep-favorited li:before, .list-resep-created li:before{
+				content: "\f15c"; /* FontAwesome Unicode */
+			  	font-family: FontAwesome;
+			  	font-size: 13px;
+			  	display: inline-block;
+			  	margin-left: -1.3em; /* same as padding-left set on li */
+			  	width: 1.3em;
+			}
+		}
+	}
+}

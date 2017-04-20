@@ -59,7 +59,8 @@
 							</div>
 						</div>
 						<div class="panel-cart-footer">
-							<button type="submit" class="btn btn-tohome">Lanjutkan Belanja</button>
+							{{-- <button class="btn btn-tohome">Lanjutkan Belanja</button> --}}
+							<a href="/" class="btn btn-tohome">Lanjut Belanja</a>
 							<button type="submit" class="btn btn-success btn-tocheckout">Lanjutkan Pembayaran</button>
 						</div>
 

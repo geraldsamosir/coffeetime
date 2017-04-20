@@ -9,58 +9,41 @@
 			<div class="row">
 				{{-- Detail Kiri Start --}}
 				<div class="col-md-7">	
+				
 					<div class="details-slide">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="row">
 									<div class="details-slide-header">
 										<div class="col-md-12">
-										<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+											<div id="carousel-details" class="carousel slide" data-ride="carousel" data-interval="false">
 
-										  	<!-- Wrapper for slides -->
-											<div class="carousel-inner">
+											  	<!-- Wrapper for slides -->
+												<div class="carousel-inner">
 
-											    <div class="item active srle">
-											      <img src="images/coffee/example1.jpg" alt="1.jpg" class="img-responsive">
-											      <div class="carousel-caption">
-											        <p> 1.jpg </p>
-											      </div>
-											    </div>
+												    <div class="item active srle">
+												      <img src="images/coffee/example1.jpg" alt="1.jpg" class="img-responsive carousel-detail">
+												    </div>
 
-											    <div class="item">
-											      <img src="images/coffee/example8.jpg" alt="2.jpg" class="img-responsive">
-											      <div class="carousel-caption">
-											        <p> 2.jpg </p>
-											      </div>
-											    </div>
+												    <div class="item">
+												      <img src="images/coffee/example8.jpg" alt="2.jpg" class="img-responsive carousel-detail">
+												    </div>
 
+
+												</div>
+
+											  	<!-- Controls -->
+											  	<a class="left carousel-control" href="#carousel-details" role="button" data-slide="prev">
+											    	<span class="glyphicon glyphicon-chevron-left"></span>
+											  	</a>
+											  	<a class="right carousel-control" href="#carousel-details" role="button" data-slide="next">
+											    	<span class="glyphicon glyphicon-chevron-right"></span>
+											  	</a>
 
 											</div>
-
-										  	<!-- Controls -->
-										  	<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-										    	<span class="glyphicon glyphicon-chevron-left"></span>
-										  	</a>
-										  	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-										    	<span class="glyphicon glyphicon-chevron-right"></span>
-										  	</a>
-
 										</div>
 									</div>
-									</div>
 								</div>
-
-								<div class="row">
-									<!-- Thumbnails --> 
-									<div class="details-slide-body">
-										<ul class="thumbnails-carousel clearfix col-md-12">
-										  	<li class="col-md-3"><img src="/images/coffee/example6.jpg" alt="1_tn.jpg"></li>
-											<li class="col-md-3"><img src="/images/coffee/example7.jpg" alt="1_tn.jpg"></li>
-									  	</ul>
-									</div>
-								  	<!-- Thumbnails End -->
-								</div>
-							
 							</div>
 						</div>
 					</div>
@@ -98,15 +81,23 @@
 												</div>
 											</div>
 										</div>
-
+										
+										{!! Form::open(['url'=>'']) !!}
 										<div class="coffee-brew">
 											<div class="row">
 												<div class="col-md-12">
 													<span class="sub-title">Brew Method</span>
 												</div>
-
+				
 												<div class="col-md-12">
-													<div class="dropdown">
+													<select class="brew-select form-control">
+													  <option value="DR">DRIP</option>
+													  <option value="ES">ESPRESSO</option>
+													  <option value="AE">AEROPRESS</option>
+													  <option value="WB">WHOLEBEAN</option>
+													</select>
+
+													{{-- <div class="dropdown">
 													  <button class="btn btn-default btn-block dropdown-toggle flex-justify-between" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 													   PILIH BREW METHOD
 													    <i class="fa fa-sort-down"></i>
@@ -117,7 +108,7 @@
 													    <li><a href="#">AEROPRESS</a></li>
 													    <li><a href="#">WHOLEBEAN</a></li>
 													  </ul>
-													</div>
+													</div> --}}
 												</div>
 											</div>
 										</div>
@@ -136,11 +127,12 @@
 															</div>
 														</div>
 														<div class="col-md-5">
-															<div class="btn-count-pembelian">
+															{{-- <div class="btn-count-pembelian">
 																<button type="button" class="btn btn-primary btn-count">-</button>
 																<div class="count-pembelian">1</div>
 																<button type="button" class="btn btn-primary btn-count">+</button>
-															</div>
+															</div> --}}
+															{!! Form::number('qty',1,['class'=>'qty','data-min'=>'1']) !!}
 														</div>
 													</div>
 												</div>
@@ -150,13 +142,15 @@
 										<div class="coffee-button">
 											<div class="row">
 												<div class="col-md-12">
-													<button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#addToChart">
+													{!! Form::submit('Beli Sekarang',['class'=>'btn btn-block btn-success']) !!}
+													{{-- <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#addToChart">
 														<i class="fa fa-shopping-cart"></i> 
 														Beli Sekarang
-													</button>
+													</button> --}}
 												</div>
 											</div>
-										</div>	
+										</div>
+										{!! Form::close() !!}
 									</div>
 								</div>
 							</div>

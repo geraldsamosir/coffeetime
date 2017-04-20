@@ -441,6 +441,35 @@
 	}
 }
 
+.qty {
+	width: 50%;
+    padding: 5px 10px;
+}
+
+.carousel-detail {
+	margin: 0 auto;
+}
+
+.carousel {
+	background: white;
+}
+
+.carousel-control.right, .carousel-control.left {
+	background: white;
+}
+
+label.required:after {
+    color: #cc0000;
+    content: "*";
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.btn-tohome {
+	background: #999;
+    color: white;
+}
+
 
 // Hover Style
 

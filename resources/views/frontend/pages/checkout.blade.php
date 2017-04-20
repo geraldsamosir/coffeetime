@@ -17,62 +17,54 @@
 								<h3 class="panel-title">Alamat</h3>
 							</div>
 							<div class="panel-card-body">
-								<form action="" method="POST" class="form-horizontal" role="form">
+								{!! Form::open() !!}
 									<div class="form-group">
-										<label for="inputAlabel" class="control-label">Label Alamat <span class="required-input">*</span></label>
-										<input type="text" class="form-control" id="inputAlabel" placeholder="Contoh: Alamat Rumah, Alamat Kantor" name="lblAlamat" required>
+										{!! Form::label('lblAlamat','Label Alamat',['class'=>'required']) !!}
+										{!! Form::text('lblAlamat',null,['class'=>'form-control','placeholder'=>'Contoh: Alamat Rumah, Alamat Kantor','required']) !!}
 									</div>
 									<div class="form-group">
-										<label for="inputAnama" class="control-label">Nama Lengkap <span class="required-input">*</span></label>
-										<input type="text" class="form-control" id="inputAnama" placeholder="Nama Penerima" name="namaLengkap" required>
+										{!! Form::label('lblNama','Nama Lengkap',['class'=>'required']) !!}
+										{!! Form::text('lblNama',null,['class'=>'form-control','placeholder'=>'Nama Penerima', 'required']) !!}
 									</div>
 
 									<div class="form-group">
-					                    <label for="inputAnegara" class="control-label">Negara</label>
-				                        <select id="inputAnegara" class="form-control">
-				                            <option>Indonesia</option>
-				                        </select>
+										{!! Form::label('lblNegara','Negara',['class'=>'required']) !!}
+					                    {!! Form::select('lblNegara',['Indonesia'],null,['class'=>'form-control']) !!}
 					                </div>
 
 					                <div class="form-group">
-					                    <label for="inputAnegara" class="control-label">Provinsi</label>
-				                        <select id="inputAnegara" class="form-control">
-				                            <option>Sumatera Utara</option>
-				                        </select>
+					               		{!! Form::label('lblProvinsi','Provinsi',['class'=>'required']) !!}
+					                    {!! Form::select('lblProvinsi',['Sumatera Utara'],null,['class'=>'form-control']) !!}
 					                </div>
 
 					                <div class="form-group">
-					                    <label for="inputAnegara" class="control-label">Kota</label>
-				                        <select id="inputAnegara" class="form-control">
-				                            <option>Medan</option>
-				                        </select>
+					                	{!! Form::label('lblKota','Kota',['class'=>'required']) !!}
+					                    {!! Form::select('lblKota',['Medan'],null,['class'=>'form-control']) !!}
 					                </div>
 
 					                <div class="form-group">
-					                    <label for="inputAnegara" class="control-label">Kecamatan</label>
-				                        <select id="inputAnegara" class="form-control">
-				                            <option>Medan Helvetia</option>
-				                        </select>
+					                	{!! Form::label('lblKecamatan','Kecamatan',['class'=>'required']) !!}
+					                    {!! Form::select('lblKecamatan',['Medan Helvetia'],null,['class'=>'form-control']) !!}
 					                </div>
 
 									<div class="form-group">
-										<label for="inputAalamat" class="control-label">Alamat <span class="required-input">*</span></label>
-										<input type="text" class="form-control" id="inputAalamat" placeholder="Alamat" name="alamat" required>
+										{!! Form::label('lblJalan','Alamat',['class'=>'required']) !!}
+										{!! Form::text('lblJalan',null,['class'=>'form-control','placeholder'=>'Alamat']) !!}
 									</div>
 									<div class="form-group">
-										<label for="inputApos" class="control-label">Kode Pos <span class="required-input">*</span></label>
-										<input type="text" class="form-control" id="inputApos" placeholder="Kode Pos" name="kodePos" required>
+										{!! Form::label('lblPos','Kode Pos',['class'=>'required']) !!}
+										{!! Form::text('lblPos',null,['class'=>'form-control','placeholder'=>'Kode Pos']) !!}
 									</div>
 									<div class="form-group">
-										<label for="inputAhp" class="control-label">Nomor Handphone<span class="required-input">*</span></label>
-										<input type="text" class="form-control" id="inputAhp" placeholder="Nomor Handphone" name="nomorHandphone" required>
+										{!! Form::label('lblHp','Nomor Handphone',['class'=>'required']) !!}
+										{!! Form::text('lblHp',null,['class'=>'form-control','placeholder'=>'Nomor Handphone']) !!}
 									</div>
 									<div class="form-group">
-										<label for="inputAtelp" class="control-label">Nomor Telepon</label>
-										<input type="text" class="form-control" id="inputAtelp" placeholder="Nomor Telepon" name="nomorTelp" required>
+										{!! Form::label('lblTelp','Nomor Telepon') !!}
+										{!! Form::text('lblTelp',null,['class'=>'form-control','placeholder'=>'Nomor Telepon']) !!}
 									</div>
-									<button class="btn btn-block btn-primary" type="submit">Lanjut Ke Pembayaran</button>
-								</form>
+									{!! Form::submit('Lanjut Ke Pembayaran',['class'=>'btn btn-block btn-primary']) !!}
+								{!! Form::close() !!}
 							</div>
 						</div>
 					</div>
