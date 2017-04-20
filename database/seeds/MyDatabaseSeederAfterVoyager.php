@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use TCG\Voyager\Traits\Seedable;
 
-class MyDatabaseSeeder extends Seeder
+class MyDatabaseSeederAfterVoyager extends Seeder
 {
     use Seedable;
 
@@ -16,7 +16,8 @@ class MyDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->seed('MyCategoriesTableSeeder');
-        $this->seed('MySettingsTableSeeder');
+        $this->seed('MyDataTypesTableSeeder');
+        $this->seed('MyDataRowsTableSeeder');
+        $this->seed('MyPermissionsTableSeeder');
     }
 }

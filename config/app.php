@@ -180,6 +180,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+
 
     ],
 

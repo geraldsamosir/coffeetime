@@ -16,7 +16,8 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
 	Route::get('/', function () {
-	    return view('frontend.pages.home');
+		$categoriesKopi = TCG\Voyager\Models\Category::where('parent_id',1)->get();
+	    return view('frontend.pages.home', compact('categoriesKopi'));
 	});
 
 	Route::get('/detail-coffee', function(){

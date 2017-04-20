@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca046548feb215d466c07a485895d0a2",
-    "content-hash": "6c94447bd8b0359fc5de3df21867abfb",
+    "hash": "81e36c231eaea9a2637d6796d9ac5088",
+    "content-hash": "9cfb797516c4e44f834615c572f080fe",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -655,6 +655,75 @@
                 "parser"
             ],
             "time": "2016-11-02 15:56:58"
+        },
+        {
+            "name": "graham-campbell/exceptions",
+            "version": "v9.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Exceptions.git",
+                "reference": "b2001ce4e992ca473af6f470cddfcf6e0a83430d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Exceptions/zipball/b2001ce4e992ca473af6f470cddfcf6e0a83430d",
+                "reference": "b2001ce4e992ca473af6f470cddfcf6e0a83430d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "paragonie/random_compat": "^1.1|^2.0",
+                "php": ">=5.5.9",
+                "psr/log": "^1.0",
+                "symfony/debug": "^2.7|^3.0",
+                "symfony/http-foundation": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "filp/whoops": "^1.1|^2.0",
+                "graham-campbell/testbench": "^3.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "suggest": {
+                "filp/whoops": "Enables use of the debug displayer."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\Exceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Provides A Powerful Error Response System For Both Development And Production",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Laravel Exceptions",
+                "Laravel-Exceptions",
+                "error",
+                "errors",
+                "exception",
+                "exceptions",
+                "framework",
+                "laravel",
+                "whoops"
+            ],
+            "time": "2017-01-21 16:49:20"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -2982,6 +3051,67 @@
             "time": "2015-06-14 21:17:01"
         },
         {
+            "name": "filp/whoops",
+            "version": "2.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "f2950be7da8b8d6c4e77821b6c9d486e36cdc4f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/f2950be7da8b8d6c4e77821b6c9d486e36cdc4f3",
+                "reference": "f2950be7da8b8d6c4e77821b6c9d486e36cdc4f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0",
+                "psr/log": "^1.0.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "symfony/var-dumper": "^2.6 || ^3.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Dobreira",
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
+                }
+            ],
+            "description": "php error handling for cool kids",
+            "homepage": "https://filp.github.io/whoops/",
+            "keywords": [
+                "error",
+                "exception",
+                "handling",
+                "library",
+                "whoops",
+                "zf2"
+            ],
+            "time": "2017-03-07 09:04:45"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.6.0",
             "source": {
@@ -3079,12 +3209,12 @@
             "version": "0.9.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
                 "shasum": ""
             },
