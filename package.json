@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "swiper": "^3.4.2"
+    "tinymce": "^4.5.7"
   }
 }
