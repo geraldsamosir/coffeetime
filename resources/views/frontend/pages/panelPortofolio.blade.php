@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', 'Panel Portofolio')
+@section('title', 'Panel Akun')
 
 @section('content')
 	<div class="section-panel">
