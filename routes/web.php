@@ -87,6 +87,10 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.panelResep');
 	});
 
+	Route::get('/customer/resep/create',function(){
+		return view('frontend.pages.createResep');
+	});
+
 	// Untuk Social Media
 	Route::get('/user/albert',function(){
 		return view('frontend.pages.socialAkun');
