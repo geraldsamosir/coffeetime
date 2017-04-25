@@ -470,6 +470,11 @@ label.required:after {
     color: white;
 }
 
+.table > tbody > tr > td, .table > tbody > tr > th  {
+	border-bottom: 1px solid #ddd;
+	border-top: none;
+}
+
 
 // Hover Style
 

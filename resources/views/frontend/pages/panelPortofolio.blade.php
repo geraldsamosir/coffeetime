@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', 'Panel Akun')
+@section('title', 'Panel Portofolio')
 
 @section('content')
 	<div class="section-panel">
@@ -14,28 +14,20 @@
 					<div class="section-panel-informasi">
 						<div class="panel-card">
 							<div class="panel-card-header">
-								<h3 class="panel-title">Detail Akun</h3>
+								<h3 class="panel-title">Detail Portofolio</h3>
 							</div>
 							<div class="panel-card-body">
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<tbody>
 											<tr>
-												<th>Nama</th>
-												<td>Albert Ang</td>
-											</tr>
-											<tr>
-												<th>Email</th>
-												<td>albert@gmail.com</td>
-											</tr>
-											<tr>
-												<th>No. Hp</th>
-												<td>081223456789</td>
+												<th>Sertifikat</th>
+												<td>: Sertifikat MPT, Sertifikat Barista</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
-								<a href="/customer/edit" class="btn btn-warning btn-edit">Update Info</a>
+								<a href="/customer/portofolio/edit""><i class="fa fa-plus fa-1g"></i> Tambah Sertifikat</a>
 							</div>
 						</div>
 					</div>

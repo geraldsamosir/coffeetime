@@ -71,6 +71,18 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.editAkun');
 	});
 
+	Route::get('/customer/portofolio',function(){
+		return view('frontend.pages.panelPortofolio');
+	});
+
+	Route::get('/customer/portofolio/edit',function(){
+		return view('frontend.pages.editPortofolio');
+	});
+
+	Route::get('customer/transaksi',function(){
+		return view('frontend.pages.panelTransaksi');
+	});
+
 	// Untuk Social Media
 	Route::get('/user/albert',function(){
 		return view('frontend.pages.socialAkun');

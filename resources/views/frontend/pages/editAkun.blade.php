@@ -28,6 +28,11 @@
 									{!! Form::label('lblEmail','Email Address',['class'=>'required']) !!}
 									{!! Form::email('lblEmail','darmakurniawanharefa@gmail.com',['class'=>'form-control','required']) !!}
 								</div>
+
+								<div class="form-group">
+									{!! Form::label('lblTelp','No. Hp',[]) !!}
+									{!! Form::email('lbltelp','081223456789',['class'=>'form-control','required']) !!}
+								</div>
 								
 								<a href="/customer/akun" class="btn btn-tohome">Batal</a>
 								{!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}

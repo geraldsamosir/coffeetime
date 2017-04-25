@@ -15,8 +15,8 @@
             <div class="collapse navbar-collapse navbar-cat-collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">Kopi</a>
-                        <div class="dropdown-menu ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown-main1" data-hover="dropdown-main1">Kopi</a>
+                        <div class="dropdown-menu dropdown-main1">
                             <div class="dropdown-inner">
                                <div class="submenu">
                                     <div class="row">
@@ -86,8 +86,8 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">Mesin Kopi</a>
-                         <div class="dropdown-menu ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown-main2" data-hover="dropdown-main2">Mesin Kopi</a>
+                         <div class="dropdown-menu dropdown-main2">
                             <div class="dropdown-inner">
                                <div class="submenu">
                                     <div class="row">
