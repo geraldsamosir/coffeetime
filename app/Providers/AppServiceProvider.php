@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        View::composer('layouts.frontend', function($view){
+            $view->with('categoriesKopi', \App\Category::where('parent_id',1)->get());
+        });
     }
 
     /**

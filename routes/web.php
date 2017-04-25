@@ -16,8 +16,7 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
 	Route::get('/', function () {
-		$categoriesKopi = TCG\Voyager\Models\Category::where('parent_id',1)->get();
-	    return view('frontend.pages.home', compact('categoriesKopi'));
+	    return view('frontend.pages.home');
 	});
 
 	Route::get('/detail-coffee', function(){
@@ -32,8 +31,9 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.detailResep');
 	});
 
-	Route::get('/list-coffee', function(){
-		return view('frontend.pages.listCoffee');
+	Route::get('/list-coffee/{category}', function(TCG\Voyager\Models\Category $category){
+		$coffees = App\Coffee::where('category_id', $category->id)->get();
+		return view('frontend.pages.listCoffee', compact('coffees'));
 	});
 
 	Route::get('/list-mesin', function(){
