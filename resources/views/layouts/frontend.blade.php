@@ -4,6 +4,7 @@
     	<meta charset="utf-8">
     	<title>EduCoffe @yield('title','| Homepage')</title>
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+		<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 		@yield('css')
 	</head>
 	<body>
@@ -17,11 +18,7 @@
 		
 		<script src="{{ asset('/js/app.js') }}"></script>
 		<script>
-			// Initialize
-			tinymce.init({
-			  selector: 'textarea'
-			})
-
+			CKEDITOR.replace( 'ckeditor' );
 		</script>
 		@yield('js')
 	</body>
