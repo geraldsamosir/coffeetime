@@ -11,8 +11,8 @@ window.$ = window.jQuery = require('jquery');
 
 require('bootstrap-sass');
 
-require('tinymce');
-
+import tinymce from 'tinymce/tinymce';
+import 'tinymce/themes/modern/theme';
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean

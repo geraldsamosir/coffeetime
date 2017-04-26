@@ -16,6 +16,13 @@
 		@include('frontend.components.footer')
 		
 		<script src="{{ asset('/js/app.js') }}"></script>
+		<script>
+			// Initialize
+			tinymce.init({
+			  selector: 'textarea'
+			})
+
+		</script>
 		@yield('js')
 	</body>
 </html>
