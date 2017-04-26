@@ -20,8 +20,8 @@
 							<div class="panel-card-body">
 
 								<div class="form-group">
-									{!! Form::label('lblSertifikat','Sertifikat') !!}
-									{!! Form::textarea('lblSertifikat','Sertifikat MPT, Sertifikat Barista',['class'=>'form-control','required','rows'=>'5']) !!}
+									{!! Form::label('lblSertifikat','Upload Sertifikat') !!}
+									{!! Form::file('lblSertifikat',null,['class'=>'form-control']) !!}
 								</div>
 								
 								<a href="/customer/portofolio" class="btn btn-tohome">Batal</a>

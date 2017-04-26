@@ -22,7 +22,7 @@
 										<tbody>
 											<tr>
 												<th>Sertifikat</th>
-												<td>: Sertifikat MPT, Sertifikat Barista</td>
+												<td>: <a href="#">Sertifikat MPT</a>, <a href="#">Sertifikat Barista</a></td>
 											</tr>
 										</tbody>
 									</table>

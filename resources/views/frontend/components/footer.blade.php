@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="newsletter-footer">
+    {{-- <div class="newsletter-footer">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="newsletter-input">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="copyright-footer">
         <div class="row">
