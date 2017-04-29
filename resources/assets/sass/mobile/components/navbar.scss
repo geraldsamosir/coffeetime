@@ -1,0 +1,30 @@
+.section-menu{
+	// overflow: hidden;
+	background-color : $hitam;
+	nav { 
+		margin-bottom: 0px !important;
+		border-radius: 0px;
+		border: 0px;
+		.container-menu {
+			padding-left: 190px;
+		}
+		.submenu {
+			width: 700px;
+			.row {
+				margin-left: 0px;
+				margin-right: 0px;
+				.media-fa{
+					padding: 20px;
+				}
+				.fa {
+					font-size: 50px;
+				}
+				.submenu-label {
+					display: table-cell;
+					vertical-align: middle;
+					padding-left: 10px;
+				}
+			}
+		}
+	}
+}

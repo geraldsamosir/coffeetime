@@ -3,7 +3,8 @@
     <head>
     	<meta charset="utf-8">
     	<title>EduCoffe @yield('title','| Homepage')</title>
-		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/bootstrap-material-design.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
 		@yield('css')
 	</head>
 	<body>
