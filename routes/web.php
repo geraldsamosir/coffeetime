@@ -100,7 +100,7 @@ if ($agent->isDesktop()) {
 /*Route for Mobile*/
 else {
 	Route::get('/', function () {
-	    return view('welcome');
+	    return view('mobile.pages.home');
 	});
 }
 

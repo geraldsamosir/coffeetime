@@ -17,6 +17,9 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0"
+    "bootstrap-material-design": "^0.5.10",
+    "font-awesome": "^4.7.0",
+    "install": "^0.8.9",
+    "npm": "^4.5.0"
   }
 }
