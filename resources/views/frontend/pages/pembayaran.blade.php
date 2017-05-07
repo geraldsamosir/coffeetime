@@ -65,7 +65,7 @@
 															<img src="/images/coffee/example12.jpg" alt="gambar-product">
 														</td>
 														<td class="cart-item-name">
-															<a href="/details-coffee">Coffee Nias 250g</a>
+															<a href="/detail-coffee">Coffee Nias 250g</a>
 															<p class="cart-item-brew-method">Espresso</p>
 														</td>
 														<td rowspan="2" class="cart-item-subtotal">
@@ -86,7 +86,7 @@
 															<img src="/images/coffee/example12.jpg" alt="gambar-product">
 														</td>
 														<td class="cart-item-name">
-															<a href="/details-coffee">Coffee Arabika Mocacino Amercano 250g</a>
+															<a href="/detail-coffee">Coffee Arabika Mocacino Amercano 250g</a>
 															<p class="cart-item-brew-method">Bean</p>
 														</td>
 														<td rowspan="2" class="cart-item-subtotal">

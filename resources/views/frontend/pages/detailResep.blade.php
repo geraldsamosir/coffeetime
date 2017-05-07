@@ -124,7 +124,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sapiente, laboriosam incidunt eius cum facere quibusdam ratione porro dolor.</p>
 							<ul>
 								<li>
-									<a href="/details-coffee">Nias Coffee 10g</a>
+									<a href="/detail-coffee">Nias Coffee 10g</a>
 								</li>
 							</ul>
 						</div>

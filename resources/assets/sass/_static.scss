@@ -1,461 +1,411 @@
-.link{
-	font-size: 14px;
-	color: $main-color;
-	cursor: pointer;
+.link {
+    font-size: 14px;
+    color: $main-color;
+    cursor: pointer;
 }
 
 .panel-title-bigmid {
-  margin-top: 50px;
-  margin-bottom: 25px;
-  font-size: 30px;
-  text-align: center;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .product-col {
-	padding: 0px;
-	background: $putih;
-	border-radius: 4px;
-	margin: 10px 0px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-
-	.inner-product-col{
-		color: $hitam;
-		a {
-			.overlayhover{
-				transition:0.3s ease;
-				position:absolute;
-				font-size:42px;
-				margin:34% 35%;
-				opacity:0 !important;
-			}
-
-			.image {
-				margin: 0px;
-			}
-
-			.image:hover {
-				transition:0.3s ease;
-				opacity:0.5;
-			}
-
-			.image:hover .overlayhover{
-				transition:0.3s ease;
-				opacity:1 !important;
-			}
-
-			.price-disc {
-				position: absolute;
-			    top: 10%;
-			    left: 10%;
-			    border-radius: 100%;
-			    background: $brand-success;
-			    padding: 15px;
-			    color: white;
-			    text-align: center;
-			    font-size: 20px;
-
-			    sup {
-			    	font-size: 12px;
-			    }
-			}
-		}
-
-		.caption{
-			text-align: center;
-			margin: 5px 0px;
-
-			.voucher-title {
-				font-weight: bold;
-				text-transform: uppercase;
-			}
-
-			.price-new{
-				font-size:18px;
-				color: $main-color;
-			}
-			.price-old{
-				font-size:15px;
-				color:$grey;
-				text-decoration: line-through;
-			}
-
-		}
-
-		.btn-beli{
-			margin: 10px;
-			text-align: center;
-
-			button {
-				width: 50%;
-				padding: 7px 0px;
-				color: $putih;
-				background: $brand-success;
-				border-radius: 4px;
-				margin: 10px;
-			}
-
-			button:hover{
-				transition: 0.3s ease;
-				background: lighten($brand-success, 5%);
-			}
-		}
-
-	}
+    padding: 0px;
+    background: $putih;
+    border-radius: 4px;
+    margin: 10px 0px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    .inner-product-col {
+        color: $hitam;
+        a {
+            .overlayhover {
+                transition: 0.3s ease;
+                position: absolute;
+                font-size: 42px;
+                margin: 34% 35%;
+                opacity: 0 !important;
+            }
+            .image {
+                margin: 0px;
+            }
+            .image:hover {
+                transition: 0.3s ease;
+                opacity: 0.5;
+            }
+            .image:hover .overlayhover {
+                transition: 0.3s ease;
+                opacity: 1 !important;
+            }
+            .price-disc {
+                position: absolute;
+                top: 10%;
+                left: 10%;
+                border-radius: 100%;
+                background: $brand-success;
+                padding: 15px;
+                color: white;
+                text-align: center;
+                font-size: 20px;
+                sup {
+                    font-size: 12px;
+                }
+            }
+        }
+        .caption {
+            text-align: center;
+            margin: 5px 0px;
+            .voucher-title {
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            .price-new {
+                font-size: 18px;
+                color: $main-color;
+            }
+            .price-old {
+                font-size: 15px;
+                color: $grey;
+                text-decoration: line-through;
+            }
+        }
+        .btn-beli {
+            margin: 10px;
+            text-align: center;
+            button {
+                width: 50%;
+                padding: 7px 0px;
+                color: $putih;
+                background: $brand-success;
+                border-radius: 4px;
+                margin: 10px;
+            }
+            button:hover {
+                transition: 0.3s ease;
+                background: lighten($brand-success, 5%);
+            }
+        }
+    }
 }
 
-.panel-default-header{
-	margin: 30px 0px 10px 0px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-	border-radius: 4px;
-	h3 {
-		font-size: 16px;
-		font-weight: 700;
-		margin: 0px !important;
-	}
-	color: $hitam;
-	text-align: center;
-	background: $putih;
-	text-transform: uppercase;
-	padding: 18px 0px;
+.panel-default-header {
+    margin: 30px 0px 10px 0px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0px !important;
+    }
+    color: $hitam;
+    text-align: center;
+    background: $putih;
+    text-transform: uppercase;
+    padding: 18px 0px;
 }
 
-.panel-default-body{
-	margin-bottom: 20px;
+.panel-default-body {
+    margin-bottom: 20px;
 }
 
 .panel-product {
-	background: $putih;
-	color: $hitam;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-	border-radius: 4px;
-	margin: 10px 0px 20px 0px;
-
-	.panel-product-header{
-		border-bottom: 1px solid $grey-line;
-		padding: 15px 0px;
-		text-align: center;
-		font-size: 17px;
-		font-weight: 500;
-	}
-
-	.panel-product-body{
-
-	}
+    background: $putih;
+    color: $hitam;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin: 10px 0px 20px 0px;
+    .panel-product-header {
+        border-bottom: 1px solid $grey-line;
+        padding: 15px 0px;
+        text-align: center;
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .panel-product-body {}
 }
 
 .product-col-tab {
-	padding: 0px;
-	background: $putih;
-	border: 1px solid $grey-line;
-	border-top: 0px;
-	.inner-product-col-tab{
-		color: $putih;
-		a {
-			.image {
-				margin: 0px;
-			}
-		}
-
-		.caption{
-			text-align: center;
-			margin: 15px 0px;
-
-			.voucher-title {
-				
-			}
-
-			.price-disc{
-				display: block;
-				width: 50%;
-				background: $brand-success;
-				margin: 0 auto;
-				padding: 5px 10px;
-				border-radius: 8px;
-				color: $putih;
-				font-size: 16px;
-				margin-bottom: 10px;
-			}
-
-			.price-new{
-				display: block;
-				font-size:18px;
-				margin-bottom: 10px;
-			}
-			.price-old{
-				display: block;
-				font-size:15px;
-				color:$grey;
-				text-decoration: line-through;
-			}
-		}
-	}
-}
-
-.panel-card{
-  margin-bottom: 25px;
-  .panel-card-header{
-    .panel-title {
-      font-size: 25px;
-      font-weight: bold;
-      color: inherit;
-      margin: 20px 0px;
-    }
-  }
-  .panel-card-body{
-    color: $hitam;
+    padding: 0px;
     background: $putih;
-    padding: 15px;
-    border: 0px;
-    border-radius: 4px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,.15);
-  }
-
+    border: 1px solid $grey-line;
+    border-top: 0px;
+    .inner-product-col-tab {
+        color: $putih;
+        a {
+            .image {
+                margin: 0px;
+            }
+        }
+        .caption {
+            text-align: center;
+            margin: 15px 0px;
+            .voucher-title {}
+            .price-disc {
+                display: block;
+                width: 50%;
+                background: $brand-success;
+                margin: 0 auto;
+                padding: 5px 10px;
+                border-radius: 8px;
+                color: $putih;
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .price-new {
+                display: block;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .price-old {
+                display: block;
+                font-size: 15px;
+                color: $grey;
+                text-decoration: line-through;
+            }
+        }
+    }
 }
 
-.core-details{
-	table {
-		tr{
-			border-bottom : 1px solid $grey-line;
-			td{
-				font-size: 15px;
-				font-weight: 300px;
-				padding: 5px;
-			}
+.panel-card {
+    margin-bottom: 25px;
+    .panel-card-header {
+        .panel-title {
+            font-size: 25px;
+            font-weight: bold;
+            color: inherit;
+            margin: 20px 0px;
+        }
+    }
+    .panel-card-body {
+        color: $hitam;
+        background: $putih;
+        padding: 15px;
+        border: 0px;
+        border-radius: 4px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, .15);
+    }
+}
 
-			td:first-child{
-				text-align: right;
-				font-weight : 700;
-				padding-right : 16px;
-				text-transform: uppercase;
-				font-size : 15px;
-				width: 30%;
-				color: $hitam;
-			}
-		}
-	}
+.core-details {
+    table {
+        tr {
+            border-bottom: 1px solid $grey-line;
+            td {
+                font-size: 15px;
+                font-weight: 300px;
+                padding: 5px;
+            }
+            td:first-child {
+                text-align: right;
+                font-weight: 700;
+                padding-right: 16px;
+                text-transform: uppercase;
+                font-size: 15px;
+                width: 30%;
+                color: $hitam;
+            }
+        }
+    }
 }
 
 .card-resep {
-	background: $putih;
-	margin: 10px 0px;
-	border-left: 10px solid $brand-warning;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-
-	a{
-		text-decoration: none;
-		color: $hitam;
-	}
-
-	img {
-		width: 100%;
-		padding: 10px;
-	}
-
-	.resep-title, .resep-brew{
-		display: block;
-	}
-
-	.resep-title{
-		font-size: 16px;
-		font-weight: 700;
-		padding: 20px 0px 10px 0px;
-	}
-
-	.resep-brew{
-		padding:0px;
-	}
-
-	.resep-social-icon{
-		color: $main-color;
-		font-size: 15px;
-		padding-top: 10px;
-		span{
-			padding-right: 15px;
-		}
-	}
+    background: $putih;
+    margin: 10px 0px;
+    border-left: 10px solid $brand-warning;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    a {
+        text-decoration: none;
+        color: $hitam;
+    }
+    img {
+        width: 100%;
+        padding: 10px;
+    }
+    .resep-title,
+    .resep-brew {
+        display: block;
+    }
+    .resep-title {
+        font-size: 16px;
+        font-weight: 700;
+        padding: 20px 0px 10px 0px;
+    }
+    .resep-brew {
+        padding: 0px;
+    }
+    .resep-social-icon {
+        color: $main-color;
+        font-size: 15px;
+        padding-top: 10px;
+        span {
+            padding-right: 15px;
+        }
+    }
 }
 
 .details-deskripsi {
-	h4 {
-		margin: 20px 0px;
-	    text-transform: uppercase;
-	    font-weight: bold;
-	    color: $grey;
-	}
+    h4 {
+        margin: 20px 0px;
+        font-weight: bold;
+        color: $grey;
+    }
 }
 
-.details-pembelian{
-	.panel-card-body{
-		.coffee-title {
-			font-size: 20px;
-			text-align: center;
-			font-weight: bold;
-			margin: 10px 0px;
-		}
-		.coffee-harga {
-			margin: 15px 0px;
-			.harga-count-pembelian{
-				display: flex;
-				flex-direction: column;
-				.price-new{
-					font-size: 18px;
-				}
-				.price-old{
-					font-size: 14px;
-					color: $grey;
-					text-decoration: line-through;
-				}
-			}
-			.btn-count-pembelian{
-				display: flex;
-				justify-content: space-between;
-				
-				.btn-count{
-					width: 30%;
-				}
-				.count-pembelian {
-					padding: 5px;
-				}
-			}
-		}
-		.coffee-button {
-			margin: 10px 0px;
-		}
-	}
+.details-pembelian {
+    .panel-card-body {
+        .coffee-title {
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0px;
+        }
+        .coffee-harga {
+            margin: 15px 0px;
+            .harga-count-pembelian {
+                display: flex;
+                flex-direction: column;
+                .price-new {
+                    font-size: 18px;
+                }
+                .price-old {
+                    font-size: 14px;
+                    color: $grey;
+                    text-decoration: line-through;
+                }
+            }
+            .btn-count-pembelian {
+                display: flex;
+                justify-content: space-between;
+                .btn-count {
+                    width: 30%;
+                }
+                .count-pembelian {
+                    padding: 5px;
+                }
+            }
+        }
+        .coffee-button {
+            margin: 10px 0px;
+        }
+    }
 }
 
 .card-related {
-	background: $putih;
-	margin: 10px 0px;
-	.card-related-images{
-		width: 30%;
-		display: inline-block;
-		img {
-			width: 100%
-		}
-	}
-	.card-related-caption{
-		width: 60%;
-	    display: inline-block;
-	    color: $hitam;
-	    padding: 15px;
-		.caption-title {
-			display: block;
-		    font-size: 20px;
-		    font-weight: bold;
-		}
-		.caption-price {
-			color: $main-color;
-		}
-	}
+    background: $putih;
+    margin: 10px 0px;
+    .card-related-images {
+        width: 30%;
+        display: inline-block;
+        img {
+            width: 100%
+        }
+    }
+    .card-related-caption {
+        width: 60%;
+        display: inline-block;
+        color: $hitam;
+        padding: 15px;
+        .caption-title {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .caption-price {
+            color: $main-color;
+        }
+    }
 }
 
 .card-default {
-	color: $hitam;
-	background: $putih;
-	padding: 10px 15px;
-	margin: 10px 0px;
-	border-radius: 4px;
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    color: $hitam;
+    background: $putih;
+    padding: 10px 15px;
+    margin: 10px 0px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-
 .panel-sorting {
-	padding: 10px 0px;
-	margin: 20px 0px;
-	border-bottom: 1px solid $grey-line;
-	button {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
-	.sorting-kategori{
-
-	}
-
-	.sorting-merek{
-
-	}
-
-	.sorting-harga{
-
-	}
-
-	.sorting-date {
-		
-	}	
+    padding: 10px 0px;
+    margin: 20px 0px;
+    border-bottom: 1px solid $grey-line;
+    button {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .sorting-kategori {}
+    .sorting-merek {}
+    .sorting-harga {}
+    .sorting-date {}
 }
 
 .panel-search {
-	padding: 10px 0px;
-	margin: 20px 0px;
-	border-bottom: 1px solid $grey-line;
-	button {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
+    padding: 10px 0px;
+    margin: 20px 0px;
+    border-bottom: 1px solid $grey-line;
+    button {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .card-resep-full {
-	background: $putih;
-	border-left: 5px solid $main-color;
-	border-radius: 4px;
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-	margin: 10px 0px;
-
-	.resep-full-images{
-		img {
-			width: 100%;
-			padding: 15px;
-		}
-	}
-
-	.resep-full-details{
-		color: $hitam;
-		display: flex;
-		flex-direction: column;
-		padding: 20px;
-
-		.resep-title{
-			font-size: 25px;
-			font-weight: bold;
-			.resep-date {
-				font-size: 12px;
-				color: $grey;
-				font-weight: 500;
-			}
-		}
-		.resep-brew{
-
-		}
-		.resep-social-icon{
-			span {
-				margin-right: 15px;
-			}
-		}
-
-		span {
-			margin: 5px 0px;
-		}
-	}
+    background: $putih;
+    border-left: 5px solid $main-color;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    margin: 10px 0px;
+    .resep-full-images {
+        img {
+            width: 100%;
+            padding: 15px;
+        }
+    }
+    .resep-full-details {
+        color: $hitam;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        .resep-title {
+            font-size: 25px;
+            font-weight: bold;
+            .resep-date {
+                font-size: 12px;
+                color: $grey;
+                font-weight: 500;
+            }
+        }
+        .resep-brew {}
+        .resep-social-icon {
+            span {
+                margin-right: 15px;
+            }
+        }
+        span {
+            margin: 5px 0px;
+        }
+    }
 }
 
 .qty {
-	width: 50%;
+    width: 50%;
     padding: 5px 10px;
 }
 
 .carousel-detail {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 .carousel {
-	background: white;
+    background: white;
 }
 
-.carousel-control.right, .carousel-control.left {
-	background: white;
+.carousel-control.right,
+.carousel-control.left {
+    background: white;
 }
 
 label.required:after {
@@ -466,72 +416,74 @@ label.required:after {
 }
 
 .btn-tohome {
-	background: #999;
+    background: #999;
     color: white;
 }
 
-
 // Hover Style
-
 .hvr-grow-shadow {
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow, transform;
-  transition-property: box-shadow, transform;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
-  box-shadow: 10px 10px 10px $grey-line;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+.hvr-grow-shadow:hover,
+.hvr-grow-shadow:focus,
+.hvr-grow-shadow:active {
+    box-shadow: 10px 10px 10px $grey-line;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .hvr-float-shadow {
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  position: relative;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
 }
+
 .hvr-float-shadow:before {
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  content: '';
-  top: 100%;
-  left: 5%;
-  height: 10px;
-  width: 90%;
-  opacity: 0;
-  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
-  /* W3C */
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform, opacity;
-  transition-property: transform, opacity;
-}
-.hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
-  /* move the element up by 5px */
-}
-.hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
-  opacity: 1;
-  -webkit-transform: translateY(5px);
-  transform: translateY(5px);
-  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
+    /* W3C */
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform, opacity;
+    transition-property: transform, opacity;
 }
 
+.hvr-float-shadow:hover,
+.hvr-float-shadow:focus,
+.hvr-float-shadow:active {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    /* move the element up by 5px */
+}
 
-
-
-
+.hvr-float-shadow:hover:before,
+.hvr-float-shadow:focus:before,
+.hvr-float-shadow:active:before {
+    opacity: 1;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+    /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+}

@@ -2842,16 +2842,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.9",
+            "version": "v0.11.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "bef7d58f5a7837042732fe25a64c54d680b18009"
+                "reference": "6eeb14e2c26c102cc619208b68673ed8a745bd64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/bef7d58f5a7837042732fe25a64c54d680b18009",
-                "reference": "bef7d58f5a7837042732fe25a64c54d680b18009",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/6eeb14e2c26c102cc619208b68673ed8a745bd64",
+                "reference": "6eeb14e2c26c102cc619208b68673ed8a745bd64",
                 "shasum": ""
             },
             "require": {
@@ -2865,7 +2865,7 @@
             "require-dev": {
                 "codeclimate/php-test-reporter": "dev-master",
                 "laravel/browser-kit-testing": "~1.0.0",
-                "laravel/framework": "~5.3.8|5.4.*",
+                "laravel/framework": "~5.3.29|5.4.*",
                 "orchestra/database": "3.3.*|3.4.x-dev",
                 "orchestra/testbench": "3.3.*|3.4.x-dev",
                 "orchestra/testbench-browser-kit": "~3.3.0|~3.4.0",
@@ -2895,7 +2895,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2017-03-13 16:42:52"
+            "time": "2017-04-26 13:29:33"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

@@ -19,9 +19,16 @@ if ($agent->isDesktop()) {
 	    return view('frontend.pages.home');
 	});
 
-	Route::get('/detail-coffee', function(){
-		return view('frontend.pages.detailCoffee');
-	});
+  Route::get('/detail-coffee/{productCoffee}', function(App\Coffee $productCoffee){
+      $categoriesKopi = TCG\Voyager\Models\Category::where('parent_id',1)->get();
+      $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
+    return view('frontend.pages.detailCoffee')->with([
+          'productCoffee' => $productCoffee,
+          'productImages' => json_decode($productCoffee->images),
+          'categoriesKopi' => $categoriesKopi,
+          'characteristics' => $characteristics
+          ]);
+  });
 
 	Route::get('/detail-mesin', function(){
 		return view('frontend.pages.detailMesin');
