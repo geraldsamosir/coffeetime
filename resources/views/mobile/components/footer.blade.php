@@ -75,12 +75,12 @@
         <div class="row">
             <div class="col-md-5 col-md-offset-1">
                 <div class="copyright-brand">
-                    CoffeeTime
+                    EduCoffee
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="copyright-text">
-                    &copy; CoffeeTime
+                    &copy; EduCoffee
                 </div>
             </div>
         </div>

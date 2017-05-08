@@ -79,6 +79,26 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.editAkun');
 	});
 
+	Route::get('/customer/portofolio',function(){
+		return view('frontend.pages.panelPortofolio');
+	});
+
+	Route::get('/customer/portofolio/edit',function(){
+		return view('frontend.pages.editPortofolio');
+	});
+
+	Route::get('customer/transaksi',function(){
+		return view('frontend.pages.panelTransaksi');
+	});
+
+	Route::get('/customer/resep',function(){
+		return view('frontend.pages.panelResep');
+	});
+
+	Route::get('/customer/resep/create',function(){
+		return view('frontend.pages.createResep');
+	});
+
 	// Untuk Social Media
 	Route::get('/user/albert',function(){
 		return view('frontend.pages.socialAkun');
@@ -88,7 +108,7 @@ if ($agent->isDesktop()) {
 /*Route for Mobile*/
 else {
 	Route::get('/', function () {
-	    return view('welcome');
+	    return view('mobile.pages.home');
 	});
 }
 

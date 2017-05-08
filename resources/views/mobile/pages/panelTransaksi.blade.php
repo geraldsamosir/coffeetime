@@ -14,7 +14,7 @@
 					<div class="section-panel-header-header">
 						<div class="panel-card">
 							<div class="panel-card-header">
-								<h3 class="panel-title">Cart</h3>
+								<h3 class="panel-title">History Transaksi</h3>
 							</div>
 						</div>
 					</div>
@@ -33,7 +33,6 @@
 										<td>
 											<p>Subtotal</p>
 										</td>
-										<td>&nbsp;</td>
 									</tr>
 								</table>
 							</div>
@@ -45,7 +44,7 @@
 												<img src="/images/coffee/example12.jpg" alt="gambar-product">
 											</td>
 											<td class="cart-item-name f2">
-												<a href="/detail-coffee">Coffee Nias 250g</a>
+												<a href="/details-coffee">Coffee Nias 250g</a>
 												<p class="cart-item-brew-method">Espresso</p>
 											</td>
 											<td class="cart-item-price">
@@ -53,22 +52,14 @@
 												<p class="cart-item-price-old">Rp. 500.000</p>
 											</td>
 											<td class="cart-item-quantity">
-												<input type="number" min="0" value="1">
+												<input type="number" min="0" value="1" disabled>
 											</td>
 											<td class="cart-item-subtotal">
 												<p class="cart-subtotal">Rp. 500.000</p>
 											</td>
-											<td class="cart-item-delete">
-											<button class="btn btn-cart-delete">
-												<i class="fa fa-times-circle"></i>
-											</button>
-										</td>
 										</tr>
 									</table>
 								</div>
-							</div>
-							<div class="panel-cart-footer">
-								<button type="submit" class="btn btn-success btn-tocheckout">Lanjutkan Pembayaran</button>
 							</div>
 						</div>
 					</div>

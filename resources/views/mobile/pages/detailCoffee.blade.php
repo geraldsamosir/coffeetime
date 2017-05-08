@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title','| '.$productCoffee->name)
+@section('title','| Detail Coffee')
 
 @section('content')
 	<div class="section-details-coffee">
@@ -20,13 +20,16 @@
 
 											  	<!-- Wrapper for slides -->
 												<div class="carousel-inner">
-                          @foreach($productImages as $key => $image)
-                            <div class="item @if($key == 0) active srle @endif">
-                              <img src="{{ Voyager::image($image) }}" alt="2.jpg" class="img-responsive">
-                              <div class="carousel-caption">
-                              </div>
-                            </div>
-                          @endforeach
+
+												    <div class="item active srle">
+												      <img src="images/coffee/example1.jpg" alt="1.jpg" class="img-responsive carousel-detail">
+												    </div>
+
+												    <div class="item">
+												      <img src="images/coffee/example8.jpg" alt="2.jpg" class="img-responsive carousel-detail">
+												    </div>
+
+
 												</div>
 
 											  	<!-- Controls -->
@@ -50,7 +53,7 @@
 							<div class="panel-card">
 								<div class="panel-card-body">
 									<h4>Deskripsi Coffee</h4>
-                    {!! $productCoffee->description !!}
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa asperiores dolor iste eum, suscipit sapiente sunt repellat. Similique, inventore enim ad ut. Laborum, voluptatum officiis et unde magni suscipit velit.</p>
 								</div>
 							</div>
 						</div>
@@ -74,44 +77,41 @@
 										<div class="coffee-title">
 											<div class="row">
 												<div class="col-md-12">
-													{{ $productCoffee->name }}
+													Drip Coffee 10g Arabica Flores "Manggarai
 												</div>
 											</div>
 										</div>
 										
 										{!! Form::open(['url'=>'']) !!}
-                    
-                    @if($productCoffee->is_beans)
-                      <div class="coffee-brew">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <span class="sub-title">Brew Method</span>
-                          </div>
-          
-                          <div class="col-md-12">
-                            <select class="brew-select form-control">
-                              <option value="DR">DRIP</option>
-                              <option value="ES">ESPRESSO</option>
-                              <option value="AE">AEROPRESS</option>
-                              <option value="WB">WHOLEBEAN</option>
-                            </select>
+										<div class="coffee-brew">
+											<div class="row">
+												<div class="col-md-12">
+													<span class="sub-title">Brew Method</span>
+												</div>
+				
+												<div class="col-md-12">
+													<select class="brew-select form-control">
+													  <option value="DR">DRIP</option>
+													  <option value="ES">ESPRESSO</option>
+													  <option value="AE">AEROPRESS</option>
+													  <option value="WB">WHOLEBEAN</option>
+													</select>
 
-                            {{-- <div class="dropdown">
-                              <button class="btn btn-default btn-block dropdown-toggle flex-justify-between" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                              PILIH BREW METHOD
-                                <i class="fa fa-sort-down"></i>
-                              </button>
-                              <ul class="dropdown-menu dropdown-brew" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">DRIP</a></li>
-                                <li><a href="#">ESPRESSO</a></li>
-                                <li><a href="#">AEROPRESS</a></li>
-                                <li><a href="#">WHOLEBEAN</a></li>
-                              </ul>
-                            </div> --}}
-                          </div>
-                        </div>
-                      </div>
-                    @endif
+													{{-- <div class="dropdown">
+													  <button class="btn btn-default btn-block dropdown-toggle flex-justify-between" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+													   PILIH BREW METHOD
+													    <i class="fa fa-sort-down"></i>
+													  </button>
+													  <ul class="dropdown-menu dropdown-brew" aria-labelledby="dropdownMenu1">
+													    <li><a href="#">DRIP</a></li>
+													    <li><a href="#">ESPRESSO</a></li>
+													    <li><a href="#">AEROPRESS</a></li>
+													    <li><a href="#">WHOLEBEAN</a></li>
+													  </ul>
+													</div> --}}
+												</div>
+											</div>
+										</div>
 
 										<div class="coffee-harga">
 											<div class="row">
@@ -122,8 +122,8 @@
 													<div class="row">
 														<div class="col-md-7 flex-direction-coloumn">
 															<div class="harga-count-pembelian">
-																<span class="price-new">Rp. {{ $productCoffee->discounted_price > 0 ? number_format($productCoffee->discounted_price) : number_format($productCoffee->original_price) }}</span>
-																@if($productCoffee->discounted_price > 0) <span class="price-old">Rp. {{ number_format($productCoffee->original_price) }}</span> @endif
+																<span class="price-new">Rp.500.000</span>
+																<span class="price-old">Rp.1.000.000</span>
 															</div>
 														</div>
 														<div class="col-md-5">
@@ -167,12 +167,50 @@
 									<div class="panel-card-body">
 										<div class="core-details">
 											<table>
-                        @foreach($characteristics as $characteristic)
-                          <tr>
-                            <td>{{ explode('=', $characteristic)[0] }}</td>
-                            <td>{{ explode('=', $characteristic)[1] }}</td>
-                          </tr>
-                        @endforeach
+												<tr>
+													<td>Acidity</td>
+													<td>Lastic</td>
+												</tr>
+												<tr>
+													<td>Altitude</td>
+													<td>1200</td>
+												</tr>
+												<tr>
+													<td>Flavour</td>
+													<td>Milk Chocolate</td>
+												</tr>
+												<tr>
+													<td>Mouthfeel</td>
+													<td>Creamy</td>
+												</tr>
+												<tr>
+													<td>Coutry</td>
+													<td>Brazil</td>
+												</tr>
+												<tr>
+													<td>Process</td>
+													<td>Pulped Natural</td>
+												</tr>
+												<tr>
+													<td>Producer</td>
+													<td>Planalto</td>
+												</tr>
+												<tr>
+													<td>Roast Profile</td>
+													<td>Medium</td>
+												</tr>
+												<tr>
+													<td>Sweetness</td>
+													<td>Refind Sugar</td>
+												</tr>
+												<tr>
+													<td>Tasting Note</td>
+													<td>Milk Chococolate Sake</td>
+												</tr>
+												<tr>
+													<td>Varietal</td>
+													<td>Yellow Catuai</td>
+												</tr>
 											</table>
 										</div>
 									</div>

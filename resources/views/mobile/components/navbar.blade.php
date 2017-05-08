@@ -19,20 +19,68 @@
                         <div class="dropdown-menu dropdown-main1">
                             <div class="dropdown-inner">
                                <div class="submenu">
-                                <div class="row">
-                                   @foreach($categoriesKopi as $category)
+                                    <div class="row">
                                         <div class="col-sm-4 submenu-category">
-                                        <a href="{{ url('list-coffee/'.$category->id) }}">
                                             <div class="media-fa">
-                                                <div class="media-fa-left">
-                                                    <img src="{{ Voyager::image($category->image) }}" class="categories-thumb img-responsive" alt="Image">
-                                                </div>
-                                                <div class="submenu-label">{{ $category->name }}</div>
+                                                <a href="">
+                                                    <div class="media-fa-left">
+                                                        <i class="fa fa-coffee"></i>
+                                                    </div>
+                                                    <div class="submenu-label">Kopi Luar</div>
+                                                </a>
                                             </div>
-                                            </a>
                                         </div>
-                                    @endforeach
-                                </div>
+                                        <div class="col-sm-4 submenu-category">
+                                             <div class="media-fa">
+                                                <a href="">
+                                                    <div class="media-fa-left">
+                                                        <i class="fa fa-glass"></i>
+                                                    </div>
+                                                    <div class="submenu-label">Kopi Tengah</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-4 submenu-category">
+                                            <div class="media-fa">
+                                                <a href="">
+                                                    <div class="media-fa-left">
+                                                        <i class="fa fa-beer"></i>
+                                                    </div>
+                                                    <div class="submenu-label">Kopi Dalam</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 submenu-category">
+                                            <div class="media-fa">
+                                                <a href="">
+                                                    <div class="media-fa-left">
+                                                        <i class="fa fa-coffee"></i>
+                                                    </div>
+                                                    <div class="submenu-label">Kopi Luar</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 submenu-category">
+                                             <div class="media-fa">
+                                                <a href="">
+                                                    <div class="media-fa-left">
+                                                        <i class="fa fa-glass"></i>
+                                                    </div>
+                                                    <div class="submenu-label">Kopi Tengah</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-4 submenu-category">
+                                            <div class="media-fa">
+                                                <a href="">
+                                                    <div class="media-fa-left">
+                                                        <i class="fa fa-beer"></i>
+                                                    </div>
+                                                    <div class="submenu-label">Kopi Dalam</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                   </div>
                                </div>
                             </div>
                         </div>
