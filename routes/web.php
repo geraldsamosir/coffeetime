@@ -118,6 +118,10 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::get('/ajax/cartcontent', 'CartController@getCartContent');
+
+Route::get('/ajax/addcartitem', 'CartController@addItemToCart');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

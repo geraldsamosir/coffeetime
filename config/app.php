@@ -182,6 +182,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
 
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Laravolt\Indonesia\ServiceProvider::class,
 
     ],
 
@@ -234,7 +236,8 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Indonesia' => Laravolt\Indonesia\Facade::class,
     ],
 
 ];
