@@ -19,6 +19,7 @@
 		@include('frontend.components.footer')
 		
 		<script src="{{ asset('/js/app.js') }}"></script>
+		<script src="{{ asset('/js/lib.js') }}"></script>
 		<script>
 			CKEDITOR.replace( 'ckeditor' );
 		</script>

@@ -19,13 +19,12 @@ if ($agent->isDesktop()) {
 	    return view('frontend.pages.home');
 	});
 
-  Route::get('/detail-coffee/{productCoffee}', function(App\Coffee $productCoffee){
+  Route::get('/detail-coffee/{productCoffee}', function(App\Product $productCoffee){
       $categoriesKopi = TCG\Voyager\Models\Category::where('parent_id',1)->get();
       $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
     return view('frontend.pages.detailCoffee')->with([
           'productCoffee' => $productCoffee,
           'productImages' => json_decode($productCoffee->images),
-          'categoriesKopi' => $categoriesKopi,
           'characteristics' => $characteristics
           ]);
   });
@@ -39,7 +38,7 @@ if ($agent->isDesktop()) {
 	});
 
 	Route::get('/list-coffee/{category}', function(TCG\Voyager\Models\Category $category){
-		$coffees = App\Coffee::where('category_id', $category->id)->get();
+		$coffees = App\Product::where('category_id', $category->id)->get();
 		return view('frontend.pages.listCoffee', compact('coffees'));
 	});
 
@@ -64,7 +63,8 @@ if ($agent->isDesktop()) {
 	});
 
 	Route::get('/cart', function(){
-		return view('frontend.pages.cart');
+    $cart = Cart::content();
+		return view('frontend.pages.cart', compact('cart'));
 	});
 
 	Route::get('/customer/akun', function(){
@@ -120,7 +120,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/ajax/cartcontent', 'CartController@getCartContent');
 
-Route::get('/ajax/addcartitem', 'CartController@addItemToCart');
+Route::post('/ajax/addcartitem/{id}', 'CartController@addItemToCart');
+
+Route::get('/ajax/deletecartitem/{rowId}', 'CartController@deleteItem');
 
 Auth::routes();
 

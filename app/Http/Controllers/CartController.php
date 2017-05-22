@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Coffee;
+use App\Product;
 use Cart;
 use Auth;
 use Carbon\Carbon;
@@ -26,15 +26,21 @@ class CartController extends Controller
     {
         // Cart::restore(Auth::user()->id);
         // return Cart::content();
-        return Order::find(1)->getCart();
+        return Cart::content();
     }
 
-    public function addItemToCart()
+    public function addItemToCart(Request $request, $id)
     {
-        $user = Auth::check() ? Auth::user()->id . '-' . Auth::user()->name : 'guest';
-        $coffee = Coffee::find(2);
-        Cart::instance($user)->add($coffee, 1, []);
-        Cart::store($user. '-' . Carbon::now()->timestamp);
-        return Cart::content();
+        $input = $request->all();
+        $product = Product::find($id);
+        $quantity = $input['qty'];
+        Cart::add($product, $quantity, ['option' => $input['option']]);
+        return redirect('/cart');
+    }
+
+    public function deleteItem(Request $request, $rowId)
+    {
+        Cart::remove($rowId);
+        return redirect('/cart');
     }
 }

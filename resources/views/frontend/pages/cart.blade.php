@@ -3,74 +3,93 @@
 @section('title', 'Your Cart')
 
 @section('content')
-	<div class="section-cart-list">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10">
-					<div class="panel-cart">
-						<div class="panel-cart-count">
-							<h3 class="cart-count">Keranjang Belanja(1)</h3>
-						</div>
-						<div class="panel-cart-header">
-							<table class="table table-cart">
-								<tr>
-									<td colspan="2" class="f1">&nbsp;</td>
-									<td>
-										Harga
-									</td>
-									<td class="cart-item-quantity">
-										Jumlah
-									</td>
-									<td>
-										Subtotal
-									</td>
-									<td>&nbsp;</td>
-								</tr>
-							</table>
-						</div>
-						<div class="panel-cart-body">
-							<div class="table-responsive">
-								<table class="table table-cart">
-									<tr>
-										<td class="cart-item-preview f2">
-											<img src="/images/coffee/example12.jpg" alt="gambar-product">
-										</td>
-										<td class="cart-item-name f2">
-											<a href="/detail-coffee">Coffee Nias 250g</a>
-											<p class="cart-item-brew-method">Espresso</p>
-										</td>
-										<td class="cart-item-price">
-											<p class="cart-item-price-new">Rp. 250.000</p>
-											<p class="cart-item-price-old">Rp. 500.000</p>
-										</td>
-										<td class="cart-item-quantity">
-											<input type="number" min="0" value="1">
-										</td>
-										<td class="cart-item-subtotal">
-											<p class="cart-subtotal">Rp. 500.000</p>
-										</td>
-										<td class="cart-item-delete">
-											<button class="btn btn-cart-delete">
-												<i class="fa fa-times-circle"></i>
-											</button>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						<div class="panel-cart-footer">
-							{{-- <button class="btn btn-tohome">Lanjutkan Belanja</button> --}}
-							<a href="/" class="btn btn-tohome">Lanjut Belanja</a>
-							<button type="submit" class="btn btn-success btn-tocheckout">Lanjutkan Pembayaran</button>
-						</div>
+  <div class="section-cart-list">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="panel-cart">
+            <div class="panel-cart-count">
+              <h3 class="cart-count">Keranjang Belanja ({{ $cart->count() }})</h3>
+            </div>
+            <div class="panel-cart-header">
+              <table class="table table-cart">
+                <tr>
+                  <td colspan="2" class="f1">&nbsp;</td>
+                  <td>
+                    Harga
+                  </td>
+                  <td class="cart-item-quantity">
+                    Jumlah
+                  </td>
+                  <td>
+                    Subtotal
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+            </div>
+            <div class="panel-cart-body">
+              <div class="table-responsive">
+                @if($cart->count() > 0)
+                  <table class="table table-cart">
+                    @foreach($cart as $cartItem)
+                          <?php
+                          $product = App\Product::find($cartItem->id);
+                          ?>
+                      <tr>
+                        <td class="cart-item-preview f2">
+                          <img src="{{ Voyager::image($product->thumb_image) }}" alt="{{$cartItem->name}}">
+                        </td>
+                        <td class="cart-item-name f2">
+                          <a href="/detail-coffee/{{ $cartItem->id }}">{{ $cartItem->name }}</a>
+                          <p class="cart-item-brew-method">{{ $cartItem->options->option }}</p>
+                        </td>
+                        <td class="cart-item-price">
+                          <p id="price-{{$cartItem->rowId}}" class="cart-item-price-new">
+                            Rp {{ number_format($cartItem->price)}}</p>
+                        </td>
+                        <td class="cart-item-quantity">
+                          <input id="qty-{{$cartItem->rowId}}" type="number" min="1" value="{{$cartItem->qty}}">
+                        </td>
+                        <td class="cart-item-subtotal">
+                          <p id="subtotal-{{$cartItem->rowId}}" class="cart-subtotal">
+                            Rp {{ number_format($cartItem->price * $cartItem->qty) }}</p>
+                        </td>
+                        <td class="cart-item-delete">
+                          <a href="{{ url('ajax/deletecartitem/'.$cartItem->rowId) }}" class="btn btn-cart-delete">
+                            <i class="fa fa-times-circle"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </table>
+                @else
+                  {{-- Jika Cart Kosong --}}
+                  <div class="panel-cart-body cart-kosong">
+                    <h2>Keranjang Anda Kosong, Silahkan lakukan pembelian.</h2>
+                  </div>
+                @endif
+              </div>
+            </div>
+            <div class="panel-cart-footer">
+              {{-- <button class="btn btn-tohome">Lanjutkan Belanja</button> --}}
+              <a href="/" class="btn btn-tohome">Lanjut Belanja</a>
+              <button type="submit" class="btn btn-success btn-tocheckout">Lanjutkan Pembayaran</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
 
-						{{-- Jika Cart Kosong --}}
-						<div class="panel-cart-body cart-kosong">
-							<h2>Keranjang Anda Kosong, Silahkan lakukan pembelian.</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+@section('js')
+  <script>
+    @foreach($cart as $cartItem)
+
+      $('#qty-{{$cartItem->rowId}}').change(function () {
+        $('#subtotal-{{$cartItem->rowId}}')[0].innerHTML = 'Rp ' + numeral(parseInt({{$cartItem->price}}) * parseInt($('#qty-{{$cartItem->rowId}}').val())).format('0,0')
+      });
+    @endforeach
+  </script>
 @endsection
