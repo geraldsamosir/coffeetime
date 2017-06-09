@@ -12,6 +12,9 @@ const {mix} = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .scripts(['node_modules/numeral/numeral.js'], 'public/js/lib.js')
+    .scripts([
+        'node_modules/numeral/numeral.js',
+        'node_modules/taggle/src/taggle.js'
+    ], 'public/js/lib.js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/mobile.scss', 'public/css')

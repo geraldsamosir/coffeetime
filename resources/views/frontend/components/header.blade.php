@@ -97,10 +97,10 @@
       </div>
       <div class="col-md-2">
         <div class="nav-cart">
-          <a href="" class="cart-detail">
+          <a href="{{ url('/cart') }}" class="cart-detail">
             <i class="fa fa-shopping-cart"></i>
-            <span class="cart-count">(0 items)</span>
-          </a>            
+            <span class="cart-count">({{ count(Cart::content())  }} items)</span>
+          </a>
         </div>
       </div>
     </div>

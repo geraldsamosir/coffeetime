@@ -54,13 +54,9 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.komparasi');
 	});
 
-	Route::get('/checkout', function(){
-		return view('frontend.pages.checkout');
-	});
+	Route::get('/checkout/{orderId}', 'OrderController@show');
 
-	Route::get('/pembayaran', function(){
-		return view('frontend.pages.pembayaran');
-	});
+    Route::get('/order/summary/{id}', 'OrderController@getOrderSummary');
 
 	Route::get('/cart', function(){
     $cart = Cart::content();
@@ -87,16 +83,21 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.editPortofolio');
 	});
 
-	Route::get('customer/transaksi',function(){
-		return view('frontend.pages.panelTransaksi');
-	});
+    Route::get('/customer/transaksi', 'OrderController@getHistory');
 
 	Route::get('/customer/resep',function(){
 		return view('frontend.pages.panelResep');
 	});
 
-	Route::get('/customer/resep/create',function(){
-		return view('frontend.pages.createResep');
+	Route::get('/customer/resep/create/{id}',function($id){
+	    $permission = App\UsersArticlePermission::where('user_id', Auth::user()->id)
+            ->where('product_id', $id)
+            ->first();
+	    if(!empty($permission)) {
+            return view('frontend.pages.createResep', ['product' => App\Product::find($id)]);
+        } else {
+            return response()->view('errors.403');
+        }
 	});
 
 	// Untuk Social Media
@@ -121,6 +122,12 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/ajax/cartcontent', 'CartController@getCartContent');
 
 Route::post('/ajax/addcartitem/{id}', 'CartController@addItemToCart');
+Route::post('/checkout', 'CartController@cartCheckout');
+Route::get('/order/delete/{id}', 'OrderController@delete');
+Route::post('/order/get-address', 'OrderController@getAddressData');
+
+Route::post('/order/summary/{id}', 'OrderController@postOrderSummary');
+Route::post('/order/confirmation/{id}', 'OrderController@paymentConfirmation');
 
 Route::get('/ajax/deletecartitem/{rowId}', 'CartController@deleteItem');
 

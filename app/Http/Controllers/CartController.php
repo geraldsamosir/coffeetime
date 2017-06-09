@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\OrderDetail;
 use Illuminate\Http\Request;
 use App\Product;
 use Cart;
 use Auth;
 use Carbon\Carbon;
 use App\Order;
+use DB;
+use App\Http\Controllers\OrderController;
 
 class CartController extends Controller
 {
@@ -34,8 +37,41 @@ class CartController extends Controller
         $input = $request->all();
         $product = Product::find($id);
         $quantity = $input['qty'];
-        Cart::add($product, $quantity, ['option' => $input['option']]);
+        Cart::add($product, $quantity, ['option' => isset($input['option']) ? $input['option'] : null]);
         return redirect('/cart');
+    }
+
+    public function cartCheckout(Request $request)
+    {
+        $input = $request->all();
+        $cart = Cart::content();
+
+        DB::beginTransaction();
+        try {
+            $order = new Order;
+            $order->user_id = Auth::check() ? Auth::user()->id : null;
+            $order->status = Order::WAITING_PAYMENT;
+            $order->save();
+            $amount = 0;
+            foreach($cart as $cartItem) {
+                $orderDetail = new OrderDetail;
+                $orderDetail->order_id = $order->id;
+                $orderDetail->product_id = $cartItem->id;
+                $orderDetail->price = $cartItem->price;
+                $orderDetail->option = !empty($cartItem->options) ? $cartItem->options->option : null;
+                $orderDetail->quantity = $input['qty-'.$cartItem->rowId];
+                $amount += $orderDetail->quantity * $orderDetail->price;
+                $orderDetail->save();
+            }
+            $order->amount = $amount;
+            $order->save();
+            DB::commit();
+            Cart::destroy();
+            return redirect()->action('OrderController@show', ['orderId' => $order->id]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            echo $e;
+        }
     }
 
     public function deleteItem(Request $request, $rowId)

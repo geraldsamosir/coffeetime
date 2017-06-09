@@ -20,45 +20,33 @@
 					</div>
 					<div class="section-panel-cart">
 						<div class="panel-cart">
-							<div class="panel-cart-header">
-								<table class="table table-cart">
-									<tr>
-										<td colspan="2" class="f1">&nbsp;</td>
-										<td>
-											<p>Harga</p>
-										</td>
-										<td class="cart-item-quantity">
-											<p>Jumlah</p>
-										</td>
-										<td>
-											<p>Subtotal</p>
-										</td>
-									</tr>
-								</table>
-							</div>
 							<div class="panel-cart-body">
 								<div class="table-responsive">
 									<table class="table table-cart">
 										<tr>
-											<td class="cart-item-preview f2">
-												<img src="/images/coffee/example12.jpg" alt="gambar-product">
-											</td>
-											<td class="cart-item-name f2">
-												<a href="/details-coffee">Coffee Nias 250g</a>
-												<p class="cart-item-brew-method">Espresso</p>
-											</td>
-											<td class="cart-item-price">
-												<p class="cart-item-price-new">Rp. 250.000</p>
-												<p class="cart-item-price-old">Rp. 500.000</p>
-											</td>
-											<td class="cart-item-quantity">
-												<input type="number" min="0" value="1" disabled>
-											</td>
-											<td class="cart-item-subtotal">
-												<p class="cart-subtotal">Rp. 500.000</p>
-											</td>
+											<td style="font-weight:900">Pesanan</td>
+											<td style="font-weight:900">Dipesan Pada</td>
+											<td style="font-weight:900">Total</td>
+											<td style="font-weight:900">Status</td>
 										</tr>
+										@foreach($orderHistory as $order)
+											<tr>
+												<td>
+													<a href="{{ url('order/summary/'.$order->id) }}">{{$order->id}}</a>
+												</td>
+												<td>
+													{{$order->created_at}}
+												</td>
+												<td>
+													{{$order->amount}}
+												</td>
+												<td>
+													{{App\Order::status[$order->status]}}
+												</td>
+											</tr>
+											@endforeach
 									</table>
+									<center>{{ $orderHistory->links() }}</center>
 								</div>
 							</div>
 						</div>

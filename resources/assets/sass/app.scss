@@ -11,6 +11,24 @@
 // Font-Awesome
 @import "node_modules/font-awesome/scss/font-awesome";
 
+
+// taggle
+.taggleContainer {
+  ul {
+    -webkit-padding-start: 8px !important;
+  }
+
+  .taggle_list .taggle:hover {
+    padding-right: 20px !important;
+  }
+
+  .taggle_list .taggle .close {
+    font-size: 22pt !important;
+    color: #990033 !important;
+  }
+  @import "node_modules/taggle/example/scss/taggle";
+}
+
 // Components
 @import "components/header";
 @import "components/navbar";

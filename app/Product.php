@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
+use Voyager;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class Product extends Model implements Buyable

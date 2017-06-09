@@ -184,6 +184,7 @@ return [
 
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Laravolt\Indonesia\ServiceProvider::class,
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
 
     ],
 
