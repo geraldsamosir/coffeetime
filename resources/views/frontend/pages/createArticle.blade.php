@@ -6,26 +6,38 @@
   <div class="section-panel">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
-          {{-- Sidepanel from components --}}
-          @include('frontend.components.sidepanel')
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="section-panel-informasi">
             <div class="panel-card">
               <div class="panel-card-header">
-                <h3 class="panel-title">Buat Resep</h3>
+                @if (session('status'))
+                  <div class="alert alert-success">
+                    {{ session('status') }}
+                  </div>
+                @endif
+
+                  @if (session('error'))
+                    <div class="alert alert-danger">
+                      {{ session('error') }}
+                    </div>
+                  @endif
+
+
+                <center><h2 class="panel-title">Buat Artikel</h2></center>
+                <hr>
               </div>
-              {!! Form::open(['url'=>'']) !!}
+              {!! Form::open(['url'=>'/customer/article/save', 'method'=>'POST']) !!}
               <div class="panel-card-body">
-                <div class="form-group">
-                  {!! Form::label('lblProduct',"Product",[]) !!}
-                  <p>{{$product->name}}</p>
-                </div>
 
                 <div class="form-group">
                   {!! Form::label('lblJudul',"Judul Artikel",['class'=>'required']) !!}
                   {!! Form::text('lblJudul',null,['class'=>'form-control','required']) !!}
+                </div>
+                <div class="form-group">
+                  {!! Form::label('lblProduct',"Product",[]) !!}
+                  {!! Form::select('lblProduct',$permissions->mapWithKeys(function ($item) {
+                    return [$item['id'] => $item->product->name];
+                  }),null,['class'=>'form-control', 'required']) !!}
                 </div>
 
                 <div class="form-group">
@@ -45,6 +57,8 @@
                   <p id="lblTag" class="input clearfix textarea example1"></p>
                 </div>
 
+                <input id=tags type="hidden" name="tags[]"/>
+
                 <a href="/customer/panelResep" class="btn btn-tohome">Batal</a>
                 {!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}
               </div>
@@ -59,6 +73,13 @@
 
 @section('js')
   <script>
-    new Taggle('lblTag');
+      var taggle = new Taggle('lblTag', {
+          onTagAdd: function(event, tag) {
+              $('#tags').val(taggle.getTagValues())
+          },
+          onTagRemove: function(event, tag) {
+              $('#tags').val(taggle.getTagValues())
+          }
+      });
   </script>
 @endsection

@@ -29,7 +29,7 @@
 										</ul>
 									</li>
 								</ul>
-								<a href="/customer/resep/create" class="btn btn-md btn-primary">Buat Resep</a>
+								<a href="/customer/article/create" class="btn btn-md btn-primary">Buat Resep</a>
 							</div>
 						</div>
 					</div>

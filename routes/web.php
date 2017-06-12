@@ -33,9 +33,7 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.detailMesin');
 	});
 
-	Route::get('/detail-resep', function(){
-		return view('frontend.pages.detailResep');
-	});
+	Route::get('/article/view/{id}', 'ArticleController@show');
 
 	Route::get('/list-coffee/{category}', function(TCG\Voyager\Models\Category $category){
 		$coffees = App\Product::where('category_id', $category->id)->get();
@@ -89,16 +87,9 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.panelResep');
 	});
 
-	Route::get('/customer/resep/create/{id}',function($id){
-	    $permission = App\UsersArticlePermission::where('user_id', Auth::user()->id)
-            ->where('product_id', $id)
-            ->first();
-	    if(!empty($permission)) {
-            return view('frontend.pages.createResep', ['product' => App\Product::find($id)]);
-        } else {
-            return response()->view('errors.403');
-        }
-	});
+	Route::get('/customer/article/create', 'ArticleController@createArticle');
+
+	Route::post('/customer/article/save', 'ArticleController@saveArticle');
 
 	// Untuk Social Media
 	Route::get('/user/albert',function(){
