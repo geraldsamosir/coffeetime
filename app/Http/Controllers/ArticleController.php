@@ -12,7 +12,11 @@ use Auth;
 use Carbon\Carbon;
 use App\Order;
 use DB;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Indonesia;
+use Illuminate\Support\Str;
+use Mockery\Exception;
 
 class ArticleController extends Controller
 {
@@ -48,15 +52,35 @@ class ArticleController extends Controller
         if (!Auth::check()) {
             return back()->withInput()->with('error', 'Anda tidak berhak menambahkan artikel');
         }
-        $input = $request->all();
-        $article = new Article();
-        $article->user_id = Auth::user()->id;
-        $article->title = $input['lblJudul'];
-        $article->content = $input['lblKonten'];
-        $article->category_id = $input['lblCategory'];
-        $article->product_id = $input['lblProduct'];
-        $article->save();
 
-        return back()->withInput()->with('status', 'Artikel Berhasil ditambahkan');
+        try {
+            $input = $request->all();
+
+            $file = $request->file('lblHeaderImage');
+            $filename = Str::random(20);
+
+            $path = 'articles'.'/'.date('F').date('Y').'/';
+            $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
+
+            $image = Image::make($file)->encode($file->getClientOriginalExtension(), 75);
+
+            Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
+
+            $article = new Article();
+            $article->user_id = Auth::user()->id;
+            $article->title = $input['lblJudul'];
+            $article->content = $input['lblKonten'];
+            $article->category_id = $input['lblCategory'];
+            $article->product_id = $input['lblProduct'];
+            $article->header_image = $fullPath;
+            $article->save();
+
+            return redirect('article/view/'.$article->id)->with('status', 'Artikel Berhasil ditambahkan');
+        } catch (Exception $e) {
+            return back()->withInput()->with('error', $e);
+        }
+
+
+
     }
 }

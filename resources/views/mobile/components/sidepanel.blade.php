@@ -6,6 +6,6 @@
 		<li><a href="/customer/transaksi">Riwayat Transaksi</a></li>
 		<li><a href="/carabayar">Metode Pembayaran</a></li>
 		<li><a href="/voucher">Voucher</a></li>
-		<li><a href="/customer/resep">Resep</a></li>
+		<li><a href="/customer/article">Resep</a></li>
 	</ul>
 </div>

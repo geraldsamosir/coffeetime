@@ -16,7 +16,7 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
 	Route::get('/', function () {
-	    return view('frontend.pages.home');
+        return view('frontend.pages.home');
 	});
 
   Route::get('/detail-coffee/{productCoffee}', function(App\Product $productCoffee){
@@ -83,8 +83,9 @@ if ($agent->isDesktop()) {
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
 
-	Route::get('/customer/resep',function(){
-		return view('frontend.pages.panelResep');
+	Route::get('/customer/article',function(){
+        $userArticles = Auth::user()->articles;
+		return view('frontend.pages.panelResep', compact('userArticles'));
 	});
 
 	Route::get('/customer/article/create', 'ArticleController@createArticle');

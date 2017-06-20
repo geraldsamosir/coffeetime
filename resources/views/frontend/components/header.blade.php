@@ -60,7 +60,7 @@
                       </a>
                     </li>
                     <li>
-                      <a tabindex="-1" href="{{ url('/customer/resep') }}">
+                      <a tabindex="-1" href="{{ url('/customer/article') }}">
                         <span class="fa fa-book"></span>
                         Resep Saya
                       </a>

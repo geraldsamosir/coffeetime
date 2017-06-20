@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fd19c5fd9a876ecfcb101a120c7beaf8",
-    "content-hash": "3a724093a9fef7df86dd90417a858d7e",
+    "hash": "c64879f51834f533b2b7b835df7bd467",
+    "content-hash": "8c34364f9a02b32c7379ed1c74b72a0b",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -842,16 +842,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.11",
+            "version": "2.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "e8881fd99b9804b29e02d6d1c2c15ee459335cf1"
+                "reference": "15a517f052ee15d373ffa145c9642d5fec7ddf5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/e8881fd99b9804b29e02d6d1c2c15ee459335cf1",
-                "reference": "e8881fd99b9804b29e02d6d1c2c15ee459335cf1",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/15a517f052ee15d373ffa145c9642d5fec7ddf5c",
+                "reference": "15a517f052ee15d373ffa145c9642d5fec7ddf5c",
                 "shasum": ""
             },
             "require": {
@@ -900,7 +900,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2017-02-04 10:37:19"
+            "time": "2017-04-23 18:45:36"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3009,16 +3009,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.10",
+            "version": "v0.11.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "6eeb14e2c26c102cc619208b68673ed8a745bd64"
+                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/6eeb14e2c26c102cc619208b68673ed8a745bd64",
-                "reference": "6eeb14e2c26c102cc619208b68673ed8a745bd64",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/10622dc41248ac45747376a873ce3519f92d6f0d",
+                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d",
                 "shasum": ""
             },
             "require": {
@@ -3062,7 +3062,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2017-04-26 13:29:33"
+            "time": "2017-05-24 09:21:25"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3110,6 +3110,70 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2016-09-20 12:50:39"
+        },
+        {
+            "name": "unisharp/laravel-filemanager",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UniSharp/laravel-filemanager.git",
+                "reference": "63a788e5f62d3e9c8b8be8fd5bac9c9d59325e29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/63a788e5f62d3e9c8b8be8fd5bac9c9d59325e29",
+                "reference": "63a788e5f62d3e9c8b8be8fd5bac9c9d59325e29",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.2.0",
+                "intervention/image": "2.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing."
+            },
+            "bin": [
+                "bin/debug"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisharp\\Laravelfilemanager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trevor Sawler",
+                    "email": "trevor.sawler@gmail.com"
+                },
+                {
+                    "name": "UniSharp Ltd.",
+                    "email": "unisharp-service@unisharp.com"
+                }
+            ],
+            "description": "A file upload/editor intended for use with Laravel 5 and CKEditor / TinyMCE",
+            "keywords": [
+                "CKEditor",
+                "file",
+                "filemanager",
+                "image",
+                "laravel",
+                "manager",
+                "tinymce",
+                "upload"
+            ],
+            "time": "2017-06-11 15:15:20"
         },
         {
             "name": "vlucas/phpdotenv",
