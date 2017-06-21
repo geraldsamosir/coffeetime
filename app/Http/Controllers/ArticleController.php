@@ -57,14 +57,6 @@ class ArticleController extends Controller
             $input = $request->all();
 
             $file = $request->file('lblHeaderImage');
-            $filename = Str::random(20);
-
-            $path = 'articles'.'/'.date('F').date('Y').'/';
-            $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
-
-            $image = Image::make($file)->encode($file->getClientOriginalExtension(), 75);
-
-            Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
 
             $article = new Article();
             $article->user_id = Auth::user()->id;
@@ -72,8 +64,22 @@ class ArticleController extends Controller
             $article->content = $input['lblKonten'];
             $article->category_id = $input['lblCategory'];
             $article->product_id = $input['lblProduct'];
-            $article->header_image = $fullPath;
+
+            if (!empty($file)) {
+                $filename = Str::random(20);
+
+                $path = 'articles'.'/'.date('F').date('Y').'/';
+                $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
+
+                $image = Image::make($file)->encode($file->getClientOriginalExtension(), 75);
+
+                Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
+                $article->header_image = $fullPath;
+            }
+
+
             $article->save();
+            $article->tag(explode(",",$input['tags']));
 
             return redirect('article/view/'.$article->id)->with('status', 'Artikel Berhasil ditambahkan');
         } catch (Exception $e) {

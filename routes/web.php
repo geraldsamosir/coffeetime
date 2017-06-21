@@ -44,8 +44,9 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.listMesin');
 	});
 
-	Route::get('/list-resep', function(){
-		return view('frontend.pages.listResep');
+	Route::get('/list-article', function(){
+        $articles = App\Article::paginate(5);
+		return view('frontend.pages.listArticle', compact('articles'));
 	});
 
 	Route::get('/komparasi', function(){

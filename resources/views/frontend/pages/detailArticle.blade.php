@@ -23,7 +23,7 @@
 					<div class="col-md-6">
 						<div class="resep-title-name">
 							{{$article->title}}
-							<span class="title-date">{{$article->created_at}}</span>
+							<span class="title-date">{{ date('F d, Y', strtotime($article->created_at)) }}</span>
 						</div>
 						<div class="resep-title-creator">
 							Created by : <a href="">{{App\User::find($article->user_id)->name}}</a>
@@ -42,7 +42,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="resep-image">
-							<img src="{{ Voyager::image($article->header_image) }}" onerror="this.style.display='none'" alt="">
+							<img class="img-responsive" style="max-height:280px;" src="{{ Voyager::image($article->header_image) }}" onerror="this.style.display='none'" alt="">
 						</div>
 					</div>
 				</div>
@@ -99,6 +99,9 @@
 						<div class="card-default">
 							{!! $article->content !!}
 						</div>
+						@foreach($article->tagged as $tag)
+							<span class="label label-primary">{{$tag->tag_name}}</span>
+						@endforeach
 					</div>
 				</div>
 			</div>

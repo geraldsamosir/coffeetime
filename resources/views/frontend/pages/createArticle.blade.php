@@ -45,7 +45,7 @@
 
                 <div class="form-group">
                   {!! Form::label('lblHeaderImage',"Gambar Header",['class'=>'required']) !!}
-                  {!! Form::file('lblHeaderImage',null,['id' => 'lblHeaderImage','class'=>'form-control','required']) !!}
+                  {!! Form::file('lblHeaderImage',null,['id' => 'lblHeaderImage','class'=>'form-control']) !!}
                   <img id="headerPreview" src="#" alt="your image" />
                 </div>
 
@@ -73,7 +73,7 @@
                   <p id="lblTag" class="input clearfix textarea example1"></p>
                 </div>
 
-                <input id=tags type="hidden" name="tags[]"/>
+                <input id="tags" type="hidden" name="tags"/>
 
                 <a href="/customer/panelResep" class="btn btn-tohome">Batal</a>
                 {!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}
