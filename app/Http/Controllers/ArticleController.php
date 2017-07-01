@@ -33,6 +33,8 @@ class ArticleController extends Controller
 
     public function show($articleId) {
         $article = Article::find($articleId);
+        $article->views = $article->views + 1;
+        $article->save();
         if (empty($article)) {
             return response()->view('errors.404',['message'=>'Artikel tidak ditemukan']);
         }

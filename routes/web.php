@@ -35,17 +35,23 @@ if ($agent->isDesktop()) {
 
 	Route::get('/article/view/{id}', 'ArticleController@show');
 
-	Route::get('/list-coffee/{category}', function(TCG\Voyager\Models\Category $category){
+	Route::get('/list-product/{category}', function(TCG\Voyager\Models\Category $category){
 		$coffees = App\Product::where('category_id', $category->id)->get();
 		return view('frontend.pages.listCoffee', compact('coffees'));
 	});
+
+    Route::get('/search-product', function(){
+        $searchQuery = Request::all()['query'];
+        $coffees = App\Product::where('name','like','%'.$searchQuery.'%')->get();
+        return view('frontend.pages.listCoffee', compact('coffees'));
+    });
 
 	Route::get('/list-mesin', function(){
 		return view('frontend.pages.listMesin');
 	});
 
-	Route::get('/list-article', function(){
-        $articles = App\Article::paginate(5);
+	Route::get('/list-article/{category}', function(App\ArticleCategory $category){
+        $articles = App\Article::where('id', $category->id)->paginate(5);
 		return view('frontend.pages.listArticle', compact('articles'));
 	});
 
@@ -92,6 +98,8 @@ if ($agent->isDesktop()) {
 	Route::get('/customer/article/create', 'ArticleController@createArticle');
 
 	Route::post('/customer/article/save', 'ArticleController@saveArticle');
+
+    Route::post('/customer/edit/save', 'UserController@saveProfile');
 
 	// Untuk Social Media
 	Route::get('/user/albert',function(){

@@ -3,21 +3,19 @@
     <div class="row">
       <div class="col-md-3">
         <div class="nav-logo">
-          <a href="#">
+          <a href="/">
             <img src="/images/logo.png" alt="EduCoffee">
           </a>
         </div>
       </div>
       <div class="col-md-5">
         <div class="nav-search">
-          {!! Form::open(['url'=>'']) !!}
+          {!! Form::open(['url'=>'search-product', 'method'=>'GET']) !!}
           {{-- <form action="" method="post"> --}}
             <div id="search">
               <div class="input-group">
-                {!! Form::text('keyword',null,['class'=>'form-control input-lg', 'placeholder'=>'Pencarian']) !!}
-                {{-- <input type="text" class="form-control input-lg" placeholder="Pencarian" name="keyword" autocomplete="off"> --}}
+                {!! Form::text('query',null,['class'=>'form-control input-lg', 'placeholder'=>'Cari Product']) !!}
                 <span class="input-group-btn">
-                  {{-- {!! Form::submit(null,['class'=>'btn btn-lg btn-danger']) !!} --}}
                   <button class="btn btn-lg btn-danger" type="submit">
                   <i class="fa fa-search"></i>
                   </button>
