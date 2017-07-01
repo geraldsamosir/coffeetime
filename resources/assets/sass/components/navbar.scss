@@ -8,6 +8,20 @@
 		.container-menu {
 			padding-left: 190px;
 		}
+		#dropdown-no-image {
+			.article-subitem {
+				a div {
+					padding: 8px 10px;
+					:hover {
+						background: $brand-primary;
+						color: white;
+					}
+				}
+			}
+		}
+		.categories-thumb {
+			height: 120px;
+		}
 		.submenu {
 			width: 700px;
 			.row {

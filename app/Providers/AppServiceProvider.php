@@ -16,7 +16,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         View::composer('layouts.frontend', function($view){
-            $view->with('categoriesKopi', \App\Category::where('parent_id',1)->get());
+            $view->with([
+                'categoriesKopi' => \App\Category::where('parent_id',1)->get(),
+                'categoriesAlat' => \App\Category::where('parent_id',9)->get(),
+                'categoriesArticle' => \App\ArticleCategory::get(),
+            ]);
         });
     }
 
