@@ -16,5 +16,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'node_modules/numeral/numeral.js',
         'node_modules/taggle/src/taggle.js'
     ], 'public/js/lib.js')
+    .copy('resources/assets/css/materialize.css','public/css')
+    .copy('resources/assets/css/jquery-2.1.1.min.js','public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/mobile.scss', 'public/css')
