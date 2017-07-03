@@ -72,10 +72,10 @@ if ($agent->isDesktop()) {
 
         switch ($sortQuery) {
             case 'lowprice':
-                $coffees = $coffees->orderBy('original_price', 'DESC');
+                $coffees = $coffees->orderBy('original_price', 'ASC');
                 break;
             case 'highprice':
-                $coffees = $coffees->orderBy('original_price', 'ASC');
+                $coffees = $coffees->orderBy('original_price', 'DESC');
                 break;
             case 'latest':
                 $coffees = $coffees->orderBy('created_at', 'DESC');

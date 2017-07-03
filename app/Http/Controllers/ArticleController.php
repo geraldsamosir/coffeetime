@@ -63,7 +63,7 @@ class ArticleController extends Controller
     public function copyArticle($id) {
         $article = Article::find($id);
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
-        if(!empty($article) && Auth::check() && $article->user_id == Auth::user()->id) {
+        if(!empty($article) && Auth::check()) {
             return view('frontend.pages.copyArticle', ['article' => $article, 'permissions' => $permissions]);
         } else {
             return response()->view('errors.403');
