@@ -23,7 +23,7 @@
                   <div class="row">
                     @foreach($categoriesKopi as $category)
                       <div class="col-sm-4 submenu-category">
-                        <a href="{{ url('list-coffee/'.$category->id) }}">
+                        <a href="{{ url('list-product/'.$category->id) }}">
                           <div class="media-fa">
                             <div class="media-fa-left">
                               <img src="{{ Voyager::image($category->image) }}" class="categories-thumb img-responsive"
@@ -40,77 +40,45 @@
             </div>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown-main2" data-hover="dropdown-main2">Mesin Kopi</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown-main2" data-hover="dropdown-main2">Alat Kopi</a>
             <div class="dropdown-menu dropdown-main2">
               <div class="dropdown-inner">
                 <div class="submenu">
                   <div class="row">
-                    <div class="col-sm-4 submenu-category">
-                      <div class="media-fa">
-                        <a href="">
-                          <div class="media-fa-left">
-                            <i class="fa fa-coffee"></i>
+                    @foreach($categoriesAlat as $category)
+                      <div class="col-sm-4 submenu-category">
+                        <a href="{{ url('list-product/'.$category->id) }}">
+                          <div class="media-fa">
+                            <div class="media-fa-left">
+                              <img src="{{ Voyager::image($category->image) }}" class="categories-thumb img-responsive"
+                                   alt="Image">
+                            </div>
+                            <div class="submenu-label">{{ $category->name }}</div>
                           </div>
-                          <div class="submenu-label">Mesin Kopi Luar</div>
                         </a>
                       </div>
-                    </div>
-                    <div class="col-sm-4 submenu-category">
-                      <div class="media-fa">
-                        <a href="">
-                          <div class="media-fa-left">
-                            <i class="fa fa-glass"></i>
-                          </div>
-                          <div class="submenu-label">Mesin Kopi Tengah</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-4 submenu-category">
-                      <div class="media-fa">
-                        <a href="">
-                          <div class="media-fa-left">
-                            <i class="fa fa-beer"></i>
-                          </div>
-                          <div class="submenu-label">Mesin Kopi Dalam</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-4 submenu-category">
-                      <div class="media-fa">
-                        <a href="">
-                          <div class="media-fa-left">
-                            <i class="fa fa-coffee"></i>
-                          </div>
-                          <div class="submenu-label">Mesin Kopi Luar</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-4 submenu-category">
-                      <div class="media-fa">
-                        <a href="">
-                          <div class="media-fa-left">
-                            <i class="fa fa-glass"></i>
-                          </div>
-                          <div class="submenu-label">Mesin Kopi Tengah</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-4 submenu-category">
-                      <div class="media-fa">
-                        <a href="">
-                          <div class="media-fa-left">
-                            <i class="fa fa-beer"></i>
-                          </div>
-                          <div class="submenu-label">Mesin Kopi Dalam</div>
-                        </a>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
             </div>
           </li>
-          <li><a href="{{url('/list-article')}}">Artikel</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown-main2" data-hover="dropdown-main2">Artikel</a>
+            <div id="dropdown-no-image" class="dropdown-menu">
+                  <div class="row">
+                    @foreach($categoriesArticle as $category)
+                      <div class="article-subitem">
+                        <a href="{{ url('list-article/'.$category->id) }}">
+                          <div class="media-fa">
+                            <div class="submenu-label">{{ $category->name }}</div>
+                          </div>
+                        </a>
+                      </div>
+                    @endforeach
+                  </div>
+            </div>
+          </li>
           <li><a href="/komparasi">Komparasi</a></li>
           <li><a href="">Panduan</a></li>
           <li><a href="">About</a></li>
