@@ -180,6 +180,13 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Laravolt\Indonesia\ServiceProvider::class,
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -232,7 +239,9 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Indonesia' => Laravolt\Indonesia\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

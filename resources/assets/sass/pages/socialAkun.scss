@@ -28,7 +28,7 @@
 			}
 		}
 
-		ul.list-resep{
+		ul.list-article{
 			padding-left: 0px;
 			li {
 				list-style-type: none;
@@ -36,12 +36,12 @@
 			    font-weight: bold;
 			}
 
-			.list-resep-favorited li, .list-resep-created li{
+			.list-article-favorited li, .list-article-created li{
 				font-size: 13px;
 				font-weight: 400;
 			}
 			
-			.list-resep-favorited li:before, .list-resep-created li:before{
+			.list-article-favorited li:before, .list-article-created li:before{
 				content: "\f15c"; /* FontAwesome Unicode */
 			  	font-family: FontAwesome;
 			  	font-size: 13px;

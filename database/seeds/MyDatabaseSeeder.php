@@ -16,8 +16,6 @@ class MyDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->seed('MyDataTypesTableSeeder');
-        $this->seed('MyDataRowsTableSeeder');
         $this->seed('MyCategoriesTableSeeder');
         $this->seed('MySettingsTableSeeder');
     }

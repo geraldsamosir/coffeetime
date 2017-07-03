@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca046548feb215d466c07a485895d0a2",
-    "content-hash": "6c94447bd8b0359fc5de3df21867abfb",
+    "hash": "c64879f51834f533b2b7b835df7bd467",
+    "content-hash": "8c34364f9a02b32c7379ed1c74b72a0b",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -657,6 +657,125 @@
             "time": "2016-11-02 15:56:58"
         },
         {
+            "name": "gloudemans/shoppingcart",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crinsane/LaravelShoppingcart.git",
+                "reference": "195cc095f53c66b60afaf0753295bc9c6b2773c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crinsane/LaravelShoppingcart/zipball/195cc095f53c66b60afaf0753295bc9c6b2773c3",
+                "reference": "195cc095f53c66b60afaf0753295bc9c6b2773c3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "illuminate/session": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.0",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "gloudemans/notify": "Simple flash notifications for Laravel"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gloudemans\\Shoppingcart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Gloudemans",
+                    "email": "info@robgloudemans.nl"
+                }
+            ],
+            "description": "Laravel Shoppingcart",
+            "keywords": [
+                "laravel",
+                "shoppingcart"
+            ],
+            "time": "2017-01-25 09:56:35"
+        },
+        {
+            "name": "graham-campbell/exceptions",
+            "version": "v9.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Exceptions.git",
+                "reference": "b2001ce4e992ca473af6f470cddfcf6e0a83430d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Exceptions/zipball/b2001ce4e992ca473af6f470cddfcf6e0a83430d",
+                "reference": "b2001ce4e992ca473af6f470cddfcf6e0a83430d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "paragonie/random_compat": "^1.1|^2.0",
+                "php": ">=5.5.9",
+                "psr/log": "^1.0",
+                "symfony/debug": "^2.7|^3.0",
+                "symfony/http-foundation": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "filp/whoops": "^1.1|^2.0",
+                "graham-campbell/testbench": "^3.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "suggest": {
+                "filp/whoops": "Enables use of the debug displayer."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\Exceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Provides A Powerful Error Response System For Both Development And Production",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Laravel Exceptions",
+                "Laravel-Exceptions",
+                "error",
+                "errors",
+                "exception",
+                "exceptions",
+                "framework",
+                "laravel",
+                "whoops"
+            ],
+            "time": "2017-01-21 16:49:20"
+        },
+        {
             "name": "guzzlehttp/psr7",
             "version": "1.4.2",
             "source": {
@@ -723,16 +842,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.11",
+            "version": "2.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "e8881fd99b9804b29e02d6d1c2c15ee459335cf1"
+                "reference": "15a517f052ee15d373ffa145c9642d5fec7ddf5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/e8881fd99b9804b29e02d6d1c2c15ee459335cf1",
-                "reference": "e8881fd99b9804b29e02d6d1c2c15ee459335cf1",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/15a517f052ee15d373ffa145c9642d5fec7ddf5c",
+                "reference": "15a517f052ee15d373ffa145c9642d5fec7ddf5c",
                 "shasum": ""
             },
             "require": {
@@ -781,7 +900,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2017-02-04 10:37:19"
+            "time": "2017-04-23 18:45:36"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1262,6 +1381,68 @@
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
             "time": "2017-01-26 19:27:05"
+        },
+        {
+            "name": "laravolt/indonesia",
+            "version": "v0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravolt/indonesia.git",
+                "reference": "fb331c0edbc1a56ce61305a9efb2a84851cee83a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravolt/indonesia/zipball/fb331c0edbc1a56ce61305a9efb2a84851cee83a",
+                "reference": "fb331c0edbc1a56ce61305a9efb2a84851cee83a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.2",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravolt\\Indonesia\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Deri Ramdani",
+                    "email": "deri.ramdani1@gmail.com"
+                },
+                {
+                    "name": "Akbar Adhatama",
+                    "email": "am.adhatama@gmail.com"
+                }
+            ],
+            "description": "Package Laravel yang berisi data Provinsi, Kabupaten/Kota, Kecamatan, dan Keluarahan/Desa di seluruh Indonesia.",
+            "keywords": [
+                "desa",
+                "indonesia",
+                "kabupaten",
+                "kecamatan",
+                "kelurahan",
+                "kota",
+                "laravel",
+                "laravolt",
+                "provinsi"
+            ],
+            "time": "2016-11-20 10:54:43"
         },
         {
             "name": "league/flysystem",
@@ -1986,6 +2167,61 @@
                 "uuid"
             ],
             "time": "2017-03-18 15:38:09"
+        },
+        {
+            "name": "rtconner/laravel-tagging",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rtconner/laravel-tagging.git",
+                "reference": "7932f3891e17a4f5c7f80b461182c938dd7f4305"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rtconner/laravel-tagging/zipball/7932f3891e17a4f5c7f80b461182c938dd7f4305",
+                "reference": "7932f3891e17a4f5c7f80b461182c938dd7f4305",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": ">= 5.0",
+                "illuminate/support": ">= 5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0",
+                "vlucas/phpdotenv": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Conner\\Tagging\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Conner",
+                    "email": "rtconner@smarter.bz"
+                }
+            ],
+            "description": "Use PHP traits to extend Laravel Eloquent Models to allow Tags. Models can be marked as Taggable.",
+            "homepage": "https://smartersoftware.net/packages/laravel-tagging-taggable",
+            "keywords": [
+                "Taggable",
+                "eloquent",
+                "laravel",
+                "laravel5",
+                "tag",
+                "tagged",
+                "tagging",
+                "tags"
+            ],
+            "time": "2017-04-28 16:27:45"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2773,16 +3009,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.9",
+            "version": "v0.11.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "bef7d58f5a7837042732fe25a64c54d680b18009"
+                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/bef7d58f5a7837042732fe25a64c54d680b18009",
-                "reference": "bef7d58f5a7837042732fe25a64c54d680b18009",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/10622dc41248ac45747376a873ce3519f92d6f0d",
+                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d",
                 "shasum": ""
             },
             "require": {
@@ -2796,7 +3032,7 @@
             "require-dev": {
                 "codeclimate/php-test-reporter": "dev-master",
                 "laravel/browser-kit-testing": "~1.0.0",
-                "laravel/framework": "~5.3.8|5.4.*",
+                "laravel/framework": "~5.3.29|5.4.*",
                 "orchestra/database": "3.3.*|3.4.x-dev",
                 "orchestra/testbench": "3.3.*|3.4.x-dev",
                 "orchestra/testbench-browser-kit": "~3.3.0|~3.4.0",
@@ -2826,7 +3062,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2017-03-13 16:42:52"
+            "time": "2017-05-24 09:21:25"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -2874,6 +3110,70 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2016-09-20 12:50:39"
+        },
+        {
+            "name": "unisharp/laravel-filemanager",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UniSharp/laravel-filemanager.git",
+                "reference": "63a788e5f62d3e9c8b8be8fd5bac9c9d59325e29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/63a788e5f62d3e9c8b8be8fd5bac9c9d59325e29",
+                "reference": "63a788e5f62d3e9c8b8be8fd5bac9c9d59325e29",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.2.0",
+                "intervention/image": "2.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing."
+            },
+            "bin": [
+                "bin/debug"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisharp\\Laravelfilemanager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trevor Sawler",
+                    "email": "trevor.sawler@gmail.com"
+                },
+                {
+                    "name": "UniSharp Ltd.",
+                    "email": "unisharp-service@unisharp.com"
+                }
+            ],
+            "description": "A file upload/editor intended for use with Laravel 5 and CKEditor / TinyMCE",
+            "keywords": [
+                "CKEditor",
+                "file",
+                "filemanager",
+                "image",
+                "laravel",
+                "manager",
+                "tinymce",
+                "upload"
+            ],
+            "time": "2017-06-11 15:15:20"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2982,6 +3282,67 @@
             "time": "2015-06-14 21:17:01"
         },
         {
+            "name": "filp/whoops",
+            "version": "2.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "f2950be7da8b8d6c4e77821b6c9d486e36cdc4f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/f2950be7da8b8d6c4e77821b6c9d486e36cdc4f3",
+                "reference": "f2950be7da8b8d6c4e77821b6c9d486e36cdc4f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0",
+                "psr/log": "^1.0.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "symfony/var-dumper": "^2.6 || ^3.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Dobreira",
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
+                }
+            ],
+            "description": "php error handling for cool kids",
+            "homepage": "https://filp.github.io/whoops/",
+            "keywords": [
+                "error",
+                "exception",
+                "handling",
+                "library",
+                "whoops",
+                "zf2"
+            ],
+            "time": "2017-03-07 09:04:45"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.6.0",
             "source": {
@@ -3079,12 +3440,12 @@
             "version": "0.9.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
                 "shasum": ""
             },

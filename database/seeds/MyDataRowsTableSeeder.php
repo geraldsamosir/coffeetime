@@ -11,12 +11,8 @@ class MyDataRowsTableSeeder extends Seeder
      */
     public function run()
     {
-        $postDataType = DataType::where('slug', 'posts')->firstOrFail();
-        $pageDataType = DataType::where('slug', 'pages')->firstOrFail();
-        $userDataType = DataType::where('slug', 'users')->firstOrFail();
         $categoryDataType = DataType::where('slug', 'categories')->firstOrFail();
-        $menuDataType = DataType::where('slug', 'menus')->firstOrFail();
-        $roleDataType = DataType::where('slug', 'roles')->firstOrFail();
+        $coffeeDataType = DataType::where('slug', 'coffees')->firstOrFail();
 
         $dataRow = $this->dataRow($categoryDataType, 'id');
         if (!$dataRow->exists) {
@@ -34,12 +30,12 @@ class MyDataRowsTableSeeder extends Seeder
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'parent_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
+        if ($dataRow->exists) {
+            $dataRow->update([
                 'type'         => 'select_dropdown',
-                'display_name' => 'parent_id',
+                'display_name' => 'Parent',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -47,15 +43,12 @@ class MyDataRowsTableSeeder extends Seeder
                 'details'      => json_encode([
                     'default'  => '',
                     'null'     => '',
-                    'options'  => [
-                        '' => '-- None --',
-                    ],
                     'relationship' => [
                         'key'   => 'id',
                         'label' => 'name',
                     ],
                 ]),
-            ])->save();
+            ]);
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'order');

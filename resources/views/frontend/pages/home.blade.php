@@ -6,7 +6,10 @@
 
 	<div class="section-slider">
 	    <a href="">
-	        <img src="/images/slider1.jpg" alt="">
+	      <img src="/images/slide-1.jpg" alt="">
+	    </a>
+      <a href="">
+	      <img src="/images/slide-2.jpg" alt="">
 	    </a>
 	</div>
 

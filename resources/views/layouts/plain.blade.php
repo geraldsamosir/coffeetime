@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
     	<meta charset="utf-8">
-    	<title>EduCoffe @yield('title','| Homepage')</title>
+    	<title>CoffeeTime @yield('title','| Homepage')</title>
 		<link rel="stylesheet" href="css/app.css">
 		@yield('stylesheet')
 	</head>
@@ -17,7 +17,7 @@
 				   		<a href="/policy">Privacy Policy</a> | 
 				   		<a href="/term">Term & Condition</a>
 				   	</p>
-				   	<p>Copyright &copy; EduCoffee 2017</p>
+				   	<p>Copyright &copy; CoffeeTime 2017</p>
 				</div>
 			</div>
 	   	</div>

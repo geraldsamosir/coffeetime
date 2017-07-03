@@ -1,70 +1,108 @@
 <div class="section-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="nav-logo">
-                    <a href="#">
-                        <img src="/images/logo.png" alt="EduCoffee">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="nav-search">
-                    {!! Form::open(['url'=>'']) !!}
-                    {{-- <form action="" method="post"> --}}
-                        <div id="search">
-                            <div class="input-group">
-                                {!! Form::text('keyword',null,['class'=>'form-control input-lg', 'placeholder'=>'Pencarian']) !!}
-                                {{-- <input type="text" class="form-control input-lg" placeholder="Pencarian" name="keyword" autocomplete="off"> --}}
-                                <span class="input-group-btn">
-                                    {{-- {!! Form::submit(null,['class'=>'btn btn-lg btn-danger']) !!} --}}
-                                    <button class="btn btn-lg btn-danger" type="submit">
-                                    <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-
-                            </div>
-                        </div>
-                    {{-- </form> --}}
-                    {!! Form::close() !!}
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="nav-login">
-                    Hello. <a href="">Login</a></span>
-                    <span class="nav-login-dropdown">
-                        <li class="dropdown dropdown-profile">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">Your Account <i class="fa fa-caret-down"></i></a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-inner dropdown-inner-profile">
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a tabindex="-1" href="/login">
-                                                <span class="fa fa-sign-in"></span>
-                                                Login
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a tabindex="-1" href="/register">
-                                               <span class="fa fa-user-o"></span>
-                                               Register
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="nav-cart">
-                    <a href="" class="cart-detail">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="cart-count">(0 items)</span>
-                    </a>            
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="nav-logo">
+          <a href="#">
+            <img src="/images/logo.png" alt="EduCoffee">
+          </a>
         </div>
+      </div>
+      <div class="col-md-5">
+        <div class="nav-search">
+          {!! Form::open(['url'=>'']) !!}
+          {{-- <form action="" method="post"> --}}
+            <div id="search">
+              <div class="input-group">
+                {!! Form::text('keyword',null,['class'=>'form-control input-lg', 'placeholder'=>'Pencarian']) !!}
+                {{-- <input type="text" class="form-control input-lg" placeholder="Pencarian" name="keyword" autocomplete="off"> --}}
+                <span class="input-group-btn">
+                  {{-- {!! Form::submit(null,['class'=>'btn btn-lg btn-danger']) !!} --}}
+                  <button class="btn btn-lg btn-danger" type="submit">
+                  <i class="fa fa-search"></i>
+                  </button>
+                </span>
+
+              </div>
+            </div>
+          {{-- </form> --}}
+          {!! Form::close() !!}
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="nav-login">
+          <span class="nav-login-dropdown">
+            <li class="dropdown dropdown-profile">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+                @if(Auth::check()) <a href="{{ url('/user/albert') }}">Hello, {{ Auth::user()->name }}</a> @else <a href="">Login</a></span> @endif
+                <i class="fa fa-caret-down"></i>
+              </a>
+              <div class="dropdown-menu">
+                <div class="dropdown-inner dropdown-inner-profile">
+                  <ul class="list-unstyled">
+                    @if(Auth::check())
+                     <li>
+                      <a tabindex="-1" href="{{ url('/customer/akun') }}">
+                        <span class="fa fa-user-o"></span>
+                        Detail Akun
+                      </a>
+                    </li>
+                    <li>
+                      <a tabindex="-1" href="{{ url('customer/portfolio') }}">
+                        <span class="fa fa-address-book"></span>
+                        Portofolio
+                      </a>
+                    </li>
+                    <li>
+                      <a tabindex="-1" href="{{ url('/customer/transaksi') }}">
+                        <span class="fa fa-shopping-cart"></span>
+                        Riwayat Transaksi
+                      </a>
+                    </li>
+                    <li>
+                      <a tabindex="-1" href="{{ url('/customer/article') }}">
+                        <span class="fa fa-book"></span>
+                        Resep Saya
+                      </a>
+                    </li>
+                    <li>
+                      <a tabindex="-1" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit()">
+                        <span class="fa fa-sign-out"></span>
+                        Logout
+                      </a>
+                      <form id="logout" action="{{ url('/logout')}}" method="POST" style="display:none;">
+                        {{ csrf_field() }}
+                      </form>
+                    </li>
+                    @else
+                    <li>
+                      <a tabindex="-1" href="/login">
+                        <span class="fa fa-sign-in"></span>
+                        Login
+                      </a>
+                    </li>
+                    <li>
+                      <a tabindex="-1" href="/register">
+                         <span class="fa fa-user-o"></span>
+                         Register
+                      </a>
+                    </li>
+                    @endif
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="nav-cart">
+          <a href="{{ url('/cart') }}" class="cart-detail">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="cart-count">({{ count(Cart::content())  }} items)</span>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

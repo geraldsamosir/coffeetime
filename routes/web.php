@@ -16,47 +16,50 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
 	Route::get('/', function () {
-	    return view('frontend.pages.home');
+        return view('frontend.pages.home');
 	});
 
-	Route::get('/detail-coffee', function(){
-		return view('frontend.pages.detailCoffee');
-	});
+  Route::get('/detail-coffee/{productCoffee}', function(App\Product $productCoffee){
+      $categoriesKopi = TCG\Voyager\Models\Category::where('parent_id',1)->get();
+      $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
+    return view('frontend.pages.detailCoffee')->with([
+          'productCoffee' => $productCoffee,
+          'productImages' => json_decode($productCoffee->images),
+          'characteristics' => $characteristics
+          ]);
+  });
 
 	Route::get('/detail-mesin', function(){
 		return view('frontend.pages.detailMesin');
 	});
 
-	Route::get('/detail-resep', function(){
-		return view('frontend.pages.detailResep');
-	});
+	Route::get('/article/view/{id}', 'ArticleController@show');
 
-	Route::get('/list-coffee', function(){
-		return view('frontend.pages.listCoffee');
+	Route::get('/list-coffee/{category}', function(TCG\Voyager\Models\Category $category){
+		$coffees = App\Product::where('category_id', $category->id)->get();
+		return view('frontend.pages.listCoffee', compact('coffees'));
 	});
 
 	Route::get('/list-mesin', function(){
 		return view('frontend.pages.listMesin');
 	});
 
-	Route::get('/list-resep', function(){
-		return view('frontend.pages.listResep');
+	Route::get('/list-article', function(){
+        $articles = App\Article::paginate(5);
+		return view('frontend.pages.listArticle', compact('articles'));
 	});
 
 	Route::get('/komparasi', function(){
 		return view('frontend.pages.komparasi');
 	});
 
-	Route::get('/checkout', function(){
-		return view('frontend.pages.checkout');
-	});
+	Route::get('/checkout/{orderId}', 'OrderController@show');
 
-	Route::get('/pembayaran', function(){
-		return view('frontend.pages.pembayaran');
-	});
+    Route::get('/order/summary/{id}', 'OrderController@getOrderSummary');
 
 	Route::get('/cart', function(){
-		return view('frontend.pages.cart');
+    $cart = Cart::content();
+		return view('frontend.pages.cart', compact('cart'));
 	});
 
 	Route::get('/customer/akun', function(){
@@ -79,17 +82,16 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.editPortofolio');
 	});
 
-	Route::get('customer/transaksi',function(){
-		return view('frontend.pages.panelTransaksi');
+    Route::get('/customer/transaksi', 'OrderController@getHistory');
+
+	Route::get('/customer/article',function(){
+        $userArticles = Auth::user()->articles;
+		return view('frontend.pages.panelResep', compact('userArticles'));
 	});
 
-	Route::get('/customer/resep',function(){
-		return view('frontend.pages.panelResep');
-	});
+	Route::get('/customer/article/create', 'ArticleController@createArticle');
 
-	Route::get('/customer/resep/create',function(){
-		return view('frontend.pages.createResep');
-	});
+	Route::post('/customer/article/save', 'ArticleController@saveArticle');
 
 	// Untuk Social Media
 	Route::get('/user/albert',function(){
@@ -127,6 +129,18 @@ else {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/ajax/cartcontent', 'CartController@getCartContent');
+
+Route::post('/ajax/addcartitem/{id}', 'CartController@addItemToCart');
+Route::post('/checkout', 'CartController@cartCheckout');
+Route::get('/order/delete/{id}', 'OrderController@delete');
+Route::post('/order/get-address', 'OrderController@getAddressData');
+
+Route::post('/order/summary/{id}', 'OrderController@postOrderSummary');
+Route::post('/order/confirmation/{id}', 'OrderController@paymentConfirmation');
+
+Route::get('/ajax/deletecartitem/{rowId}', 'CartController@deleteItem');
 
 Auth::routes();
 

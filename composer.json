@@ -7,13 +7,20 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-debugbar": "^2.3",
+        "gloudemans/shoppingcart": "^2.3",
+        "graham-campbell/exceptions": "^9.3",
+        "intervention/image": "^2.3",
         "jenssegers/agent": "^2.5",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
-        "tcg/voyager": "^0.11.9"
+        "laravolt/indonesia": "^0.5.0",
+        "rtconner/laravel-tagging": "~2.2",
+        "tcg/voyager": "^0.11.9",
+        "unisharp/laravel-filemanager": "^1.8"
     },
     "require-dev": {
+        "filp/whoops": "^2.1",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7"
