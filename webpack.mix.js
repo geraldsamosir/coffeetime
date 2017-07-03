@@ -14,7 +14,10 @@ const {mix} = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .scripts([
         'node_modules/numeral/numeral.js',
-        'node_modules/taggle/src/taggle.js'
+        'node_modules/taggle/src/taggle.js',
+        'node_modules/chart.js/dist/Chart.js',
     ], 'public/js/lib.js')
+    .copy('resources/assets/js/ckeditor', 'public/js/ckeditor', false)
+    .copy('resources/assets/select2', 'public/select2', false)
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/mobile.scss', 'public/css')

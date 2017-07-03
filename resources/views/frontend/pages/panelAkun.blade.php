@@ -17,20 +17,19 @@
 								<h3 class="panel-title">Detail Akun</h3>
 							</div>
 							<div class="panel-card-body">
+								<div class="form-group">
+									<img id="user-avatar" class="img-responsive user-avatar" src={{Voyager::image(Auth::user()->avatar)}} />
+								</div>
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<tbody>
 											<tr>
 												<th>Nama</th>
-												<td>Albert Ang</td>
+												<td>{{Auth::user()->name}}</td>
 											</tr>
 											<tr>
 												<th>Email</th>
-												<td>albert@gmail.com</td>
-											</tr>
-											<tr>
-												<th>No. Hp</th>
-												<td>081223456789</td>
+												<td>{{Auth::user()->email}}</td>
 											</tr>
 										</tbody>
 									</table>

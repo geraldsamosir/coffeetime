@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-		<script src="https://cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
+		<link rel="stylesheet" href="{{ asset('select2/css/select2.css') }}">
+		<script src="{{asset('/js/ckeditor/ckeditor.js')}}"></script>
 		@yield('css')
 	</head>
 	<body>
@@ -29,6 +30,7 @@
 		
 		<script src="{{ asset('/js/app.js') }}"></script>
 		<script src="{{ asset('/js/lib.js') }}"></script>
+	<script src="{{ asset('/select2/js/select2.js') }}"></script>
 		@yield('js')
 	</body>
 </html>

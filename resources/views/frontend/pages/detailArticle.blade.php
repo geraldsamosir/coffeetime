@@ -28,10 +28,22 @@
             <div class="resep-title-creator">
               Created by : <a href="">{{App\User::find($article->user_id)->name}}</a>
             </div>
+            @if($article->parent_id)
+              <div class="resep-title-creator">
+                Copied from : <a href="{{url('/article/view/'.$article->parent_id)}}">{{App\Article::where('id', $article->parent_id)->first()->title}}</a>
+              </div>
+            @endif
           </div>
           <div class="col-md-6">
             <div class="resep-fork">
-              <button class="btn btn-primary">Copy Resep</button>
+              @if(Auth::check())
+                <a href="/customer/article/copy/{{$article->id}}" class="btn btn-warning" style="margin: 8px">Copy
+                  Article</a>
+              @endif
+              @if(Auth::check() && $article->user_id == Auth::user()->id)
+                <a href="/customer/article/edit/{{$article->id}}" class="btn btn-success" style="margin: 8px">Edit
+                  Article</a>
+              @endif
             </div>
           </div>
         </div>
@@ -54,11 +66,12 @@
         <div class="row">
           <div class="col-md-9">
             <div class="resep-social-count">
-							<span class="social-count-like">
-								<i class="fa fa-thumbs-o-up fa-1x"></i>
-                {{$article->likes}}
-							</span>
-
+              <a href="{{Auth::check() ? url('article/like/'.$article->id) : url('/login')}}">
+                <span class="social-count-like">
+                  <i class="fa fa-thumbs-o-up fa-1x"></i>
+                  {{$article->likes}}
+                </span>
+              </a>
               <span class="social-count-view">
 								<i class="fa fa-eye fa-1x"></i>
                 {{$article->views}}

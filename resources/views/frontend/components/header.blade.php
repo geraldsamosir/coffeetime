@@ -10,7 +10,7 @@
       </div>
       <div class="col-md-5">
         <div class="nav-search">
-          {!! Form::open(['url'=>'search-product', 'method'=>'GET']) !!}
+          {!! Form::open(['url'=>'/search-product', 'method'=>'GET']) !!}
           {{-- <form action="" method="post"> --}}
             <div id="search">
               <div class="input-group">
@@ -60,7 +60,7 @@
                     <li>
                       <a tabindex="-1" href="{{ url('/customer/article') }}">
                         <span class="fa fa-book"></span>
-                        Resep Saya
+                        Artikel Saya
                       </a>
                     </li>
                     <li>

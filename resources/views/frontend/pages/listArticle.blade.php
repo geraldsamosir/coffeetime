@@ -7,38 +7,28 @@
     <div class="container">
       <div class="panel-search">
         <div class="row">
-          <div class="col-md-4">
-            {!! Form::open(['url'=>'']) !!}
-            <div class="form-group">
-              <div class="input-group input-group-md">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            {!! Form::open(['url'=>'/search-article', 'method'=>'GET']) !!}
+            <div class="form-group col-md-4">
+              <div class="input-group col-md-12">
                 <div class="icon-addon addon-md">
                   {{-- <input type="text" placeholder="Cari Resep..." class="form-control" name="keyword""> --}}
-                  {!! Form::text('keyword',null,['class'=>'form-control','placeholder'=>'Cari Resep...',]) !!}
+                  {!! Form::text('query',app('request')->input('query'),['class'=>'col-md-12 form-control','placeholder'=>'Cari Artikel...',]) !!}
                 </div>
               </div>
             </div>
-            {!! Form::close() !!}
-          </div>
 
           <div class="col-md-2">
             <div class="sorting-date">
               <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                  Urutkan
-                  <i class="fa fa-sort-down"></i>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">Most Likes</a></li>
-                  <li><a href="#">Most View</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Paling Lama</a></li>
-                  <li><a href="#">Paling Baru</a></li>
-                </ul>
+                {!! Form::select('sort',['default'=>'Sorting Artikel','likes'=>'Like Terbanyak','views'=>'View Terbanyak','latest'=>'Terbaru','oldest'=>'Terlama'], app('request')->input('sort') ? app('request')->input('sort') : 'default',['class'=>'form-control', 'required']) !!}
               </div>
             </div>
           </div>
+
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-success">Submit Query</button>
+          </div>
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -85,7 +75,7 @@
           </a>
         @endforeach
       </div>
-      {{$articles->links()}}
+      {{$articles->appends(app('request')->except('page'))->links()}}
     </div>
   </div>
 @endsection

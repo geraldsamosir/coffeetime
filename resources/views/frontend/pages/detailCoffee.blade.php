@@ -108,9 +108,10 @@
                           <div class="row">
                             <div class="col-md-7 flex-direction-coloumn">
                               <div class="harga-count-pembelian">
-                                <span class="price-new">Rp. {{ $productCoffee->discounted_price > 0 ? number_format($productCoffee->discounted_price) : number_format($productCoffee->original_price) }}</span>
+                                <span
+                                  class="price-new">Rp. {{ $productCoffee->discounted_price > 0 ? number_format($productCoffee->discounted_price) : number_format($productCoffee->original_price) }}</span>
                                 @if($productCoffee->discounted_price > 0) <span
-                                        class="price-old">Rp. {{ number_format($productCoffee->original_price) }}</span> @endif
+                                  class="price-old">Rp. {{ number_format($productCoffee->original_price) }}</span> @endif
                               </div>
                             </div>
                             <div class="col-md-5">
@@ -167,6 +168,25 @@
               </div>
             </div>
           </div>
+
+          @if($productCoffee->need_graph)
+            <div class="details-core">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="panel-card">
+                    <div class="panel-card-header">
+                      <h3 class="panel-title">Graph</h3>
+                    </div>
+                    <div class="panel-card-body">
+                      <div class="core-details">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          @endif
 
         </div>
         {{-- Detail Kanan End --}}
@@ -405,4 +425,47 @@
     </div>
   </div>
 
+@endsection
+
+@section('js')
+  <script>
+      var ctx = document.getElementById("myChart");
+      arrLabels = []
+      arrValues = []
+        @if($productCoffee->need_graph)
+        @foreach($graphs as $graph)
+      var strLabel = <?php echo json_encode(explode('=', $graph)[0]); ?>;
+      var intValue = <?php echo json_encode(explode('=', $graph)[1]); ?>;
+      {{--<td>{{ explode('=', $characteristic)[0] }}</td>--}}
+      {{--<td>{{ explode('=', $characteristic)[1] }}</td>--}}
+arrLabels.push(strLabel)
+      arrValues.push(intValue)
+        @endforeach
+      var myChart = new Chart(ctx, {
+              type: 'radar',
+              data: {
+                  labels: arrLabels,
+                  datasets: [{
+                      label: 'Coffee Characteristics',
+                      data: arrValues,
+                      backgroundColor: [
+                          'rgba(41, 174, 155, 0.5)',
+                      ],
+                      borderColor: [
+                          'rgba(41,174,155,1)',
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scale: {
+                      ticks: {
+                          beginAtZero: true,
+                          max: 10,
+                      }
+                  }
+              }
+          });
+    @endif
+  </script>
 @endsection
