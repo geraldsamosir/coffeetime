@@ -1,181 +1,113 @@
-@extends('layouts.frontend')
+@extends('layouts.mobile')
 
-@section('title','| Detail Mesin')
+@section('title','| Homepage')
 
-@section('content')	
-	<div class="section-details-coffee">
-		<div class="container">
-			{{-- Baris Detail Produk Start --}}
-			<div class="row">
-				{{-- Detail Kiri Start --}}
-				<div class="col-md-7">	
-
-					<div class="details-slide">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="row">
-									<div class="details-slide-header">
-										<div class="col-md-12">
-											<div id="carousel-details" class="carousel slide" data-ride="carousel" data-interval="false">
-
-											  	<!-- Wrapper for slides -->
-												<div class="carousel-inner">
-
-												    <div class="item active srle">
-												      <img src="images/coffee/example1.jpg" alt="1.jpg" class="img-responsive carousel-detail">
-												    </div>
-
-												    <div class="item">
-												      <img src="images/coffee/example8.jpg" alt="2.jpg" class="img-responsive carousel-detail">
-												    </div>
+@section('content')
+	
+{{-- Section Slider --}}
+	<div class="slider slider-detail">
+	    <ul class="slides">
+	      	<li><img src="images/coffee/example1.jpg"></li>
+	      	<li><img src="images/coffee/example8.jpg"></li>
+	    </ul>
+	</div>
+{{-- End Section Slider --}}
+{{-- ========================================== --}}
 
 
-												</div>
 
-											  	<!-- Controls -->
-											  	<a class="left carousel-control" href="#carousel-details" role="button" data-slide="prev">
-											    	<span class="glyphicon glyphicon-chevron-left"></span>
-											  	</a>
-											  	<a class="right carousel-control" href="#carousel-details" role="button" data-slide="next">
-											    	<span class="glyphicon glyphicon-chevron-right"></span>
-											  	</a>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="details-deskripsi">
-						<div class="row">
-							<div class="panel-card">
-								<div class="panel-card-body">
-									<h4>Deskripsi Mesin</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta libero aliquam maxime saepe illo magnam consequatur rerum reprehenderit neque odio dolore blanditiis, sint eaque ipsa? Quos eum, architecto molestias nobis. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-									<h4>Cara Penggunaan</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta odit, obcaecati accusamus ea optio, quisquam impedit fugiat suscipit illo fuga autem molestiae ad et ratione commodi perferendis voluptatem a? Cupiditate!</p>
-									<ul>
-										<li>Langkah</li>
-										<li>Langkah</li>
-										<li>Langkah</li>
-										<li>Langkah</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				{{-- Detail Kiri End --}}
-
-				{{-- Detail Kanan Start --}}
-				<div class="col-md-5">
-					<div class="details-pembelian">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="panel-card">
-									<div class="panel-card-header">
-										<h3 class="panel-title">Lakukan Pembelian</h4>									
-									</div>
-									{!! Form::open(['url'=>'']) !!}
-									<div class="panel-card-body">
-										<div class="coffee-title">
-											<div class="row">
-												<div class="col-md-12">
-													Aero Press 2000 XYZ
-												</div>
-											</div>
-										</div>
-
-										<div class="coffee-harga">
-											<div class="row">
-												<div class="col-md-12">
-													<span class="sub-title">Harga</span>
-												</div>
-												<div class="col-md-12">
-													<div class="row">
-														<div class="col-md-7">
-															<div class="harga-count-pembelian flex-column">
-																<span class="price-new">Rp.250.000</span>
-																<span class="price-old">Rp.500.000</span>
-															</div>
-														</div>
-														<div class="col-md-5">
-
-															{{-- <div class="btn-count-pembelian flex-between">
-																<button type="button" class="btn btn-primary btn-count">-</button>
-																<div class="count-pembelian">1</div>
-																<button type="button" class="btn btn-primary btn-count">+</button>
-															</div> --}}
-															{!! Form::number('qty',1,['class'=>'qty']) !!}
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="coffee-button">
-											<div class="row">
-												<div class="col-md-12">
-													{!! Form::submit('Beli Sekarang',['class'=>'btn btn-block btn-success']) !!}
-													{{-- <button type="button" class="btn btn-block btn-success" id="addtoCart">
-														<i class="fa fa-shopping-cart"></i> 
-														Beli Sekarang
-													</button> --}}
-												</div>
-											</div>
-										</div>
-									</div>
-									{!! Form::close() !!}
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="details-related">
-						<div class="row">
-							<div class="col-md-12">
-								<h4 class="panel-title-clean">Related Mesin Kopi</h4>
-								<div class="card-related-list">
-									<div class="card-related">
-										<a href="">
-											<div class="card-related-images">
-												<img src="/images/coffee/example9.jpg" alt="">
-											</div>
-											<div class="card-related-caption">
-												<span class="caption-title">Aeropress Filter</span>
-												<span class="caption-price">Rp. 250.000</span>
-											</div>
-										</a>
-									</div>
-
-									<div class="card-related">
-										<a href="">
-											<div class="card-related-images">
-												<img src="/images/coffee/example9.jpg" alt="">
-											</div>
-											<div class="card-related-caption">
-												<span class="caption-title">Aeropress Filter</span>
-												<span class="caption-price">Rp. 250.000</span>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				{{-- Detail Kanan End --}}
-			</div>
-			{{-- Baris Detail Produk End --}}
+{{-- Section Detail --}}
+	<div class="row">
+		<div class="col s12">
+			<h3 class="subtitle">Pembelian</h3>
+			<span class="produk-detail-title">Aero Press 2000 XYZ</span>
+			<span class="produk-detail-harga">Rp. 100.000</span>
+		 	<div class="input-field col s12">
+	          <input placeholder="1" id="jumlah" type="number" class="validate">
+	          <label for="jumlah">Jumlah</label>
+	        </div>
+	        <div class="col s12">
+	        	<a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;">Beli</a>
+	        </div>
 		</div>
 	</div>
+{{-- End Section Detail --}}
+{{-- ========================================== --}}
+
+
+
+{{-- Section Deskripsi --}}
+	<div class="row">
+		<div class="col s12">
+			<h3 class="subtitle">Deskripsi</h3>
+
+			<p class="p12 pgrey">Deskripsi Mesin</p>
+			<p class="p12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa asperiores dolor iste eum, suscipit sapiente sunt repellat. Similique, inventore enim ad ut. Laborum, voluptatum officiis et unde magni suscipit velit.</p>
+			
+			<p class="p12 pgrey">Cara Penggunaan</p>
+			<p class="p12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa asperiores dolor iste eum, suscipit sapiente sunt repellat. Similique, inventore enim ad ut. Laborum, voluptatum officiis et unde magni suscipit velit.</p>
+		</div>
+	</div>
+{{-- End Section Deskripsi --}}
+{{-- ========================================== --}}
+
+{{-- Section Related --}}
+	<div class="row">
+		<h3 class="subtitle">Related Mesin Kopi</h3>
+		<div class="col s12 m6">
+		    <div class="card horizontal">
+		      <div class="card-image card-image-resep">
+		        <img src="images/coffee/example9.jpg">
+		      </div>
+		      <div class="card-stacked card-stacked-resep">
+		        <div class="card-content">
+		          <p class="p12"><b>Aeropress Filter</b></p>
+		          <p class="p12 pprimer">Rp. 100.000</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="waves-effect waves-light btn">Beli</a>
+		        </div>
+		      </div>
+		    </div>
+		</div>
+		<div class="col s12 m6">
+		    <div class="card horizontal">
+		      <div class="card-image card-image-resep">
+		        <img src="images/coffee/example9.jpg">
+		      </div>
+		      <div class="card-stacked card-stacked-resep">
+		        <div class="card-content">
+		           <p class="p12"><b>Aeropress Filter</b></p>
+		          <p class="p12 pprimer">Rp. 100.000</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="waves-effect waves-light btn">Beli</a>
+		        </div>
+		      </div>
+		    </div>
+		</div>
+	</div>
+{{-- End Section Resep --}}
+{{-- ========================================== --}}
+
+
+
+@endsection
+
+@section('js')
+	
+	 
+	<script>
+		$(document).ready(function(){
+	      $('.slider').slider({
+	      	height: 200
+	      });
+
+	      $('select').material_select();
+	    });
+
+
+	</script>
+        
+
 @endsection

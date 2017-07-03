@@ -225,9 +225,30 @@ if ($agent->isDesktop()) {
     });
 } /*Route for Mobile*/
 else {
+
+
     Route::get('/', function () {
         return view('mobile.pages.home');
     });
+
+    Route::get('/detail-coffee', function(){
+        return view('mobile.pages.detailCoffee');
+    });
+
+    Route::get('/detail-mesin', function(){
+        return view('mobile.pages.detailMesin');
+    });
+
+    Route::get('/detail-resep', function(){
+        return view('mobile.pages.detailResep');
+    });
+
+    Route::get('/list-coffee', function(){
+        return view('mobile.pages.listCoffee');
+    });
+
+
+
 }
 
 
