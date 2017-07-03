@@ -5,6 +5,7 @@
     	<title>EduCoffe @yield('title','| Homepage')</title>
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 		<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		@yield('css')
 	</head>
 	<body>
