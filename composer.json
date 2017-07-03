@@ -16,7 +16,7 @@
         "laravelcollective/html": "^5.3.0",
         "laravolt/indonesia": "^0.5.0",
         "rtconner/laravel-tagging": "~2.2",
-        "tcg/voyager": "^0.11.9",
+        "tcg/voyager": "^0.11.133",
         "unisharp/laravel-filemanager": "^1.8"
     },
     "require-dev": {
@@ -58,10 +58,11 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "repositories": [{
-            "type": "composer",
-            "url": "https://packagist.org"
-        },
-        { "packagist": false }
+    "repositories": [
+        { "packagist": false },
+	{
+	    "type": "vcs",
+	    "url": "https://github.com/hugosvent/voyager"
+	}
     ]
 }
