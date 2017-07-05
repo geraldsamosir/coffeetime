@@ -14,7 +14,7 @@
 					<div class="section-panel-informasi">
 						<div class="panel-card">
 							<div class="panel-card-header">
-								<h3 class="panel-title">Edit Portofolio</h3>
+								<h3 class="panel-title">Edit portfolio</h3>
 							</div>
 							{!! Form::open(['url'=>'']) !!}
 							<div class="panel-card-body">
@@ -24,7 +24,7 @@
 									{!! Form::file('lblSertifikat',null,['class'=>'form-control']) !!}
 								</div>
 								
-								<a href="/customer/portofolio" class="btn btn-tohome">Batal</a>
+								<a href="/customer/portfolio" class="btn btn-tohome">Batal</a>
 								{!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}
 							</div>
 							{!! Form::close() !!}

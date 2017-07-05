@@ -39,7 +39,10 @@ class ArticleController extends Controller
         if (empty($article)) {
             return response()->view('errors.404',['message'=>'Artikel tidak ditemukan']);
         }
-        return view('frontend.pages.detailArticle', compact('article'));
+        $articlesForAnchor = Article::distinct()->select(['title','id'])->groupBy('title')->get(['title','id']);
+        $productsForAnchor = Product::distinct()->select(['name','id'])->groupBy('name')->get(['name','id']);
+
+        return view('frontend.pages.detailArticle', compact('article', 'articlesForAnchor', 'productsForAnchor'));
     }
 
     public function createArticle() {

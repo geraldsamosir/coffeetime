@@ -94,7 +94,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="card-default">
+            <div id="content" class="card-default">
               {!! $article->content !!}
             </div>
             @foreach($article->tagged as $tag)
@@ -134,5 +134,37 @@
       });
       shareWidget.injectInterface(".oss-widget-interface");
       shareWidget.setWidgetTheme(".oss-widget-interface");
+
+      function keywordconvertArticle(str, id)  {
+          return "<a href=\"/article/views/"+encodeURIComponent(id)+"\">"+str+"</a>";
+      }
+
+      function searchArticle(keyword, id) {
+          var content = document.getElementById("content");
+          var re = new RegExp("("+keyword+")","g");
+          content.innerHTML = content.innerHTML.replace(re, keywordconvertArticle(string, id));
+      }
+
+      @foreach($articlesForAnchor as $article)
+        var string = <?php echo json_encode($article->title) ?>;
+        var id = <?php echo json_encode($article->id) ?>;
+        searchArticle(string, id)
+      @endforeach
+
+      function keywordconvertProduct(str, id)  {
+          return "<a href=\"/detail-coffee/"+encodeURIComponent(id)+"\">"+str+"</a>";
+      }
+
+      function searchProduct(keyword, id) {
+          var content = document.getElementById("content");
+          var re = new RegExp("("+keyword+")","g");
+          content.innerHTML = content.innerHTML.replace(re, keywordconvertProduct(string, id));
+      }
+
+        @foreach($productsForAnchor as $product)
+          var string = <?php echo json_encode($product->name) ?>;
+          var id = <?php echo json_encode($product->id) ?>;
+          searchProduct(string, id)
+        @endforeach
   </script>
 @endsection

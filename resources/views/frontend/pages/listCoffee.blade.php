@@ -119,7 +119,7 @@
 						</div>
 					</div>
           <div class="col-md-2">
-            <button type="submit" class="btn btn-success">Submit Query</button>
+            <button type="submit" class="btn btn-success">Lakukan Filter</button>
           </div>
 
           {!! Form::close() !!}

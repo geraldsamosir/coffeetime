@@ -17,7 +17,7 @@
 				{{-- Profile Kiri Start --}}
 				<div class="col-md-4">
 					<div class="card-social-left">
-						<img src="{{ asset('images/user.png') }}" alt="User Images">
+						<img src="{{ Voyager::image($user->avatar) }}" class="img-responsive" alt="User Images">
 						<ul class="card-social-akun">
 							<li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
 							<li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
@@ -35,19 +35,14 @@
 								<tbody>
 									<tr>
 									 	<th>Nama</th>
-										 <td>Albert Ang</td>
+										 <td>{{$user->name}}</td>
 									</tr>
 									<tr>
 									 	<th>Email</th>
-										 <td>albert@gmail.com</td>
+										 <td>{{$user->email}}</td>
 									</tr>
 									<tr>
-									 	<th>No. Hp</th>
-										 <td>0812 2345 6789</td>
-									</tr>
-									<tr>
-									 	<th>Sertifikat</th>
-										 <td><a href="#">Sertifikat MPT</a>,<a href="#">Sertifikat Barista</a></td>
+									 	<th colspan="2"><a href="{{url('/user/portfolio/'.$user->id)}}" class="col-md-12 btn btn-warning">Lihat Portfolio</a></th>
 									</tr>
 								</tbody>
 							</table>

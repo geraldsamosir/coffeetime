@@ -195,18 +195,25 @@ if ($agent->isDesktop()) {
     });
 
     Route::get('/customer/portfolio', function () {
-        return view('frontend.pages.panelPortofolio');
+        return view('frontend.pages.panelportfolio');
     });
 
-    Route::get('/customer/portofolio/edit', function () {
-        return view('frontend.pages.editPortofolio');
+    Route::get('/user/portfolio/{user}', function (App\User $user) {
+        return view('frontend.pages.panelportfolio', compact('user'));
     });
+
+    Route::get('/customer/portfolio/edit', function () {
+        return view('frontend.pages.editportfolio');
+    });
+
+    Route::post('/customer/portfolio/save', 'UserController@savePortfolio');
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
 
     Route::get('/customer/article', function () {
-        $userArticles = Auth::user()->articles;
-        return view('frontend.pages.panelResep', compact('userArticles'));
+        $userArticles = Auth::user()->articles()->paginate(5);
+        $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
+        return view('frontend.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
 
     Route::get('/customer/article/create', 'ArticleController@createArticle');
@@ -220,8 +227,8 @@ if ($agent->isDesktop()) {
     Route::post('/customer/edit/save', 'UserController@saveProfile');
 
     // Untuk Social Media
-    Route::get('/user/albert', function () {
-        return view('frontend.pages.socialAkun');
+    Route::get('/user/{user}', function (App\User $user) {
+        return view('frontend.pages.socialAkun', compact('user'));
     });
 } /*Route for Mobile*/
 else {

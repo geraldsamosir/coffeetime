@@ -48,7 +48,7 @@
                     <li>
                       <a tabindex="-1" href="{{ url('customer/portfolio') }}">
                         <span class="fa fa-address-book"></span>
-                        Portofolio
+                        portfolio
                       </a>
                     </li>
                     <li>

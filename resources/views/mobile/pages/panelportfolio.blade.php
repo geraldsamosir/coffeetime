@@ -14,20 +14,21 @@
 					<div class="section-panel-informasi">
 						<div class="panel-card">
 							<div class="panel-card-header">
-								<h3 class="panel-title">Edit Portofolio</h3>
+								<h3 class="panel-title">Detail portfolio</h3>
 							</div>
-							{!! Form::open(['url'=>'']) !!}
 							<div class="panel-card-body">
-
-								<div class="form-group">
-									{!! Form::label('lblSertifikat','Upload Sertifikat') !!}
-									{!! Form::file('lblSertifikat',null,['class'=>'form-control']) !!}
+								<div class="table-responsive">
+									<table class="table table-hover">
+										<tbody>
+											<tr>
+												<th>Sertifikat</th>
+												<td>: <a href="#">Sertifikat MPT</a>, <a href="#">Sertifikat Barista</a></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-								
-								<a href="/customer/portofolio" class="btn btn-tohome">Batal</a>
-								{!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}
+								<a href="/customer/portfolio/edit""><i class="fa fa-plus fa-1g"></i> Tambah Sertifikat</a>
 							</div>
-							{!! Form::close() !!}
 						</div>
 					</div>
 				</div>

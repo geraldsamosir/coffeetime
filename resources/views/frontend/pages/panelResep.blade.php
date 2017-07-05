@@ -2,6 +2,16 @@
 
 @section('title', 'Panel Akun')
 
+@section('css')
+  <style>
+    .resep-social-icon * {
+      color: black;
+    }
+    .hover-overlay:hover > li {
+      opacity: 0.5;
+    }
+  </style>
+
 @section('content')
   <div class="section-panel">
     <div class="container">
@@ -18,18 +28,48 @@
               </div>
               <div class="panel-card-body">
                 <ul class="list-article">
-                  <li>Favorited
-                    <ul class="list-article-favorited">
-                      <li><a href="/detail-resep">Resep Kopi Susu Manis</a></li>
-                    </ul>
-                  </li>
-                  <li>Created
-                    <ul class="list-article-created">
-                      @foreach($userArticles as $userArticle)
-                        <li><a href={{url('article/view/'.$userArticle->id)}}>{{$userArticle->title}}</a></li>
+                  <ul class="list-group"><h3>Favorited</h3>
+                    <hr>
+                    <ul class="list-group list-article-favorited">
+                      @foreach($userLikedArticles as $userArticle)
+                        <a class="hover-overlay" href={{url('article/view/'.$userArticle->article->id)}}>
+                        <li class="list-group-item">{{$userArticle->article->title}}
+                          <div class="resep-social-icon">
+                            <i class="fa fa-copy"></i>
+                            <span class="icon-comment">{{$userArticle->article->copies}}</span>
+
+                            <i class="fa fa-thumbs-up"></i>
+                            <span class="icon-like">{{$userArticle->article->likes}}</span>
+
+                            <i class="fa fa-eye"></i>
+                            <span class="icon-view">{{$userArticle->article->views}}</span>
+                          </div></li>
+                        </a>
                       @endforeach
+                      {{$userLikedArticles->appends(array_except(Request::query(), 'liked_page'))->links()}}
                     </ul>
-                  </li>
+                  </ul>
+                  <ul class="list-group"><h3>Created</h3>
+                    <hr>
+                    <ul class="list-group list-article-created">
+                      @foreach($userArticles as $userArticle)
+                        <a class="hover-overlay" href={{url('article/view/'.$userArticle->id)}}>
+                        <li class="list-group-item">{{$userArticle->title}}
+                          <div class="resep-social-icon">
+                            <i class="fa fa-copy"></i>
+                            <span class="icon-comment">{{$userArticle->copies}}</span>
+
+                            <i class="fa fa-thumbs-up"></i>
+                            <span class="icon-like">{{$userArticle->likes}}</span>
+
+                            <i class="fa fa-eye"></i>
+                            <span class="icon-view">{{$userArticle->views}}</span>
+                          </div></li>
+                        </a>
+                      @endforeach
+                        {{$userArticles->appends(array_except(Request::query(), 'page'))->links()}}
+                    </ul>
+                  </ul>
                 </ul>
                 <a href="/customer/article/create" class="btn btn-md btn-primary">Buat Resep</a>
               </div>
