@@ -97,6 +97,7 @@ if ($agent->isDesktop()) {
 	Route::get('/user/albert',function(){
 		return view('frontend.pages.socialAkun');
 	});
+
 }
 
 /*Route for Mobile*/
@@ -121,6 +122,9 @@ else {
 		return view('mobile.pages.listCoffee');
 	});
 
+	Route::get('/list-mesin', function(){
+		return view('mobile.pages.listMesin');
+	});
 
 
 }
