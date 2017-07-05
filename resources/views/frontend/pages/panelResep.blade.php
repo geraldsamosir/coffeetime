@@ -71,7 +71,7 @@
                     </ul>
                   </ul>
                 </ul>
-                <a href="/customer/article/create" class="btn btn-md btn-primary">Buat Resep</a>
+                <a href="/customer/article/create" class="btn btn-md btn-primary">Tulis Artikel</a>
               </div>
             </div>
           </div>

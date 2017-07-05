@@ -40,5 +40,7 @@
           filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
           filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='+ csrfToken
       });
+
+      CKEDITOR.instances['ckeditor'].setData(<?php echo json_encode(Auth::user()->portfolio); ?>)
   </script>
 @endsection

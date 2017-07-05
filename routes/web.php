@@ -254,6 +254,12 @@ else {
         return view('mobile.pages.listCoffee');
     });
 
+    Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
+        $coffees = App\Product::where('category_id', $category->id)->get();
+        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
+        return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
+    });
+
 
 
 }

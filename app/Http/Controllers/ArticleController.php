@@ -47,8 +47,9 @@ class ArticleController extends Controller
 
     public function createArticle() {
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
+        $existingTags =  Article::existingTags();
         if(!empty($permissions)) {
-            return view('frontend.pages.createArticle', ['permissions' => $permissions]);
+            return view('frontend.pages.createArticle', ['permissions' => $permissions, 'existingTags' => $existingTags]);
         } else {
             return response()->view('errors.403');
         }

@@ -26,7 +26,7 @@
               <span class="title-date">{{ date('F d, Y', strtotime($article->created_at)) }}</span>
             </div>
             <div class="resep-title-creator">
-              Created by : <a href="">{{App\User::find($article->user_id)->name}}</a>
+              Created by : <a href="{{url('/user/'.$article->user_id)}}">{{App\User::find($article->user_id)->name}}</a>
             </div>
             @if($article->parent_id)
               <div class="resep-title-creator">

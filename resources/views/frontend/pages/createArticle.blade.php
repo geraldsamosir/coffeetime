@@ -68,9 +68,12 @@
                   {!! Form::textarea('lblKonten',null,['id'=>'ckeditor', 'class'=>'form-control','required','rows'=>'7']) !!}
                 </div>
 
-                <div class="taggleContainer">
-                  {!! Form::label('lblTag',"Tag",['class'=>'required']) !!}
-                  <p id="lblTag" class="input clearfix textarea example1"></p>
+                <div class="form-group">
+                  <div class="taggleContainer">
+                    {!! Form::label('lblTag',"Tag",['class'=>'required']) !!}
+                    <p id="lblTag" class="input clearfix textarea example1"></p>
+                  </div>
+                  <button id="generateTag" type="button" class="btn btn-warning">Generate Tags</button>
                 </div>
 
                 <input id="tags" type="hidden" name="tags"/>
@@ -104,6 +107,19 @@
           onTagRemove: function(event, tag) {
               $('#tags').val(taggle.getTagValues())
           }
+      });
+
+      $('#generateTag').click(function() {
+          taggle.removeAll();
+          var tags = []
+          @foreach($existingTags as $tag)
+          var string = <?php echo json_encode($tag->name) ?>;
+          if (CKEDITOR.instances['ckeditor'].getData().toLowerCase().search(string.toLowerCase()) >= 0) {
+              tags.push(string)
+          }
+          @endforeach
+          taggle.add(tags)
+
       });
 
       if ($('#headerPreview').attr('src') == "#") {

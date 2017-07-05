@@ -18,11 +18,8 @@
 				<div class="col-md-4">
 					<div class="card-social-left">
 						<img src="{{ Voyager::image($user->avatar) }}" class="img-responsive" alt="User Images">
-						<ul class="card-social-akun">
-							<li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
-							<li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
-							<li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-						</ul>
+						<hr>
+						<div class='oss-widget-interface'></div>
 					</div>
 				</div>
 				{{-- Profile Kiri End --}}
@@ -66,4 +63,22 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('js')
+	<script type="text/javascript" src="//sharecdn.social9.com/v2/js/opensocialshare.js"></script>
+	<script type="text/javascript" src="//sharecdn.social9.com/v2/js/opensocialsharedefaulttheme.js"></script>
+	<link rel="stylesheet" type="text/css" href="//sharecdn.social9.com/v2/css/os-share-widget-style.css"/>
+	<script>
+      var shareWidget = new OpenSocialShare();
+      shareWidget.init({
+          isHorizontalLayout: 1,
+          widgetIconSize: "32",
+          widgetStyle: "square",
+          theme: 'OpenSocialShareDefaultTheme',
+          providers: {top: ["Facebook", "GooglePlus", "LinkedIn", "Twitter"]}
+      });
+      shareWidget.injectInterface(".oss-widget-interface");
+      shareWidget.setWidgetTheme(".oss-widget-interface");
+	</script>
 @endsection
