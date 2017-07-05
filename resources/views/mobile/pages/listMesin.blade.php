@@ -5,53 +5,54 @@
 @section('content')
 
 {{-- Section Sorting --}}
-<ul class="collapsible" data-collapsible="accordion">
-  <li>
-    <div class="collapsible-header"><i class="material-icons">search</i>Filter</div>
-    <div class="row collapsible-body">
-      <div class="input-field col s12">
-        <input id="namaproduk" type="text" class="validate">
-        <label for="namaproduk">Cari Produk</label>
-      </div>
-   
-      <div class="input-field col s6">
-        <select>
-            <option value="" disabled selected>Kategori</option>
-            <option value="1">Coffee A</option>
-            <option value="2">Coffee B</option>
-        </select>
-      </div>
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">search</i>Filter</div>
+      <div class="row collapsible-body">
+        <div class="input-field col s12">
+          <input id="namaproduk" type="text" class="validate">
+          <label for="namaproduk">Cari Produk</label>
+        </div>
+     
+        <div class="input-field col s6">
+          <select>
+              <option value="" disabled selected>Kategori</option>
+              <option value="1">Coffee A</option>
+              <option value="2">Coffee B</option>
+          </select>
+        </div>
 
-      <div class="input-field col s6">
-        <select>
-            <option value="" disabled selected>Harga</option>
-            <option value="0">Reset</option>
-            <option value="1">0 - Rp. 100.00</option>
-            <option value="2">Rp. 100.000 - Rp. 500.00</option>
-            <option value="3">>Rp. 500.000</option>
-          </optgroup>
-        </select>
-      </div>
+        <div class="input-field col s6">
+          <select>
+              <option value="" disabled selected>Harga</option>
+              <option value="0">Reset</option>
+              <option value="1">0 - Rp. 100.00</option>
+              <option value="2">Rp. 100.000 - Rp. 500.00</option>
+              <option value="3">>Rp. 500.000</option>
+            </optgroup>
+          </select>
+        </div>
 
-      <div class="input-field col s6">
-        <select>
-            <option value="" disabled selected>Urutkan</option>
-            <option value="0">Reset</option>
-            <option value="1">Harga Terendah</option>
-            <option value="2">Harga Tertinggi</option>
-            <option value="3">Paling Lama</option>
-            <option value="4">Paling Baru</option>
-          </optgroup>
-        </select>
+        <div class="input-field col s6">
+          <select>
+              <option value="" disabled selected>Urutkan</option>
+              <option value="0">Reset</option>
+              <option value="1">Harga Terendah</option>
+              <option value="2">Harga Tertinggi</option>
+              <option value="3">Paling Lama</option>
+              <option value="4">Paling Baru</option>
+            </optgroup>
+          </select>
+        </div>
+        
+        <div class="input-field col s6">
+          <a class="waves-effect waves-light btn">Filter</a>
+        </div>
       </div>
-      
-      <div class="input-field col s6">
-        <a class="waves-effect waves-light btn">Filter</a>
-      </div>
-    </div>
-  </li>
-<ul>
+    </li>
+  </ul>
 {{-- End Section Sorting --}}
+{{-- ========================================== --}}
 
 {{-- Section Card Kopi --}}
 	<div class="row">	
@@ -116,6 +117,7 @@
         </div>
 	</div>
 {{-- End Section Card Kopi --}}
+{{-- ========================================== --}}
 
 @endsection
 

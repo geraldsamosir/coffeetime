@@ -126,6 +126,10 @@ else {
 		return view('mobile.pages.listMesin');
 	});
 
+	Route::get('/list-artikel', function(){
+		return view('mobile.pages.listArtikel');
+	});
+
 
 }
 

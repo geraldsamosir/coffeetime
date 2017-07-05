@@ -86,6 +86,7 @@ h4 {
 	width: 100px !important;
 	top: 14px !important;
 	margin: 0 auto;
+	padding: 4px;
 }
 
 .card .card-content {
@@ -143,7 +144,7 @@ h4 {
 	}
 
 .row > .subtitle {
-	margin: 0 0.75rem;
+	margin: 16px 0.75rem;
 }
 
 .table-detail td{

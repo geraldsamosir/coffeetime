@@ -121,7 +121,7 @@
 		        <div class="card-content">
 		          <p class="p12"><b>Macciato Nias</b></p>
 		          <p class="p12 social-stat">
-		          	  <i class="material-icons" style="font-size:14px;">textsms</i>10
+		          	  <i class="material-icons" style="font-size:14px;">content_copy</i>10
 		          	  <i class="material-icons" style="font-size:14px;">visibility</i>10
 		          	  <i class="material-icons" style="font-size:14px;">thumb_up</i>10
 		          </p>
@@ -141,7 +141,7 @@
 		        <div class="card-content">
 		          <p class="p12"><b>Macciato Nias</b></p>
 		          <p class="p12 social-stat">
-		          	  <i class="material-icons" style="font-size:14px;">textsms</i>10
+		          	  <i class="material-icons" style="font-size:14px;">content_copy</i>10
 		          	  <i class="material-icons" style="font-size:14px;">visibility</i>10
 		          	  <i class="material-icons" style="font-size:14px;">thumb_up</i>10
 		          </p>
