@@ -130,6 +130,10 @@ else {
 		return view('mobile.pages.listArtikel');
 	});
 
+	Route::get('/komparasi', function(){
+		return view('mobile.pages.komparasi');
+	});
+
 
 }
 

@@ -10,8 +10,30 @@
     </div>
   </li>
   <li><a href="/"><i class="material-icons">store</i>Home</a></li>
-  <li><a href="/"><i class="material-icons">invert_colors</i>Kopi</a></li>
-  <li><a href="/"><i class="material-icons">work</i>Alat</a></li>
+  
+
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header collapsible-sidebar"><i class="material-icons icon-sidebar">invert_colors</i>Kopi</div>
+      <ul class="collapsible-body collapsible-body-sidebar">
+        <li><a href="">Kopi 1</a></li>
+        <li><a href="">Kopi 2</a></li>
+        <li><a href="">Kopi 3</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header collapsible-sidebar"><i class="material-icons icon-sidebar">work</i>Alat</div>
+      <ul class="collapsible-body collapsible-body-sidebar">
+        <li><a href="">Alat 1</a></li>
+        <li><a href="">Alat 2</a></li>
+        <li><a href="">Alat 3</a></li>
+      </ul>
+    </li>
+  </ul>
+    
   <li><a href="/"><i class="material-icons">assignment</i>Resep</a></li>
   <li><a href="/"><i class="material-icons">live_help</i>Bantuan</a></li>
   <li><a href="/"><i class="material-icons">contacts</i>Contact</a></li>
