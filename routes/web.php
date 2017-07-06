@@ -134,6 +134,10 @@ else {
 		return view('mobile.pages.komparasi');
 	});
 
+	Route::get('/cart', function(){
+		return view('mobile.pages.cart');
+	});
+
 
 }
 
