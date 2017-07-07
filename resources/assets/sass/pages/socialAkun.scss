@@ -43,15 +43,6 @@
 				font-size: 13px;
 				font-weight: 400;
 			}
-			
-			.list-article-favorited li:before, .list-article-created li:before{
-				content: "\f15c"; /* FontAwesome Unicode */
-			  	font-family: FontAwesome;
-			  	font-size: 13px;
-			  	display: inline-block;
-			  	margin-left: -1.3em; /* same as padding-left set on li */
-			  	width: 1.3em;
-			}
 		}
 	}
 }

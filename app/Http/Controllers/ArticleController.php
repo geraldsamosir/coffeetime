@@ -35,14 +35,16 @@ class ArticleController extends Controller
     public function show($articleId) {
         $article = Article::find($articleId);
         $article->views = $article->views + 1;
+        $tagNames = $article->tagNames();
         $article->save();
         if (empty($article)) {
             return response()->view('errors.404',['message'=>'Artikel tidak ditemukan']);
         }
         $articlesForAnchor = Article::distinct()->select(['title','id'])->groupBy('title')->get(['title','id']);
         $productsForAnchor = Product::distinct()->select(['name','id'])->groupBy('name')->get(['name','id']);
+        $relatedArticle = Article::withAnyTag($tagNames)->inRandomOrder()->take(2)->get();
 
-        return view('frontend.pages.detailArticle', compact('article', 'articlesForAnchor', 'productsForAnchor'));
+        return view('frontend.pages.detailArticle', compact('article', 'articlesForAnchor', 'productsForAnchor', 'relatedArticle'));
     }
 
     public function createArticle() {

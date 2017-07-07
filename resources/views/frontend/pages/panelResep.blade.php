@@ -24,7 +24,7 @@
           <div class="section-panel-informasi">
             <div class="panel-card">
               <div class="panel-card-header">
-                <h3 class="panel-title">List Resep Anda</h3>
+                <h3 class="panel-title">List Artikel Anda</h3>
               </div>
               <div class="panel-card-body">
                 <ul class="list-article">

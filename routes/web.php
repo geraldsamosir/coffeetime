@@ -22,10 +22,14 @@ if ($agent->isDesktop()) {
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
         $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
         $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
+        $relatedArticle = \App\Article::where('product_id', $productCoffee->id)->inRandomOrder()->take(2)->get();
+        $relatedProduct = \App\Product::where('category_id', $productCoffee->category_id)->inRandomOrder()->take(4)->get();
         return view('frontend.pages.detailCoffee')->with([
             'productCoffee' => $productCoffee,
             'productImages' => json_decode($productCoffee->images),
             'characteristics' => $characteristics,
+            'relatedArticle' => $relatedArticle,
+            'relatedProduct' => $relatedProduct,
             'graphs' => $graphs,
         ]);
     });
@@ -116,9 +120,9 @@ if ($agent->isDesktop()) {
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
-    Route::get('/list-mesin', function () {
-        return view('frontend.pages.listMesin');
-    });
+	Route::get('/list-mesin', function(){
+		return view('frontend.pages.listMesin');
+	});
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
         $articles = App\Article::where('category_id', $category->id)->paginate(5);
@@ -148,7 +152,6 @@ if ($agent->isDesktop()) {
         }
         return view('frontend.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
     });
-
     Route::get('/komparasi3', function () {
         $products = App\Product::get();
         $komparasi3 = true;
@@ -173,40 +176,35 @@ if ($agent->isDesktop()) {
         return view('frontend.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
     });
 
+
     Route::get('/checkout/{orderId}', 'OrderController@show');
 
     Route::get('/order/summary/{id}', 'OrderController@getOrderSummary');
 
-    Route::get('/cart', function () {
-        $cart = Cart::content();
-        return view('frontend.pages.cart', compact('cart'));
-    });
+	Route::get('/cart', function(){
+    $cart = Cart::content();
+		return view('frontend.pages.cart', compact('cart'));
+	});
 
-    Route::get('/customer/akun', function () {
-        return view('frontend.pages.panelAkun');
-    });
+	Route::get('/customer/akun', function(){
+		return view('frontend.pages.panelAkun');
+	});
 
-    Route::get('/customer/cart', function () {
-        return view('frontend.pages.panelCart');
-    });
+	Route::get('/customer/cart', function(){
+		return view('frontend.pages.panelCart');
+	});
 
-    Route::get('/customer/edit', function () {
-        return view('frontend.pages.editAkun');
-    });
+	Route::get('/customer/edit', function(){
+		return view('frontend.pages.editAkun');
+	});
 
-    Route::get('/customer/portfolio', function () {
-        return view('frontend.pages.panelportfolio');
-    });
+	Route::get('/customer/portofolio',function(){
+		return view('frontend.pages.panelPortofolio');
+	});
 
-    Route::get('/user/portfolio/{user}', function (App\User $user) {
-        return view('frontend.pages.panelportfolio', compact('user'));
-    });
-
-    Route::get('/customer/portfolio/edit', function () {
-        return view('frontend.pages.editportfolio');
-    });
-
-    Route::post('/customer/portfolio/save', 'UserController@savePortfolio');
+	Route::get('/customer/portofolio/edit',function(){
+		return view('frontend.pages.editPortofolio');
+	});
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
 
@@ -228,31 +226,50 @@ if ($agent->isDesktop()) {
 
     // Untuk Social Media
     Route::get('/user/{user}', function (App\User $user) {
-        return view('frontend.pages.socialAkun', compact('user'));
+        $userArticles = $user->articles()->paginate(5);
+        $userLikedArticles = \App\UserArticlesLike::where('user_id', $user->id)->paginate(5, ['*'], 'liked_page');
+        return view('frontend.pages.socialAkun', compact('user','userArticles', 'userLikedArticles'));
     });
 } /*Route for Mobile*/
 else {
+	Route::get('/', function () {
+	    return view('mobile.pages.home');
+	});
 
+	Route::get('/detail-coffee', function(){
+		return view('mobile.pages.detailCoffee');
+	});
 
-    Route::get('/', function () {
-        return view('mobile.pages.home');
+    Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
+        $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
+        $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
+        return view('frontend.pages.detailCoffee')->with([
+            'productCoffee' => $productCoffee,
+            'productImages' => json_decode($productCoffee->images),
+            'characteristics' => $characteristics,
+            'graphs' => $graphs,
+        ]);
     });
 
-    Route::get('/detail-coffee', function(){
-        return view('mobile.pages.detailCoffee');
-    });
+	Route::get('/detail-mesin', function(){
+		return view('mobile.pages.detailMesin');
+	});
 
-    Route::get('/detail-mesin', function(){
-        return view('mobile.pages.detailMesin');
-    });
+	Route::get('/detail-resep', function(){
+		return view('mobile.pages.detailResep');
+	});
 
-    Route::get('/detail-resep', function(){
-        return view('mobile.pages.detailResep');
-    });
+	Route::get('/list-coffee', function(){
+		return view('mobile.pages.listCoffee');
+	});
 
-    Route::get('/list-coffee', function(){
-        return view('mobile.pages.listCoffee');
-    });
+	Route::get('/list-mesin', function(){
+		return view('mobile.pages.listMesin');
+	});
+
+	Route::get('/list-artikel', function(){
+		return view('mobile.pages.listArtikel');
+	});
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
         $coffees = App\Product::where('category_id', $category->id)->get();
@@ -260,9 +277,8 @@ else {
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
-
-
 }
+
 
 
 Route::group(['prefix' => 'admin'], function () {

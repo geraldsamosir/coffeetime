@@ -105,6 +105,62 @@
       </div>
     </div>
 
+    @if(count($relatedArticle) > 0)
+      <div class="section-resep-coffee">
+        <div class="container">
+          {{-- Baris Related Resep Start --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel-default-header">
+                <h3>Resep</h3>
+              </div>
+              <div class="resep-coffee-list">
+                <div class="row">
+                  {{-- List Resep Start --}}
+                  @foreach($relatedArticle as $article)
+                    <div class="col-md-6">
+                      <div class="card-resep hvr-float-shadow">
+                        <div class="row">
+                          <a href="/article/view/{{$article->id}}">
+                            <div class="col-md-4">
+                              <div class="resep-image">
+                                <img style="height:100%" class="img-responsive"
+                                     src="{{ !empty($article->header_image) ? Voyager::image($article->header_image) : asset('images/placeholder-image.png') }}"
+                                     alt="">
+                              </div>
+                            </div>
+                            <div class="col-md-8">
+                              <div class="resep-list-details">
+                                <span class="resep-title">{{$article->title}}</span>
+                                <div class="resep-brew">
+                                  @foreach($article->tagged as $tag)
+                                    <span class="label label-primary">{{$tag->tag_name}}</span>
+                                  @endforeach
+                                </div>
+                                <div class="resep-social-icon">
+                                  <i class="fa fa-thumbs-up"></i>
+                                  <span class="icont-like">{{$article->likes}}</span>
+
+                                  <i class="fa fa-eye"></i>
+                                  <span class="icon-view">{{$article->views}}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  @endforeach
+                  {{-- List Resep End --}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- Baris Related Resep End --}}
+        </div>
+      </div>
+    @endif
+
 
     <div class="details-resep-komentar">
       <div class="container">
