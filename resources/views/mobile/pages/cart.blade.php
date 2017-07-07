@@ -1,76 +1,83 @@
-@extends('layouts.frontend')
+@extends('layouts.mobile')
 
-@section('title', 'Your Cart')
+@section('title','| Homepage')
 
 @section('content')
-	<div class="section-cart-list">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10">
-					<div class="panel-cart">
-						<div class="panel-cart-count">
-							<h3 class="cart-count">Keranjang Belanja(1)</h3>
-						</div>
-						<div class="panel-cart-header">
-							<table class="table table-cart">
-								<tr>
-									<td colspan="2" class="f1">&nbsp;</td>
-									<td>
-										Harga
-									</td>
-									<td class="cart-item-quantity">
-										Jumlah
-									</td>
-									<td>
-										Subtotal
-									</td>
-									<td>&nbsp;</td>
-								</tr>
-							</table>
-						</div>
-						<div class="panel-cart-body">
-							<div class="table-responsive">
-								<table class="table table-cart">
-									<tr>
-										<td class="cart-item-preview f2">
-											<img src="/images/coffee/example12.jpg" alt="gambar-product">
-										</td>
-										<td class="cart-item-name f2">
-											<a href="/details-coffee">Coffee Nias 250g</a>
-											<p class="cart-item-brew-method">Espresso</p>
-										</td>
-										<td class="cart-item-price">
-											<p class="cart-item-price-new">Rp. 250.000</p>
-											<p class="cart-item-price-old">Rp. 500.000</p>
-										</td>
-										<td class="cart-item-quantity">
-											<input type="number" min="0" value="1">
-										</td>
-										<td class="cart-item-subtotal">
-											<p class="cart-subtotal">Rp. 500.000</p>
-										</td>
-										<td class="cart-item-delete">
-											<button class="btn btn-cart-delete">
-												<i class="fa fa-times-circle"></i>
-											</button>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						<div class="panel-cart-footer">
-							{{-- <button class="btn btn-tohome">Lanjutkan Belanja</button> --}}
-							<a href="/" class="btn btn-tohome">Lanjut Belanja</a>
-							<button type="submit" class="btn btn-success btn-tocheckout">Lanjutkan Pembayaran</button>
-						</div>
 
-						{{-- Jika Cart Kosong --}}
-						<div class="panel-cart-body cart-kosong">
-							<h2>Keranjang Anda Kosong, Silahkan lakukan pembelian.</h2>
-						</div>
-					</div>
-				</div>
-			</div>
+{{-- Section Cart --}}
+	<div class="row">
+		<h3 class="subtitle">Keranjang Belanja (2)</h3>
+
+		<div class="col s12 m6">
+            <div class="collection">
+              <a href="" class="collection-item">Total : <b>Rp. 200.000</b></a>
+            </div>
+		</div>
+		
+		<div class="col s12 m6">
+	    	<div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="images/coffee/example1.jpg">
+		      	</div>
+	      		<div class="card-stacked">
+	        		<div class="card-content">
+	          			<h3 class="produk-title activator">NIAS 200G KOPI ARABICA<i class="material-icons right">more_vert</i></h3>
+	          			<p>wholebean</p>
+	          			<p>Rp 100.000</p>
+	          			<div class="input-field col s12">
+				          <input placeholder="1" id="jumlah" type="number" class="validate" value="1">
+				        </div>
+				        <p style="padding: 5px;">Sub Total : <b>Rp. 100.000</b></p>
+	        		</div>
+	      		</div>
+	      		<div class="card-reveal">
+	      			<span class="card-title grey-text text-darken-4">&nbsp;<i class="material-icons right">close</i></span>
+			      	<a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;">Update</a>
+			      	<a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
+			    </div>
+	    	</div>
+	  	</div>
+
+	  	<div class="col s12 m6">
+	    	<div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="images/coffee/example1.jpg">
+		      	</div>
+	      		<div class="card-stacked">
+	        		<div class="card-content">
+	          			<h3 class="produk-title activator">NIAS 200G KOPI ARABICA<i class="material-icons right">more_vert</i></h3>
+	          			<p>wholebean</p>
+	          			<p>Rp 100.000</p>
+	          			<div class="input-field col s12">
+				          <input placeholder="1" id="jumlah" type="number" class="validate" value="1">
+				        </div>
+				        <p style="padding: 5px;">Sub Total : <b>Rp. 100.000</b></p>
+	        		</div>
+	      		</div>
+	      		<div class="card-reveal">
+	      			<span class="card-title grey-text text-darken-4">&nbsp;<i class="material-icons right">close</i></span>
+			      	<a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;">Update</a>
+			      	<a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
+			    </div>
+	    	</div>
+	  	</div> 
+
+	</div>
+{{-- End Section Cart --}}
+
+{{-- Section Button --}}
+	<div class="row">
+		<div class="col s6 m6">
+			<a class="waves-effect waves-light btn" style="background: #999999;">Belanja</a>
+		</div>
+		<div class="col s6 m6">
+			<a class="waves-effect waves-light btn" style="background: #2ab27b;">Pembayaran</a>
 		</div>
 	</div>
+{{-- End Section Button --}}
+	
+@endsection
+
+@section('js')
+	
 @endsection

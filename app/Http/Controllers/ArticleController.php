@@ -35,17 +35,23 @@ class ArticleController extends Controller
     public function show($articleId) {
         $article = Article::find($articleId);
         $article->views = $article->views + 1;
+        $tagNames = $article->tagNames();
         $article->save();
         if (empty($article)) {
             return response()->view('errors.404',['message'=>'Artikel tidak ditemukan']);
         }
-        return view('frontend.pages.detailArticle', compact('article'));
+        $articlesForAnchor = Article::distinct()->select(['title','id'])->groupBy('title')->get(['title','id']);
+        $productsForAnchor = Product::distinct()->select(['name','id'])->groupBy('name')->get(['name','id']);
+        $relatedArticle = Article::withAnyTag($tagNames)->inRandomOrder()->take(2)->get();
+
+        return view('frontend.pages.detailArticle', compact('article', 'articlesForAnchor', 'productsForAnchor', 'relatedArticle'));
     }
 
     public function createArticle() {
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
+        $existingTags =  Article::existingTags();
         if(!empty($permissions)) {
-            return view('frontend.pages.createArticle', ['permissions' => $permissions]);
+            return view('frontend.pages.createArticle', ['permissions' => $permissions, 'existingTags' => $existingTags]);
         } else {
             return response()->view('errors.403');
         }
@@ -63,7 +69,7 @@ class ArticleController extends Controller
     public function copyArticle($id) {
         $article = Article::find($id);
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
-        if(!empty($article) && Auth::check() && $article->user_id == Auth::user()->id) {
+        if(!empty($article) && Auth::check()) {
             return view('frontend.pages.copyArticle', ['article' => $article, 'permissions' => $permissions]);
         } else {
             return response()->view('errors.403');

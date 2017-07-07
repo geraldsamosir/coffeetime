@@ -22,6 +22,14 @@ class AppServiceProvider extends ServiceProvider
                 'categoriesArticle' => \App\ArticleCategory::get(),
             ]);
         });
+
+        View::composer('layouts.mobile', function($view){
+            $view->with([
+                'categoriesKopi' => \App\Category::where('parent_id',1)->get(),
+                'categoriesAlat' => \App\Category::where('parent_id',9)->get(),
+                'categoriesArticle' => \App\ArticleCategory::get(),
+            ]);
+        });
     }
 
     /**

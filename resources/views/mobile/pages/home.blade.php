@@ -4,531 +4,182 @@
 
 @section('content')
 
-	<div class="section-slider">
-	    <a href="">
-	        <img src="/images/slider1.jpg" alt="">
-	    </a>
+{{-- Section Slider --}}
+	<div class="slider">
+	    <ul class="slides">
+	      	<li><img src="images/slider1.jpg"></li>
+	      	<li><img src="images/slider2.jpg"></li>
+	    </ul>
 	</div>
+{{-- End Section Slider --}}
+{{-- ========================================== --}}
 
-	<div class="section-new-product">
-	    <div class="container">
-	        <h3 class="panel-title-bigmid">Produk terbaru</h3>
-	        {{-- Produk Kopi Terbaru --}}
-	        <div class="panel-default">
-	            <div class="panel-default-header">
-	                <div class="panel-header-title">Kopi</div>
-	                <div class="panel-header-link">
-	                     <a href="">Lihat semua</a>
-	                </div>
+
+	
+{{-- Section Kopi Terbaru --}}
+	<div class="row">
+		<h3 class="subtitle">Kopi <span class="nextlink">lihat semua</span></h3>
+    	<div class="col s12 m6">
+	    	<div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="images/coffee/example1.jpg">
+		      	</div>
+	      		<div class="card-stacked">
+	        		<div class="card-content">
+	          			<h3 class="produk-title">NIAS 200G KOPI ARABICA</h3>
+	          			<p>Rp 100.000</p>
+	        		</div>
+		        	<div class="card-action">
+		          		<a class="waves-effect waves-light btn">Beli</a>
+		        	</div>
+	      		</div>
+	    	</div>
+	  	</div>
+
+	  	<div class="col s12 m6">
+	    	<div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="images/coffee/example1.jpg">
+		      	</div>
+	      		<div class="card-stacked">
+	        		<div class="card-content">
+	          			<h3 class="produk-title">NIAS 200G KOPI ARABICA</h3>
+	          			<p>Rp 100.000 <span class="hargalama">Rp. 200.000</span> - <span class="diskon">50%</span></p>
+	        		</div>
+		        	<div class="card-action">
+		          		<a class="waves-effect waves-light btn">Beli</a>
+		        	</div>
+	      		</div>
+	    	</div>
+	  	</div> 
+  	</div>
+{{-- End Section Kopi Terbaru --}}
+{{-- ========================================== --}}
+
+
+
+{{-- Section Mesin Terbaru --}}
+	<div class="row">
+		<h3 class="subtitle">Mesin <span class="nextlink">lihat semua</span></h3>
+    	<div class="col s12 m6">
+	    	<div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="images/coffee/example1.jpg">
+		      	</div>
+	      		<div class="card-stacked">
+	        		<div class="card-content">
+	          			<h3 class="produk-title">NIAS 200G KOPI ARABICA</h3>
+	          			<p>Rp 100.000</p>
+	        		</div>
+		        	<div class="card-action">
+		          		<a class="waves-effect waves-light btn">Beli</a>
+		        	</div>
+	      		</div>
+	    	</div>
+	  	</div>
+
+	  	<div class="col s12 m6">
+	    	<div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="images/coffee/example1.jpg">
+		      	</div>
+	      		<div class="card-stacked">
+	        		<div class="card-content">
+	          			<h3 class="produk-title">NIAS 200G KOPI ARABICA</h3>
+	          			<p>Rp 100.000 <span class="hargalama">Rp. 200.000</span> - <span class="diskon">50%</span></p>
+	        		</div>
+		        	<div class="card-action">
+		          		<a class="waves-effect waves-light btn">Beli</a>
+		        	</div>
+	      		</div>
+	    	</div>
+	  	</div> 
+  	</div>
+{{-- End Section Mesin Terbaru --}}
+{{-- ========================================== --}}
+
+
+
+{{-- Section Promo Terbaru --}}	
+	<div class="row">
+		<h3 class="subtitle">Promo</h3>
+        <div class="col s6 m3">
+          	<div class="card">
+	            <div class="card-image card-image-promo">
+	              <img src="images/coffee/example1.jpg">
 	            </div>
-	            <div class="panel-default-body">
-	                <div class="row">
-	                    {{-- Baris Tanpa Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/detail-coffee">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product" />
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-new">Rp 100.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        <i class="fa fa-shopping-cart"></i>
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Tanpa Discount End --}}
-
-	                    {{-- Baris Dengan Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/coffee/sesuatu">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product" />
-	                                        <span class="price-disc">50<sup>%</sup></span>
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-old">Rp 2.000.000</span>
-	                                            <span class="price-new">Rp 1.000.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        <i class="fa fa-shopping-cart"></i>
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Dengan Discount End --}}
-
-	                     {{-- Baris Tanpa Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/coffee/sesuatu">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product" />
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-new">Rp 100.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        <i class="fa fa-shopping-cart"></i>
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Tanpa Discount End --}}
-
-	                    {{-- Baris Dengan Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/coffee/sesuatu">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product" />
-	                                        <span class="price-disc">50<sup>%</sup></span>
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-old">Rp 2.000.000</span>
-	                                            <span class="price-new">Rp 1.000.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        <i class="fa fa-shopping-cart"></i>
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Dengan Discount End --}}
-
-	                </div>
-	            </div>            
-	        </div>
-	        {{-- Produk Kopi Terbaru End--}}
-
-	        {{-- Produk Mesin Kopi Terbaru --}}
-	        <div class="panel-default">
-	            <div class="panel-default-header">
-	                <div class="panel-header-title">Mesin Kopi</div>
-	                <div class="panel-header-link">
-	                     <a href="">Lihat semua</a>
-	                </div>
+	            <div class="card-content card-content-promo">
+	              <h3 class="promo-title">NIAS 200G KOPI ARABICA</h3>
+		          <p class="hargapromo">Rp 100.000 <span class="hargalamapromo">Rp. 200.000</span> - <span class="diskon">50%</span></p>
 	            </div>
-	            <div class="panel-header-body">
-	                <div class="row">
-	                    {{-- Baris Tanpa Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/detail-mesin">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-new">Rp 100.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        {{-- <i class="fa fa-shopping-cart"></i> --}}
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Tanpa Discount End --}}
-
-	                    {{-- Baris Dengan Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/coffee/sesuatu">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                        <span class="price-disc">50<sup>%</sup></span>
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-old">Rp 2.000.000</span>
-	                                            <span class="price-new">Rp 1.000.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        {{-- <i class="fa fa-shopping-cart"></i> --}}
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Dengan Discount End --}}
-
-	                     {{-- Baris Tanpa Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/coffee/sesuatu">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-new">Rp 100.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        {{-- <i class="fa fa-shopping-cart"></i> --}}
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Tanpa Discount End --}}
-
-	                     {{-- Baris Dengan Discount --}}
-	                    <div class="col-md-3">
-	                         <div class="product-col">       
-	                            <div class="inner-product-col">
-	                                <a class="voucher-link" href="/coffee/sesuatu">
-	                                    <div class="image">
-	                                        <i class="fa fa-search overlayhover"></i>
-	                                        <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                        <span class="price-disc">50<sup>%</sup></span>
-	                                    </div>
-	                                </a>
-	                                <div class="caption">
-	                                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                    <div class="voucher-caption">
-	                                        <div class="price">
-	                                            <span class="price-old">Rp 2.000.000</span>
-	                                            <span class="price-new">Rp 1.000.000</span>
-	                                        </div>  
-	                                    </div>
-	                                </div>
-	                                <div class="btn-beli">
-	                                    <button class="btn btn-lg">
-	                                        {{-- <i class="fa fa-shopping-cart"></i> --}}
-	                                        <span>Beli</span>
-	                                    </button>
-	                                </div>
-	                                <div class="clear" style="clear:both"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Baris Dengan Discount End --}}
-
-
-
-	                </div>
-	            </div>            
-	        </div>
-	        {{-- Produk Mesin Kopi Terbaru End--}}
-	    </div>
-	</div>
-
-	<div class="section-promo">
-	    <div class="container">
-	        {{-- Promo --}}
-	        <div class="panel-product">
-	            <div class="panel-product-header">
-	                <div class="row">
-	                    <div class="col-md-12">
-	                        Promo
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="panel-product-body">
-	                <div class="row">
-	                    {{-- Promo Kopi --}}
-	                    <div class="col-md-6">
-	                        <div class="row">
-	                            <div class="col-md-6">
-	                                <div class="product-col hvr-grow-shadow">       
-	                                    <div class="inner-product-col">
-	                                        <a class="voucher-link" href="/coffee/sesuatu">
-	                                            <div class="image">
-	                                                <img src="/images/coffee/example1.jpg" alt="product" class="lazy img-responsive product" />
-	                                            </div>
-	                                        </a>
-	                                        <div class="caption">
-	                                            <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                            <div class="voucher-caption">
-	                                                <div class="price">
-	                                                    <span class="price-disc">50<sup>%</sup></span>
-	                                                    <span class="price-old">Rp 2.000.000</span>
-	                                                    <span class="price-new">Rp 1.000.000</span>
-	                                                </div>  
-	                                            </div>
-	                                        </div>
-	                                        <div class="clear" style="clear:both"></div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-6 no-padding">
-	                                <div class="row">
-	                                    {{-- Promo Bentuk Tab --}}
-	                                    <div class="col-md-12 no-padding">
-	                                       <div class="product-col-tab hvr-grow-shadow">
-	                                            <div class="row">
-	                                                <div class="inner-product-col-tab">
-	                                                   <a href="">
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="caption">
-	                                                                <span class="price-disc">50<sup>%</sup></span>
-	                                                                <span class="price-old">Rp 500.000</span>
-	                                                                <span class="price-new">Rp 250.000</span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="image">
-	                                                                <img src="/images/coffee/example1.jpg" alt="product" class="lazy img-responsive product" />
-	                                                            </div>
-	                                                        </div>
-	                                                    </a>
-	                                                </div>
-	                                            </div>
-	                                       </div>
-	                                    </div>
-	                                    {{-- Promo Bentuk Tab End --}}
-
-	                                    {{-- Promo Bentuk Tab --}}
-	                                    <div class="col-md-12 no-padding">
-	                                       <div class="product-col-tab hvr-grow-shadow">
-	                                            <div class="row">
-	                                                <div class="inner-product-col-tab">
-	                                                   <a href="">
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="caption">
-	                                                                <span class="price-disc">50<sup>%</sup></span>
-	                                                                <span class="price-old">Rp 500.000</span>
-	                                                                <span class="price-new">Rp 250.000</span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="image">
-	                                                                <img src="/images/coffee/example1.jpg" alt="product" class="lazy img-responsive product" />
-	                                                            </div>
-	                                                        </div>
-	                                                    </a>
-	                                                </div>
-	                                            </div>
-	                                       </div>
-	                                    </div>
-	                                    {{-- Promo Bentuk Tab End --}}
-
-	                                    {{-- Promo Bentuk Tab --}}
-	                                    <div class="col-md-12 no-padding">
-	                                       <div class="product-col-tab hvr-grow-shadow">
-	                                            <div class="row">
-	                                                <div class="inner-product-col-tab">
-	                                                   <a href="">
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="caption">
-	                                                                <span class="price-disc">50<sup>%</sup></span>
-	                                                                <span class="price-old">Rp 500.000</span>
-	                                                                <span class="price-new">Rp 250.000</span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="image">
-	                                                                <img src="/images/coffee/example1.jpg" alt="product" class="lazy img-responsive product" />
-	                                                            </div>
-	                                                        </div>
-	                                                    </a>
-	                                                </div>
-	                                            </div>
-	                                       </div>
-	                                    </div>
-	                                    {{-- Promo Bentuk Tab End --}}
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Promo Kopi End --}}
-	                    
-
-	                    {{-- Promo Mesin Kopi --}}
-	                    <div class="col-md-6">
-	                        <div class="row">
-	                            <div class="col-md-6">
-	                                <div class="product-col hvr-grow-shadow">       
-	                                    <div class="inner-product-col">
-	                                        <a class="voucher-link" href="/coffee/sesuatu">
-	                                            <div class="image">
-	                                                <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                            </div>
-	                                        </a>
-	                                        <div class="caption">
-	                                            <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-	                                            <div class="voucher-caption">
-	                                                <div class="price">
-	                                                    <span class="price-disc">50<sup>%</sup></span>
-	                                                    <span class="price-old">Rp 2.000.000</span>
-	                                                    <span class="price-new">Rp 1.000.000</span>
-	                                                </div>  
-	                                            </div>
-	                                        </div>
-	                                        <div class="clear" style="clear:both"></div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-6 no-padding">
-	                                <div class="row">
-	                                    {{-- Promo Bentuk Tab --}}
-	                                    <div class="col-md-12 no-padding">
-	                                       <div class="product-col-tab hvr-grow-shadow">
-	                                            <div class="row">
-	                                                <div class="inner-product-col-tab">
-	                                                   <a href="">
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="caption">
-	                                                                <span class="price-disc">50<sup>%</sup></span>
-	                                                                <span class="price-old">Rp 500.000</span>
-	                                                                <span class="price-new">Rp 250.000</span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="image">
-	                                                                <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                                            </div>
-	                                                        </div>
-	                                                    </a>
-	                                                </div>
-	                                            </div>
-	                                       </div>
-	                                    </div>
-	                                    {{-- Promo Bentuk Tab End --}}
-
-	                                    {{-- Promo Bentuk Tab --}}
-	                                    <div class="col-md-12 no-padding">
-	                                       <div class="product-col-tab hvr-grow-shadow">
-	                                            <div class="row">
-	                                                <div class="inner-product-col-tab">
-	                                                   <a href="">
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="caption">
-	                                                                <span class="price-disc">50<sup>%</sup></span>
-	                                                                <span class="price-old">Rp 500.000</span>
-	                                                                <span class="price-new">Rp 250.000</span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="image">
-	                                                                <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                                            </div>
-	                                                        </div>
-	                                                    </a>
-	                                                </div>
-	                                            </div>
-	                                       </div>
-	                                    </div>
-	                                    {{-- Promo Bentuk Tab End --}}
-
-	                                    {{-- Promo Bentuk Tab --}}
-	                                    <div class="col-md-12 no-padding">
-	                                       <div class="product-col-tab hvr-grow-shadow">
-	                                            <div class="row">
-	                                                <div class="inner-product-col-tab">
-	                                                   <a href="">
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="caption">
-	                                                                <span class="price-disc">50<sup>%</sup></span>
-	                                                                <span class="price-old">Rp 500.000</span>
-	                                                                <span class="price-new">Rp 250.000</span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="col-md-6 no-padding">
-	                                                            <div class="image">
-	                                                                <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product" />
-	                                                            </div>
-	                                                        </div>
-	                                                    </a>
-	                                                </div>
-	                                            </div>
-	                                       </div>
-	                                    </div>
-	                                    {{-- Promo Bentuk Tab End --}}
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    {{-- Promo Mesin Kopi End --}}
-	                </div>
+	            <div class="card-action card-action-promo">
+	              <a class="waves-effect waves-light btn">Beli</a>
 	            </div>
 	        </div>
-	        {{-- Promo End--}}
+        </div>
+
+        <div class="col s6 m3">
+          <div class="card">
+            <div class="card-image card-image-promo">
+              <img src="images/coffee/example1.jpg">
+            </div>
+            <div class="card-content card-content-promo">
+              <h3 class="promo-title">NIAS 200G KOPI ARABICA</h3>
+	          <p class="hargapromo">Rp 100.000 <span class="hargalamapromo">Rp. 200.000</span> - <span class="diskon">50%</span></p>
+            </div>
+            <div class="card-action card-action-promo">
+              <a class="waves-effect waves-light btn">Beli</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6 m3">
+          <div class="card">
+            <div class="card-image card-image-promo">
+              <img src="images/coffee/example1.jpg">
+            </div>
+            <div class="card-content card-content-promo">
+              <h3 class="promo-title">NIAS 200G KOPI ARABICA</h3>
+	          <p class="hargapromo">Rp 100.000 <span class="hargalamapromo">Rp. 200.000</span> - <span class="diskon">50%</span></p>
+            </div>
+            <div class="card-action card-action-promo">
+              <a class="waves-effect waves-light btn">Beli</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6 m3">
+          <div class="card">
+            <div class="card-image card-image-promo">
+              <img src="images/coffee/example1.jpg">
+            </div>
+            <div class="card-content card-content-promo">
+              <h3 class="promo-title">NIAS 200G KOPI ARABICA</h3>
+	          <p class="hargapromo">Rp 100.000 <span class="hargalamapromo">Rp. 200.000</span> - <span class="diskon">50%</span></p>
+            </div>
+            <div class="card-action card-action-promo">
+              <a class="waves-effect waves-light btn">Beli</a>
+            </div>
+          </div>
+        </div>
+    </div>
+{{-- End Section Promo Terbaru --}}
+{{-- ========================================== --}}
 
 
-	    </div>
-	</div>
+	
+@endsection
+
+@section('js')
+	
+	 
+	<script>
+		$(document).ready(function(){
+	      $('.slider').slider({
+	      	height: 200
+	      });
+	    });
+	</script>
+        
 
 @endsection

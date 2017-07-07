@@ -58,4 +58,13 @@ class Usercontroller extends Controller
 
         }
     }
+
+    public function savePortfolio(Request $request) {
+        $input = $request->all();
+        $user = Auth::user();
+        $user->portfolio = $input['lblPortfolio'];
+        $user->save();
+
+        return redirect('/customer/portfolio')->with('status', 'Profile berhasil diubah');
+    }
 }

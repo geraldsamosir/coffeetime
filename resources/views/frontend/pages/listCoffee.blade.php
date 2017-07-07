@@ -119,7 +119,7 @@
 						</div>
 					</div>
           <div class="col-md-2">
-            <button type="submit" class="btn btn-success">Submit Query</button>
+            <button type="submit" class="btn btn-success">Lakukan Filter</button>
           </div>
 
           {!! Form::close() !!}
@@ -153,10 +153,12 @@
                             </div>
                         </div>
                         <div class="btn-beli">
+                          <a href="{{ url('detail-coffee/'.$coffee->id) }}">
                             <button class="btn btn-lg">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Beli</span>
                             </button>
+                          </a>
                         </div>
                         <div class="clear" style="clear:both"></div>
                     </div>
@@ -186,10 +188,12 @@
                         </div>
                     </div>
                     <div class="btn-beli">
+                      <a href="{{ url('detail-coffee/'.$coffee->id) }}">
                         <button class="btn btn-lg">
                             <i class="fa fa-shopping-cart"></i>
                             <span>Beli</span>
                         </button>
+                      </a>
                     </div>
                     <div class="clear" style="clear:both"></div>
                 </div>
