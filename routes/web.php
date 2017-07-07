@@ -240,17 +240,6 @@ else {
 		return view('mobile.pages.detailCoffee');
 	});
 
-    Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
-        $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
-        $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
-        return view('frontend.pages.detailCoffee')->with([
-            'productCoffee' => $productCoffee,
-            'productImages' => json_decode($productCoffee->images),
-            'characteristics' => $characteristics,
-            'graphs' => $graphs,
-        ]);
-    });
-
 	Route::get('/detail-mesin', function(){
 		return view('mobile.pages.detailMesin');
 	});
@@ -271,11 +260,14 @@ else {
 		return view('mobile.pages.listArtikel');
 	});
 
-    Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->get();
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
-        return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
-    });
+	Route::get('/komparasi', function(){
+		return view('mobile.pages.komparasi');
+	});
+
+	Route::get('/cart', function(){
+		return view('mobile.pages.cart');
+	});
+
 
 }
 

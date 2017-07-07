@@ -219,3 +219,24 @@ span.produk-detail-harga {
 	width: 50%;
 	text-align: right;
 }
+
+.collapsible-sidebar {
+	padding: 0px 32px !important;
+}
+
+.collapsible-body-sidebar {
+	padding: 0px 0px 0px 30px !important;
+}
+
+
+.collapsible-body-sidebar li a{
+	font-size: 14px;
+	color: #999;
+}
+
+.icon-sidebar {
+	color: rgba(0, 0, 0, 0.54);
+	margin-right: 32px !important;
+	width: 24px !important;
+	font-size: 24px !important;
+}
