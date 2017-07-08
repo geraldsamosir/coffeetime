@@ -35,8 +35,8 @@
                 <div class="col-sm-12 col-md-10 col-md-offset-2">
                     <div class="logo-title-container">
                         <div class="copy">
-                            <h1>{{ Voyager::setting('admin_title', 'EduCoffee') }}</h1>
-                            <p>{{ Voyager::setting('admin_description', 'This is admin panel for EduCoffee') }}</p>
+                            <h1>{{ Voyager::setting('admin_title', 'CoffeeTime') }}</h1>
+                            <p>{{ Voyager::setting('admin_description', 'This is admin panel for CoffeeTime') }}</p>
                         </div>
                     </div> <!-- .logo-title-container -->
                 </div>
