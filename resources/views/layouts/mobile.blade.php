@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
     	<meta charset="utf-8">
-    	<title>EduCoffe @yield('title','| Homepage')</title>
+    	<title>CoffeeTime @yield('title','| Homepage')</title>
 		<link rel="stylesheet" href="{{ asset('css/materialize.css') }}">
 		{{-- <link rel="stylesheet" href="{{ asset('css/mobile.css') }}"> --}}
 		<link rel="stylesheet" href="{{ asset('css/mob.css') }}">
@@ -26,6 +26,8 @@
 		<script src="{{ asset('/js/jquery-2.1.1.min.js') }}"></script>
 		<script src="{{ asset('/js/materialize.js') }}"></script>
 		<script src="{{ asset('/js/mobile.js') }}"></script>
+
+		<script src="{{ asset('/js/lib.js') }}"></script>
 		@yield('js')
 
 		<script>

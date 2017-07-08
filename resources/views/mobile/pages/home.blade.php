@@ -7,8 +7,8 @@
 {{-- Section Slider --}}
 	<div class="slider">
 	    <ul class="slides">
-	      	<li><img src="images/slider1.jpg"></li>
-	      	<li><img src="images/slider2.jpg"></li>
+	      	<li><img src="images/slide-1.jpg"></li>
+	      	<li><img src="images/slide-2.jpg"></li>
 	    </ul>
 	</div>
 {{-- End Section Slider --}}

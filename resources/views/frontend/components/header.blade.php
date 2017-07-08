@@ -4,7 +4,7 @@
       <div class="col-md-3">
         <div class="nav-logo">
           <a href="/">
-            <img src="/images/logo.png" alt="EduCoffee">
+            <img src="/images/logo.png" alt="CoffeeTime">
           </a>
         </div>
       </div>

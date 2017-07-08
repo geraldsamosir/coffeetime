@@ -53,7 +53,7 @@
             <div class="row">
               <div class="panel-card">
                 <div class="panel-card-body">
-                  <h4>Deskripsi Coffee</h4>
+                  <h4>Deskripsi Product</h4>
                   {!! $productCoffee->description !!}
                 </div>
               </div>
