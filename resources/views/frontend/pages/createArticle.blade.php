@@ -53,7 +53,7 @@
                   {!! Form::label('lblProduct',"Product",[]) !!}
                   {!! Form::select('lblProduct',$permissions->mapWithKeys(function ($item) {
                     return [$item['id'] => $item->product->name];
-                  }),null,['class'=>'form-control', 'required']) !!}
+                  }),null,['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
