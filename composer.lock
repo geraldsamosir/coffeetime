@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dfd26e354819060a286177a9ccedaa63",
-    "content-hash": "cbce8c00b46bdbfb1741c16613a682ce",
+    "hash": "b9870a2efbda0dc63da99d992a93b683",
+    "content-hash": "03680613f5d9f330cd83d7588ed8cc54",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -3009,16 +3009,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.133",
+            "version": "dev-javentVoyager",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hugosvent/voyager.git",
-                "reference": "2c3a03916ff3e593500862842d9cb50e491aa3e5"
+                "reference": "6d90bb30656b074d86acd94296bb069b825c6d8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hugosvent/voyager/zipball/2c3a03916ff3e593500862842d9cb50e491aa3e5",
-                "reference": "2c3a03916ff3e593500862842d9cb50e491aa3e5",
+                "url": "https://api.github.com/repos/hugosvent/voyager/zipball/6d90bb30656b074d86acd94296bb069b825c6d8a",
+                "reference": "6d90bb30656b074d86acd94296bb069b825c6d8a",
                 "shasum": ""
             },
             "require": {
@@ -3070,7 +3070,7 @@
                 "issues": "https://github.com/the-control-group/voyager/issues",
                 "source": "https://github.com/the-control-group/voyager"
             },
-            "time": "2017-06-21 16:56:41"
+            "time": "2017-07-07 12:13:13"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4770,7 +4770,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "tcg/voyager": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
