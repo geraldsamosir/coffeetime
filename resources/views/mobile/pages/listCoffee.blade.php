@@ -9,49 +9,52 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">search</i>Filter</div>
       <div class="row collapsible-body">
+        {!! Form::open(['url'=>'/search-product', 'method'=>'GET']) !!}
         <div class="input-field col s12">
-          <input id="namaproduk" type="text" class="validate">
+          <input name="query" id="namaproduk" type="text" class="validate">
           <label for="namaproduk">Cari Produk</label>
         </div>
 
         <div class="input-field col s6">
-          <select>
+          <select name="category" class="select-kategori form-control">
             <option value="" disabled selected>Kategori</option>
-            <option value="1">Coffee A</option>
-            <option value="2">Coffee B</option>
+            <option value="">Reset</option>
+            @foreach($categoryProduct as $category)
+              <option @if((app('request')->input('category') ? app('request')->input('category') : null) == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
           </select>
         </div>
 
         <div class="input-field col s6">
-          <select>
-            <option value="" disabled selected>Harga</option>
-            <option value="0">Reset</option>
-            <option value="1">0 - Rp. 100.00</option>
-            <option value="2">Rp. 100.000 - Rp. 500.00</option>
-            <option value="3">>Rp. 500.000</option>
-            </optgroup>
+          <select name="price" class="select-merek form-control">
+            <option value="" selected disabled>Harga</option>
+            <option value="" >Reset</option>
+            <option @if((app('request')->input('price') ? app('request')->input('price') : null) == 'to100') selected @endif value="to100">Rp. 0 - Rp. 100.000</option>
+            <option @if((app('request')->input('price') ? app('request')->input('price') : null) == 'between100-500') selected @endif value="between100-500">Rp. 100.000 - Rp. 500.000</option>
+            <option @if((app('request')->input('price') ? app('request')->input('price') : null) == 'over500') selected @endif  value="over500"> > Rp. 500.000 </option>
           </select>
         </div>
 
         <div class="input-field col s6">
-          <select>
-            <option value="" disabled selected>Urutkan</option>
-            <option value="0">Reset</option>
-            <option value="1">Harga Terendah</option>
-            <option value="2">Harga Tertinggi</option>
-            <option value="3">Paling Lama</option>
-            <option value="4">Paling Baru</option>
-            </optgroup>
+          <select name="sort" class="select-merek form-control">
+            <option value="" selected disabled>Urutkan</option>
+            <option value="" >Reset</option>
+            <option value="lowprice">Harga Terendah</option>
+            <option value="highprice">Harga Tertinggi</option>
+            <option value="" disabled>---</option>
+            <option value="oldest">Paling Lama</option>
+            <option value="latest">Paling Baru</option>
           </select>
         </div>
 
         <div class="input-field col s6">
-          <a class="waves-effect waves-light btn">Filter</a>
+          <button type="submit" class="waves-effect waves-light btn">Filter</button>
         </div>
       </div>
     </li>
   </ul>
   {{-- End Section Sorting --}}
+  {!! Form::close() !!}
   {{-- ========================================== --}}
 
   {{-- Section Card Kopi --}}

@@ -277,6 +277,53 @@ else {
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
+    Route::get('/search-product', function () {
+        $searchQuery = Request::all()['query'];
+        $sortQuery = isset(Request::all()['sort']) ? Request::all()['sort'] : null;
+        $categoryQuery = isset(Request::all()['category']) ? Request::all()['category'] : null;
+        $priceQuery = isset(Request::all()['price']) ? Request::all()['price'] : null;
+        $categoryProduct = \App\Category::where('name','!=', 'parentless')->where('parent_id', '!=', 8)->get();
+        $coffees = App\Product::where('name', 'like', '%' . $searchQuery . '%');
+
+        if (!empty($categoryQuery)) {
+            $coffees = $coffees->where('category_id', $categoryQuery);
+        }
+
+        if (!empty($priceQuery)) {
+            switch ($priceQuery) {
+                case 'to100':
+                    $coffees = $coffees->where('original_price', '<=' ,100000);
+                    break;
+                case 'between100-500':
+                    $coffees = $coffees->whereBetween('original_price', [100000,500000]);
+                    break;
+                case 'over500':
+                    $coffees = $coffees->where('original_price', '>=', 500000);
+                    break;
+                default:
+
+            }
+        }
+
+        switch ($sortQuery) {
+            case 'lowprice':
+                $coffees = $coffees->orderBy('original_price', 'ASC');
+                break;
+            case 'highprice':
+                $coffees = $coffees->orderBy('original_price', 'DESC');
+                break;
+            case 'latest':
+                $coffees = $coffees->orderBy('created_at', 'DESC');
+                break;
+            case 'oldest':
+                $coffees = $coffees->orderBy('created_at', 'ASC');
+                break;
+        }
+
+        $coffees = $coffees->get();
+        return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
+    });
+
 	Route::get('/komparasi', function(){
 		return view('mobile.pages.komparasi');
 	});
