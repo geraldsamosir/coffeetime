@@ -1,15 +1,15 @@
 <ul id="slide-out" class="side-nav">
   @if(Auth::check())
-  <li>
-    <div class="user-view">
-      <div class="background">
-        <img src="{{url('images/backnav.jpg')}}">
-      </div>
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img src="{{url('images/backnav.jpg')}}">
+        </div>
         <a href="#!user"><img class="circle" src={{Voyager::image(Auth::user()->avatar)}}></a>
         <a href="#!name"><span class="white-text name">{{Auth::user()->name}}</span></a>
         <a href="#!email"><span class="white-text email">{{Auth::user()->email}}</span></a>
-    </div>
-  </li>
+      </div>
+    </li>
   @endif
   <li><a href="/"><i class="material-icons">store</i>Home</a></li>
 
@@ -37,7 +37,16 @@
     </li>
   </ul>
 
-  <li><a href="/"><i class="material-icons">assignment</i>Resep</a></li>
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header collapsible-sidebar"><i class="material-icons icon-sidebar">assignment</i>Resep</div>
+      <ul class="collapsible-body collapsible-body-sidebar">
+        @foreach($categoriesArticle as $category)
+          <li><a href="{{url('list-article/'.$category->id)}}">{{$category->name}}</a></li>
+        @endforeach
+      </ul>
+    </li>
+  </ul>
   <li><a href="/"><i class="material-icons">live_help</i>Bantuan</a></li>
   <li><a href="/"><i class="material-icons">contacts</i>Contact</a></li>
   <li>
