@@ -229,8 +229,9 @@
                               </div>
                               <div class="resep-social-icon">
                                 <i class="fa fa-thumbs-up"></i>
-                                <span class="icont-like">{{$article->likes}}</span>
-
+                                <span class="icon-like">{{$article->likes}}</span>
+                                <i class="fa fa-thumbs-up"></i>
+                                <span class="icon-comment">{{$article->copies}}</span>
                                 <i class="fa fa-eye"></i>
                                 <span class="icon-view">{{$article->views}}</span>
                               </div>

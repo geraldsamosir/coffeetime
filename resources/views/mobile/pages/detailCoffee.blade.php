@@ -77,21 +77,27 @@
 
 
 
+  @if(count($relatedArticle) > 0)
   {{-- Section Resep --}}
   <div class="row">
     <h3 class="subtitle">Resep</h3>
+    @foreach($relatedArticle as $article)
+      <a href="/article/view/{{$article->id}}">
     <div class="col s12 m6">
+
       <div class="card horizontal">
         <div class="card-image card-image-resep">
-          <img src="images/coffee/example9.jpg">
+          <img
+               src="{{ !empty($article->header_image) ? Voyager::image($article->header_image) : asset('images/placeholder-image.png') }}"
+               alt="">
         </div>
         <div class="card-stacked card-stacked-resep">
           <div class="card-content">
-            <p class="p12"><b>Macciato Nias</b></p>
+            <p class="p12"><b>{{$article->title}}</b></p>
             <p class="p12 social-stat">
-              <i class="material-icons" style="font-size:14px;">content_copy</i>10
-              <i class="material-icons" style="font-size:14px;">visibility</i>10
-              <i class="material-icons" style="font-size:14px;">thumb_up</i>10
+              <i class="material-icons" style="font-size:14px;">content_copy</i>{{$article->copies}}
+              <i class="material-icons" style="font-size:14px;">visibility</i>{{$article->views}}
+              <i class="material-icons" style="font-size:14px;">thumb_up</i>{{$article->likes}}
             </p>
           </div>
           <div class="card-action">
@@ -99,30 +105,54 @@
           </div>
         </div>
       </div>
+
     </div>
-    <div class="col s12 m6">
-      <div class="card horizontal">
-        <div class="card-image card-image-resep">
-          <img src="images/coffee/example9.jpg">
-        </div>
-        <div class="card-stacked card-stacked-resep">
-          <div class="card-content">
-            <p class="p12"><b>Macciato Nias</b></p>
-            <p class="p12 social-stat">
-              <i class="material-icons" style="font-size:14px;">content_copy</i>10
-              <i class="material-icons" style="font-size:14px;">visibility</i>10
-              <i class="material-icons" style="font-size:14px;">thumb_up</i>10
-            </p>
-          </div>
-          <div class="card-action">
-            <a class="p12" href="#">Lihat</a>
-          </div>
-        </div>
-      </div>
-    </div>
+      </a>
+    @endforeach
+
   </div>
   {{-- End Section Resep --}}
   {{-- ========================================== --}}
+  @endif
+
+  <div class="row">
+    <h3 class="subtitle">Produk Terkait</h3>
+    @foreach($relatedProduct as $coffee)
+      @if($coffee->discount_percent == 0)
+        <div class="col s6 m3">
+          <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+            <div class="card">
+              <div class="card-image card-image-promo">
+                <img src="{{ Voyager::image($coffee->thumb_image) }}">
+              </div>
+              <div class="card-content card-content-promo">
+                <h3 class="promo-title">{{$coffee->name}}</h3>
+                <p class="hargapromo">Rp {{number_format($coffee->original_price)}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      @else
+
+        <div class="col s6 m3">
+          <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+            <div class="card">
+              <div class="card-image card-image-promo">
+                <img src="{{ Voyager::image($coffee->thumb_image) }}">
+              </div>
+              <div class="card-content card-content-promo">
+                <h3 class="promo-title">{{$coffee->name}}</h3>
+                <p class="hargapromo">Rp {{ number_format($coffee->discounted_price)}}<span
+                    class="hargalamapromo">Rp. {{ number_format($coffee->original_price)}}</span> - <span
+                    class="diskon">{{$coffee->discount_percent}}%</span></p>
+              </div>
+            </div>
+          </a>
+        </div>
+      @endif
+    @endforeach
+
+  </div>
 
 @endsection
 
