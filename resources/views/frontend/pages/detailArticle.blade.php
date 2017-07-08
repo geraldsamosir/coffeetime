@@ -192,7 +192,7 @@
       shareWidget.setWidgetTheme(".oss-widget-interface");
 
       function keywordconvertArticle(str, id)  {
-          return "<a href=\"/article/views/"+encodeURIComponent(id)+"\">"+str+"</a>";
+          return "<a href=\"/article/view/"+encodeURIComponent(id)+"\">"+str+"</a>";
       }
 
       function searchArticle(keyword, id) {

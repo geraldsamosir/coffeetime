@@ -120,10 +120,6 @@ if ($agent->isDesktop()) {
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
-	Route::get('/list-mesin', function(){
-		return view('frontend.pages.listMesin');
-	});
-
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
         $articles = App\Article::where('category_id', $category->id)->paginate(5);
         return view('frontend.pages.listArticle', compact('articles'));
@@ -267,9 +263,37 @@ else {
 		return view('mobile.pages.listMesin');
 	});
 
-	Route::get('/list-artikel', function(){
-		return view('mobile.pages.listArtikel');
-	});
+    Route::get('/search-article', function () {
+        $searchQuery = isset(Request::all()['query']) ? Request::all()['query'] : null;
+        $sortQuery = isset(Request::all()['sort']) ? Request::all()['sort'] : null;
+        $articles = App\Article::where('title', 'like', '%' . $searchQuery . '%');
+
+        switch ($sortQuery) {
+            case 'likes':
+                $articles = $articles->orderBy('likes', 'DESC')->paginate(5);
+                break;
+            case 'views':
+                $articles = $articles->orderBy('views', 'DESC')->paginate(5);
+                break;
+            case 'latest':
+                $articles = $articles->orderBy('created_at', 'DESC')->paginate(5);
+                break;
+            case 'oldest':
+                $articles = $articles->orderBy('created_at', 'ASC')->paginate(5);
+                break;
+            case 'copies':
+                $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
+                break;
+            default:
+                $articles = $articles->paginate(5);
+        }
+        return view('mobile.pages.listArtikel', compact('articles'));
+    });
+
+    Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
+        $articles = App\Article::where('category_id', $category->id)->paginate(5);
+        return view('mobile.pages.listArtikel', compact('articles'));
+    });
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
         $coffees = App\Product::where('category_id', $category->id)->get();
