@@ -30,9 +30,9 @@
     <li>
       <div class="collapsible-header collapsible-sidebar"><i class="material-icons icon-sidebar">work</i>Alat</div>
       <ul class="collapsible-body collapsible-body-sidebar">
-        <li><a href="">Alat 1</a></li>
-        <li><a href="">Alat 2</a></li>
-        <li><a href="">Alat 3</a></li>
+        @foreach($categoriesAlat as $kopi)
+          <li><a href="{{url('list-product/'.$kopi->id)}}">{{$kopi->name}}</a></li>
+        @endforeach
       </ul>
     </li>
   </ul>
@@ -43,8 +43,8 @@
   <li>
     <div class="divider"></div>
   </li>
-  <li><a href="/"><i class="material-icons">perm_identity</i>Login</a></li>
-  <li><a href="/"><i class="material-icons">assignment_ind</i>Register</a></li>
+  <li><a href="/login"><i class="material-icons">perm_identity</i>Login</a></li>
+  <li><a href="/register"><i class="material-icons">assignment_ind</i>Register</a></li>
 
   {{-- <li><div class="divider"></div></li> --}}
   {{-- <li><a class="subheader">Subheader</a></li> --}}
