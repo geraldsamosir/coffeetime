@@ -360,6 +360,10 @@ else {
 		return view('mobile.pages.checkout');
 	});
 
+    Route::get('/pembayaran', function(){
+        return view('mobile.pages.pembayaran');
+    });
+
 
 }
 

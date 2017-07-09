@@ -41,7 +41,7 @@ h4 {
 	font-size: 12px;
 }
 
-.p12 {
+.p14 {
 	font-size: 14px;
 }
 
@@ -259,4 +259,27 @@ span.produk-detail-harga {
 
 .total p {
 	margin: 0px !important;
+}
+
+.ppading {
+	padding: 10px;
+    background: #eee;
+    border: 1px solid #ccc;
+}
+
+.pnomargin {
+	margin: 0px !important;
+}
+
+.logo-bca img{
+	width: 135px;
+	margin: 8px 0px;
+}
+
+.rek {
+	margin: 10px 0px;
+}
+
+.card-image-pembayaran {
+	width: 200px;
 }
