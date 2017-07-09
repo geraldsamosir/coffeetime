@@ -18,10 +18,12 @@
   },
   "dependencies": {
     "bootstrap-material-design": "^0.5.10",
+    "chart.js": "^2.6.0",
     "font-awesome": "^4.7.0",
     "install": "^0.8.9",
     "npm": "^4.5.0",
     "numeral": "^2.0.6",
+    "select2": "^4.0.3",
     "taggle": "^1.11.2"
   }
 }

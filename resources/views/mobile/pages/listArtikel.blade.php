@@ -4,98 +4,80 @@
 
 @section('content')
 
-{{-- Section Sorting --}}
+  {{-- Section Sorting --}}
+  {!! Form::open(['url'=>'/search-article', 'method'=>'GET']) !!}
   <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><i class="material-icons">search</i>Filter</div>
       <div class="row collapsible-body">
         <div class="input-field col s12">
-          <input id="namaproduk" type="text" class="validate">
+          {!! Form::text('query',app('request')->input('query'),['class'=>'col-md-12 form-control','placeholder'=>'Cari Artikel...',]) !!}
           <label for="namaproduk">Cari Artikel</label>
-        </div>
-     
-        <div class="input-field col s6">
-          <select>
-              <option value="" disabled selected>Sorting Artikel</option>
-              <option value="1">Like Terbanyak</option>
-              <option value="2">View Terbanyak</option>
-              <option value="3">Terbaru</option>
-              <option value="4">Terlama</option>
-          </select>
         </div>
 
         <div class="input-field col s6">
-          <a class="waves-effect waves-light btn">Filter</a>
+          {!! Form::select('sort',['default'=>'Sorting Artikel','likes'=>'Like Terbanyak','views'=>'View Terbanyak','latest'=>'Terbaru','oldest'=>'Terlama'], app('request')->input('sort') ? app('request')->input('sort') : 'default',['class'=>'form-control', 'required']) !!}
+        </div>
+
+        <div class="input-field col s6">
+          <button type="submit" class="waves-effect waves-light btn">Filter</button>
         </div>
       </div>
     </li>
   </ul>
-{{-- End Section Sorting --}}
-{{-- ========================================== --}}
+  {!! Form::close() !!}
+  {{-- End Section Sorting --}}
+  {{-- ========================================== --}}
 
 
-{{-- Section Card Resep --}}
+  {{-- Section Card Resep --}}
   <div class="row">
-    <div class="col s12 m6">
+    @foreach($articles as $article)
+      <div class="col s12 m6">
         <div class="card horizontal">
           <div class="card-image card-image-resep">
-            <img src="images/coffee/example9.jpg">
+            <img
+              src="{{ !empty($article->header_image) ? Voyager::image($article->header_image) : asset('images/placeholder-image.png') }}">
           </div>
           <div class="card-stacked card-stacked-resep">
             <div class="card-content">
-              <p class="ptitle">Capuccino Nias <span class="pdate">Date: 12-12-2016</span></span>
-              <p class="pcreated">Created by : <a href="">Invokerista</a></p>
+              <p class="ptitle">{{$article->title}} <span
+                  class="pdate">Date: {{ date('F d, Y', strtotime($article->created_at)) }}</span></span>
+              <p class="pcreated">Created by : <a href="">{{App\User::find($article->user_id)->name}}</a></p>
               <p class="p12 social-stat">
-                  <i class="material-icons" style="font-size:14px;">content_copy</i>10
-                  <i class="material-icons" style="font-size:14px;">visibility</i>10
-                  <i class="material-icons" style="font-size:14px;">thumb_up</i>10
+                <i class="material-icons" style="font-size:14px;">content_copy</i>{{$article->copies}}
+                <i class="material-icons" style="font-size:14px;">visibility</i>{{$article->views}}
+                <i class="material-icons" style="font-size:14px;">thumb_up</i>{{$article->likes}}
               </p>
-            </div>
-            <div class="card-action">
-              <a class="p12" href="#">Lihat</a>
+              <p>
+                @foreach($article->tagged as $tag)
+                  <span class="chip">{{$tag->tag_name}}</span>
+                @endforeach
+              </p>
             </div>
           </div>
         </div>
-    </div>
-    <div class="col s12 m6">
-        <div class="card horizontal">
-          <div class="card-image card-image-resep">
-            <img src="images/coffee/example9.jpg">
-          </div>
-          <div class="card-stacked card-stacked-resep">
-            <div class="card-content">
-              <p class="ptitle">Capuccino Nias <span class="pdate">Date: 12-12-2016</span></span>
-              <p class="pcreated">Created by : <a href="">Invokerista</a></p>
-              <p class="p12 social-stat">
-                  <i class="material-icons" style="font-size:14px;">content_copy</i>10
-                  <i class="material-icons" style="font-size:14px;">visibility</i>10
-                  <i class="material-icons" style="font-size:14px;">thumb_up</i>10
-              </p>
-            </div>
-            <div class="card-action">
-              <a class="p12" href="#">Lihat</a>
-            </div>
-          </div>
-        </div>
-    </div>
+      </div>
+    @endforeach
   </div>
-{{-- End Section Card Resep --}}
-{{-- ========================================== --}}
+  {{$articles->appends(app('request')->except('page'))->links()}}
+  {{-- End Section Card Resep --}}
+  {{-- ========================================== --}}
 
 @endsection
 
 @section('js')
-	
-	 
-	<script>
-	
-	  $(document).ready(function() {
-		  $('select').material_select();
-      $('.collapsible').collapsible();
-		});
-       
 
-	</script>
-        
+
+  <script>
+
+      $(document).ready(function () {
+          $('select').material_select();
+          $('.collapsible').collapsible();
+      });
+
+
+  </script>
+
 
 @endsection

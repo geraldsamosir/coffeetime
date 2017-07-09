@@ -4,13 +4,13 @@
       <div class="col-md-3">
         <div class="nav-logo">
           <a href="/">
-            <img src="/images/logo.png" alt="EduCoffee">
+            <img src="/images/logo.png" alt="CoffeeTime">
           </a>
         </div>
       </div>
       <div class="col-md-5">
         <div class="nav-search">
-          {!! Form::open(['url'=>'search-product', 'method'=>'GET']) !!}
+          {!! Form::open(['url'=>'/search-product', 'method'=>'GET']) !!}
           {{-- <form action="" method="post"> --}}
             <div id="search">
               <div class="input-group">
@@ -48,7 +48,7 @@
                     <li>
                       <a tabindex="-1" href="{{ url('customer/portfolio') }}">
                         <span class="fa fa-address-book"></span>
-                        Portofolio
+                        portfolio
                       </a>
                     </li>
                     <li>
@@ -60,7 +60,7 @@
                     <li>
                       <a tabindex="-1" href="{{ url('/customer/article') }}">
                         <span class="fa fa-book"></span>
-                        Resep Saya
+                        Artikel Saya
                       </a>
                     </li>
                     <li>

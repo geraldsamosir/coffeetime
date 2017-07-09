@@ -10,10 +10,6 @@
 		background: $putih;
 		padding: 20px 0px;
 		text-align: center;
-		img{
-			width: 150px;
-			margin: 10px 0px;
-		}
 		ul.card-social-akun{
 			padding: 0px;
 			margin: 10px;
@@ -46,15 +42,6 @@
 			.list-article-favorited li, .list-article-created li{
 				font-size: 13px;
 				font-weight: 400;
-			}
-			
-			.list-article-favorited li:before, .list-article-created li:before{
-				content: "\f15c"; /* FontAwesome Unicode */
-			  	font-family: FontAwesome;
-			  	font-size: 13px;
-			  	display: inline-block;
-			  	margin-left: -1.3em; /* same as padding-left set on li */
-			  	width: 1.3em;
 			}
 		}
 	}

@@ -53,7 +53,7 @@
             <div class="row">
               <div class="panel-card">
                 <div class="panel-card-body">
-                  <h4>Deskripsi Coffee</h4>
+                  <h4>Deskripsi Product</h4>
                   {!! $productCoffee->description !!}
                 </div>
               </div>
@@ -108,9 +108,10 @@
                           <div class="row">
                             <div class="col-md-7 flex-direction-coloumn">
                               <div class="harga-count-pembelian">
-                                <span class="price-new">Rp. {{ $productCoffee->discounted_price > 0 ? number_format($productCoffee->discounted_price) : number_format($productCoffee->original_price) }}</span>
+                                <span
+                                  class="price-new">Rp. {{ $productCoffee->discounted_price > 0 ? number_format($productCoffee->discounted_price) : number_format($productCoffee->original_price) }}</span>
                                 @if($productCoffee->discounted_price > 0) <span
-                                        class="price-old">Rp. {{ number_format($productCoffee->original_price) }}</span> @endif
+                                  class="price-old">Rp. {{ number_format($productCoffee->original_price) }}</span> @endif
                               </div>
                             </div>
                             <div class="col-md-5">
@@ -168,6 +169,25 @@
             </div>
           </div>
 
+          @if($productCoffee->need_graph)
+            <div class="details-core">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="panel-card">
+                    <div class="panel-card-header">
+                      <h3 class="panel-title">Graph</h3>
+                    </div>
+                    <div class="panel-card-body">
+                      <div class="core-details">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          @endif
+
         </div>
         {{-- Detail Kanan End --}}
       </div>
@@ -175,84 +195,63 @@
     </div>
   </div>
 
-  <div class="section-resep-coffee">
-    <div class="container">
-      {{-- Baris Related Resep Start --}}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel-default-header">
-            <h3>Resep</h3>
-          </div>
-          <div class="resep-coffee-list">
-            <div class="row">
-              {{-- List Resep Start --}}
-              <div class="col-md-6">
-                <div class="card-resep hvr-float-shadow">
-                  <div class="row">
-                    <a href="/details-resep">
-                      <div class="col-md-4">
-                        <div class="resep-image">
-                          <img src="/images/coffee/example9.jpg">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="resep-list-details">
-                          <span class="resep-title">Macciato Nias</span>
-                          <span class="resep-brew">AeroPress</span>
-                          <div class="resep-social-icon">
-                            <i class="fa fa-comments-o"></i>
-                            <span class="icon-comment">10</span>
-
-                            <i class="fa fa-thumbs-up"></i>
-                            <span class="icont-like">10</span>
-
-                            <i class="fa fa-eye"></i>
-                            <span class="icon-view">20</span>
+  @if(count($relatedArticle) > 0)
+    <div class="section-resep-coffee">
+      <div class="container">
+        {{-- Baris Related Resep Start --}}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel-default-header">
+              <h3>Resep</h3>
+            </div>
+            <div class="resep-coffee-list">
+              <div class="row">
+                {{-- List Resep Start --}}
+                @foreach($relatedArticle as $article)
+                  <div class="col-md-6">
+                    <div class="card-resep hvr-float-shadow">
+                      <div class="row">
+                        <a href="/article/view/{{$article->id}}">
+                          <div class="col-md-4">
+                            <div class="resep-image">
+                              <img style="height:100%" class="img-responsive"
+                                   src="{{ !empty($article->header_image) ? Voyager::image($article->header_image) : asset('images/placeholder-image.png') }}"
+                                   alt="">
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="card-resep hvr-float-shadow">
-                  <div class="row">
-                    <a href="">
-                      <div class="col-md-4">
-                        <div class="resep-image">
-                          <img src="/images/coffee/example9.jpg">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="resep-list-details">
-                          <span class="resep-title">Macciato Nias</span>
-                          <span class="resep-brew">AeroPress</span>
-                          <div class="resep-social-icon">
-                            <i class="fa fa-comments-o"></i>
-                            <span class="icon-comment">10</span>
-
-                            <i class="fa fa-thumbs-up"></i>
-                            <span class="icont-like">10</span>
-
-                            <i class="fa fa-eye"></i>
-                            <span class="icon-view">20</span>
+                          <div class="col-md-8">
+                            <div class="resep-list-details">
+                              <span class="resep-title">{{$article->title}}</span>
+                              <div class="resep-brew">
+                                @foreach($article->tagged as $tag)
+                                  <span class="label label-primary">{{$tag->tag_name}}</span>
+                                @endforeach
+                              </div>
+                              <div class="resep-social-icon">
+                                <i class="fa fa-thumbs-up"></i>
+                                <span class="icon-like">{{$article->likes}}</span>
+                                <i class="fa fa-thumbs-up"></i>
+                                <span class="icon-comment">{{$article->copies}}</span>
+                                <i class="fa fa-eye"></i>
+                                <span class="icon-view">{{$article->views}}</span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
-                    </a>
+                    </div>
                   </div>
-                </div>
+                @endforeach
+                {{-- List Resep End --}}
               </div>
-              {{-- List Resep End --}}
             </div>
           </div>
         </div>
+        {{-- Baris Related Resep End --}}
       </div>
-      {{-- Baris Related Resep End --}}
     </div>
-  </div>
+  @endif
+
 
   <div class="section-related-coffee">
     <div class="container">
@@ -261,148 +260,130 @@
           {{-- Produk Kopi Terbaru --}}
           <div class="panel-default">
             <div class="panel-default-header">
-              <div class="panel-header-title">Related Kopi</div>
-              <div class="panel-header-link">
-                <a href="">Lihat semua</a>
-              </div>
+              <div class="panel-header-title">Produk Terkait</div>
             </div>
             <div class="panel-default-body">
               <div class="row">
-                {{-- Baris Tanpa Discount --}}
-                <div class="col-md-3">
-                  <div class="product-col">
-                    <div class="inner-product-col">
-                      <a class="voucher-link" href="/coffee/sesuatu">
-                        <div class="image">
-                          <i class="fa fa-search overlayhover"></i>
-                          <img src="/images/coffee/example10.jpg" alt="product"
-                               class="lazy img-responsive product"/>
-                        </div>
-                      </a>
-                      <div class="caption">
-                        <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                        <div class="voucher-caption">
-                          <div class="price">
-                            <span class="price-new">Rp 100.000</span>
+                @foreach($relatedProduct as $coffee)
+                  @if($coffee->discount_percent == 0)
+                    {{-- Baris Tanpa Discount --}}
+                    <div class="col-md-3">
+                      <div class="product-col">
+                        <div class="inner-product-col">
+                          <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+                            <div class="image">
+                              <i class="fa fa-search overlayhover"></i>
+                              <img src="{{ Voyager::image($coffee->thumb_image) }}" alt="product"
+                                   class="lazy img-responsive product"/>
+                            </div>
+                          </a>
+                          <div class="caption">
+                            <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                            <div class="voucher-caption">
+                              <div class="price">
+                                <span class="price-new">Rp {{ number_format($coffee->original_price) }}</span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="btn-beli">
-                        <button class="btn btn-lg">
-                          <i class="fa fa-shopping-cart"></i>
-                          <span>Beli</span>
-                        </button>
-                      </div>
-                      <div class="clear" style="clear:both"></div>
-                    </div>
-                  </div>
-                </div>
-                {{-- Baris Tanpa Discount End --}}
-
-                {{-- Baris Dengan Discount --}}
-                <div class="col-md-3">
-                  <div class="product-col">
-                    <div class="inner-product-col">
-                      <a class="voucher-link" href="/coffee/sesuatu">
-                        <div class="image">
-                          <i class="fa fa-search overlayhover"></i>
-                          <img src="/images/coffee/example10.jpg" alt="product"
-                               class="lazy img-responsive product"/>
-                          <span class="price-disc">50<sup>%</sup></span>
-                        </div>
-                      </a>
-                      <div class="caption">
-                        <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                        <div class="voucher-caption">
-                          <div class="price">
-                            <span class="price-old">Rp 2.000.000</span>
-                            <span class="price-new">Rp 1.000.000</span>
+                          <div class="btn-beli">
+                            <a href="{{ url('detail-coffee/'.$coffee->id) }}">
+                              <button class="btn btn-lg">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Beli</span>
+                              </button>
+                            </a>
                           </div>
+                          <div class="clear" style="clear:both"></div>
                         </div>
                       </div>
-                      <div class="btn-beli">
-                        <button class="btn btn-lg">
-                          <i class="fa fa-shopping-cart"></i>
-                          <span>Beli</span>
-                        </button>
-                      </div>
-                      <div class="clear" style="clear:both"></div>
                     </div>
-                  </div>
-                </div>
-                {{-- Baris Dengan Discount End --}}
+                    {{-- Baris Tanpa Discount End --}}
 
-                {{-- Baris Tanpa Discount --}}
-                <div class="col-md-3">
-                  <div class="product-col">
-                    <div class="inner-product-col">
-                      <a class="voucher-link" href="/coffee/sesuatu">
-                        <div class="image">
-                          <i class="fa fa-search overlayhover"></i>
-                          <img src="/images/coffee/example10.jpg" alt="product"
-                               class="lazy img-responsive product"/>
-                        </div>
-                      </a>
-                      <div class="caption">
-                        <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                        <div class="voucher-caption">
-                          <div class="price">
-                            <span class="price-new">Rp 100.000</span>
+                  @else
+                    {{-- Baris Dengan Discount --}}
+                    <div class="col-md-3">
+                      <div class="product-col">
+                        <div class="inner-product-col">
+                          <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+                            <div class="image">
+                              <i class="fa fa-search overlayhover"></i>
+                              <img src="{{ Voyager::image($coffee->thumb_image) }}" alt="product"
+                                   class="lazy img-responsive product"/>
+                              <span class="price-disc">{{ $coffee->discount_percent }}<sup>%</sup></span>
+                            </div>
+                          </a>
+                          <div class="caption">
+                            <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                            <div class="voucher-caption">
+                              <div class="price">
+                                <span class="price-old">Rp {{ number_format($coffee->original_price) }}</span>
+                                <span class="price-new">Rp {{ number_format($coffee->discounted_price) }}</span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="btn-beli">
-                        <button class="btn btn-lg">
-                          <i class="fa fa-shopping-cart"></i>
-                          <span>Beli</span>
-                        </button>
-                      </div>
-                      <div class="clear" style="clear:both"></div>
-                    </div>
-                  </div>
-                </div>
-                {{-- Baris Tanpa Discount End --}}
-
-                {{-- Baris Dengan Discount --}}
-                <div class="col-md-3">
-                  <div class="product-col">
-                    <div class="inner-product-col">
-                      <a class="voucher-link" href="/coffee/sesuatu">
-                        <div class="image">
-                          <i class="fa fa-search overlayhover"></i>
-                          <img src="/images/coffee/example10.jpg" alt="product"
-                               class="lazy img-responsive product"/>
-                          <span class="price-disc">50<sup>%</sup></span>
-                        </div>
-                      </a>
-                      <div class="caption">
-                        <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                        <div class="voucher-caption">
-                          <div class="price">
-                            <span class="price-old">Rp 2.000.000</span>
-                            <span class="price-new">Rp 1.000.000</span>
+                          <div class="btn-beli">
+                            <a href="{{ url('detail-coffee/'.$coffee->id) }}">
+                              <button class="btn btn-lg">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Beli</span>
+                              </button>
+                            </a>
                           </div>
+                          <div class="clear" style="clear:both"></div>
                         </div>
                       </div>
-                      <div class="btn-beli">
-                        <button class="btn btn-lg">
-                          <i class="fa fa-shopping-cart"></i>
-                          <span>Beli</span>
-                        </button>
-                      </div>
-                      <div class="clear" style="clear:both"></div>
                     </div>
-                  </div>
-                </div>
-                {{-- Baris Dengan Discount End --}}
-
+                  @endif
+                  {{-- Baris Dengan Discount End --}}
+                @endforeach
               </div>
             </div>
           </div>
-          {{-- Produk Kopi Terbaru End--}}
         </div>
       </div>
     </div>
-  </div>
 
+    @endsection
+
+    @section('js')
+      <script>
+          var ctx = document.getElementById("myChart");
+          arrLabels = []
+          arrValues = []
+            @if($productCoffee->need_graph)
+            @foreach($graphs as $graph)
+          var strLabel = <?php echo json_encode(explode('=', $graph)[0]); ?>;
+          var intValue = <?php echo json_encode(explode('=', $graph)[1]); ?>;
+          {{--<td>{{ explode('=', $characteristic)[0] }}</td>--}}
+          {{--<td>{{ explode('=', $characteristic)[1] }}</td>--}}
+arrLabels.push(strLabel)
+          arrValues.push(intValue)
+            @endforeach
+          var myChart = new Chart(ctx, {
+                  type: 'radar',
+                  data: {
+                      labels: arrLabels,
+                      datasets: [{
+                          label: 'Coffee Characteristics',
+                          data: arrValues,
+                          backgroundColor: [
+                              'rgba(41, 174, 155, 0.5)',
+                          ],
+                          borderColor: [
+                              'rgba(41,174,155,1)',
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scale: {
+                          ticks: {
+                              beginAtZero: true,
+                              max: 10,
+                          }
+                      }
+                  }
+              });
+        @endif
+      </script>
 @endsection
