@@ -146,6 +146,10 @@ else {
 		return view('mobile.pages.cart');
 	});
 
+	Route::get('/checkout', function(){
+		return view('mobile.pages.checkout');
+	});
+
 
 }
 

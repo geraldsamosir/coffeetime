@@ -64,6 +64,7 @@
 
 	</div>
 {{-- End Section Cart --}}
+{{-- ========================================== --}}
 
 {{-- Section Button --}}
 	<div class="row">
@@ -75,6 +76,7 @@
 		</div>
 	</div>
 {{-- End Section Button --}}
+{{-- ========================================== --}}
 	
 @endsection
 
