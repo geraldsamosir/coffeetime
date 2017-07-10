@@ -47,6 +47,21 @@ class ArticleController extends Controller
         return view('frontend.pages.detailArticle', compact('article', 'articlesForAnchor', 'productsForAnchor', 'relatedArticle'));
     }
 
+    public function showMobile($articleId) {
+        $article = Article::find($articleId);
+        $article->views = $article->views + 1;
+        $tagNames = $article->tagNames();
+        $article->save();
+        if (empty($article)) {
+            return response()->view('errors.404',['message'=>'Artikel tidak ditemukan']);
+        }
+        $articlesForAnchor = Article::distinct()->select(['title','id'])->groupBy('title')->get(['title','id']);
+        $productsForAnchor = Product::distinct()->select(['name','id'])->groupBy('name')->get(['name','id']);
+        $relatedArticle = Article::withAnyTag($tagNames)->inRandomOrder()->take(2)->get();
+
+        return view('mobile.pages.detailResep', compact('article', 'articlesForAnchor', 'productsForAnchor', 'relatedArticle'));
+    }
+
     public function createArticle() {
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
         $existingTags =  Article::existingTags();
@@ -125,6 +140,23 @@ class ArticleController extends Controller
     }
 
     public function likeArticle($id) {
+        $article = Article::where('id',$id)->first();
+        $article->likes = $article->likes + 1;
+
+        if(UserArticlesLike::where([['user_id', Auth::user()->id], ['article_id', $id]])->first()) {
+            return redirect('article/view/'.$article->id)->with('status', 'Artikel sudah pernah Disukai');
+        }
+
+        $articleLikes = new UserArticlesLike();
+        $articleLikes->user_id = Auth::user()->id;
+        $articleLikes->article_id = $id;
+        $articleLikes->save();
+        $article->save();
+
+        return redirect('article/view/'.$article->id)->with('status', 'Artikel Disukai');
+    }
+
+    public function likeArticleMobile($id) {
         $article = Article::where('id',$id)->first();
         $article->likes = $article->likes + 1;
 

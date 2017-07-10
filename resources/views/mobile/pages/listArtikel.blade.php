@@ -33,6 +33,7 @@
   {{-- Section Card Resep --}}
   <div class="row">
     @foreach($articles as $article)
+      <a href="/article/view/{{$article->id}}">
       <div class="col s12 m6">
         <div class="card horizontal">
           <div class="card-image card-image-resep">
@@ -58,6 +59,7 @@
           </div>
         </div>
       </div>
+      </a>
     @endforeach
   </div>
   {{$articles->appends(app('request')->except('page'))->links()}}

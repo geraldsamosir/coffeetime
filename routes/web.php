@@ -186,10 +186,6 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.panelAkun');
 	});
 
-	Route::get('/customer/cart', function(){
-		return view('frontend.pages.panelCart');
-	});
-
 	Route::get('/customer/edit', function(){
 		return view('frontend.pages.editAkun');
 	});
@@ -232,6 +228,8 @@ else {
 	    return view('mobile.pages.home');
 	});
 
+    Route::get('/article/like/{id}', 'ArticleController@likeArticleMobile');
+
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
         $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
         $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
@@ -251,9 +249,7 @@ else {
 		return view('mobile.pages.detailMesin');
 	});
 
-	Route::get('/detail-resep', function(){
-		return view('mobile.pages.detailResep');
-	});
+    Route::get('/article/view/{id}', 'ArticleController@showMobile');
 
 	Route::get('/list-coffee', function(){
 		return view('mobile.pages.listCoffee');
@@ -352,9 +348,10 @@ else {
 		return view('mobile.pages.komparasi');
 	});
 
-	Route::get('/cart', function(){
-		return view('mobile.pages.cart');
-	});
+    Route::get('/cart', function(){
+        $cart = Cart::content();
+        return view('mobile.pages.cart', compact('cart'));
+    });
 
 
 }
