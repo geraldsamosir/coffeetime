@@ -62,12 +62,13 @@ class CartController extends Controller
                 $orderDetail->quantity = $input['qty-'.$cartItem->rowId];
                 $amount += $orderDetail->quantity * $orderDetail->price;
                 $orderDetail->save();
+                echo $orderDetail;
             }
             $order->amount = $amount;
             $order->save();
             DB::commit();
             Cart::destroy();
-            return redirect()->action('OrderController@show', ['orderId' => $order->id]);
+            return redirect('/checkout/'.$order->id);
         } catch (\Exception $e) {
             DB::rollback();
             echo $e;

@@ -81,7 +81,7 @@
                                alt="gambar-product">
                         </td>
                         <td class="cart-item-name">
-                          <a href="/detail-coffee/{{$orderItem->product->id}}">{{ $orderItem->product->name }}</a>
+                          <a href="{{url('/detail-coffee/'.$orderItem->product->id)}}">{{ $orderItem->product->name }}</a>
                           <p class="cart-item-brew-method">{{ $orderItem->option }}</p>
                         </td>
                       </tr>

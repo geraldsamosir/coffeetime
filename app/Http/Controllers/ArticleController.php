@@ -113,7 +113,7 @@ class ArticleController extends Controller
             $article->title = $input['lblJudul'];
             $article->content = $input['lblKonten'];
             $article->category_id = $input['lblCategory'];
-            $article->product_id = $input['lblProduct'];
+            $article->product_id = isset($input['lblProduct']) ? $input['lblProduct'] : null;
 
             if (!empty($file)) {
                 $filename = Str::random(20);
@@ -126,12 +126,15 @@ class ArticleController extends Controller
                 Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
                 $article->header_image = $fullPath;
             } else {
-                $article->header_image = $input['oldHeaderImage'];
+                $article->header_image = isset($input['oldHeaderImage']) ? $input['oldHeaderImage'] : null;
             }
 
 
             $article->save();
-            $article->tag(explode(",",$input['tags']));
+            $arrTags = explode(",",$input['tags']);
+            if (!empty(array_filter($arrTags))) {
+                $article->tag(explode(",",$input['tags']));
+            }
 
             return redirect('article/view/'.$article->id)->with('status', 'Artikel Berhasil ditambahkan');
         } catch (Exception $e) {

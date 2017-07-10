@@ -8,6 +8,8 @@
   <div class="row">
     <h3 class="subtitle">Keranjang Belanja ({{$cart->count()}})</h3>
 
+    {!! Form::open(['url'=>'checkout', 'method'=>'POST']) !!}
+
     @foreach($cart as $cartItem)
           <?php
           $product = App\Product::find($cartItem->id);
@@ -34,8 +36,7 @@
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">&nbsp;<i class="material-icons right">close</i></span>
-            <a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;">Update</a>
-            <a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
+            <a href="{{ url('ajax/deletecartitem/'.$cartItem->rowId) }}" class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
           </div>
         </div>
       </div>
@@ -50,9 +51,10 @@
       <button onclick="window.history.back()" class="waves-effect waves-light btn" style="background: #999999;">Lanjutkan Belanja</button>
     </div>
     <div class="col s6 m6">
-      <a class="waves-effect waves-light btn" style="background: #2ab27b;">Pembayaran</a>
+      <button type="submit" class="waves-effect waves-light btn" style="background: #2ab27b;">Pembayaran</button>
     </div>
   </div>
+  {!! Form::close() !!}
   {{-- End Section Button --}}
 
 @endsection

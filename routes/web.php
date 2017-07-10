@@ -190,12 +190,12 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.editAkun');
 	});
 
-	Route::get('/customer/portofolio',function(){
-		return view('frontend.pages.panelPortofolio');
+	Route::get('/customer/portfolio',function(){
+		return view('frontend.pages.panelportfolio');
 	});
 
-	Route::get('/customer/portofolio/edit',function(){
-		return view('frontend.pages.editPortofolio');
+	Route::get('/customer/portfolio/edit',function(){
+		return view('frontend.pages.editportfolio');
 	});
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
@@ -344,6 +344,8 @@ else {
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
+    Route::get('/checkout/{orderId}', 'OrderController@showMobile');
+
 	Route::get('/komparasi', function(){
 		return view('mobile.pages.komparasi');
 	});
@@ -353,13 +355,11 @@ else {
         return view('mobile.pages.cart', compact('cart'));
     });
 
-	Route::get('/checkout', function(){
-		return view('mobile.pages.checkout');
-	});
-
     Route::get('/pembayaran', function(){
         return view('mobile.pages.pembayaran');
     });
+
+    Route::get('/order/summary/{id}', 'OrderController@getOrderSummaryMobile');
 
 
 }
