@@ -41,6 +41,10 @@ h4 {
 	font-size: 12px;
 }
 
+.p14 {
+	font-size: 14px;
+}
+
 .pgrey {
 	color: #999999;
 	font-weight: 700;
@@ -163,7 +167,6 @@ span.produk-detail-title {
 }
 
 span.produk-detail-harga {
-	display: block;
 	padding: 0px 16px 16px 16px;
 	font-weight: 300;
 	color: #2ab27b;
@@ -234,9 +237,48 @@ span.produk-detail-harga {
 	color: #999;
 }
 
+.collapsible-body-alamat {
+	padding: 0px 16px 0px 16px !important;
+}
+
 .icon-sidebar {
 	color: rgba(0, 0, 0, 0.54);
 	margin-right: 32px !important;
 	width: 24px !important;
 	font-size: 24px !important;
+}
+
+.total {
+	border: 1px solid #2ab27b ;
+	background: #2ab27b ;
+	color: white;
+	padding: 10px;
+	margin: 0.5rem 0 1rem 0;
+}
+
+.total p {
+	margin: 0px !important;
+}
+
+.ppading {
+	padding: 10px;
+    background: #eee;
+    border: 1px solid #ccc;
+}
+
+.pnomargin {
+	margin: 0px !important;
+}
+
+.logo-bca img{
+	width: 135px;
+	margin: 8px 0px;
+}
+
+.rek {
+	margin: 10px 0px;
+}
+
+.card-image-pembayaran {
+	width: 200px;
 }

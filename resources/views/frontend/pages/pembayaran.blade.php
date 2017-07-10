@@ -30,7 +30,7 @@
             </div>
             <div class="panel-card">
               <div class="panel-card-header">
-                <h3 class="panel-title">Status</h3>
+                <h3 class="panel-title">Status Pembayaran</h3>
               </div>
               <div class="panel-card-body">
                 <h3>{{strtoupper(App\Order::status[$order->status])}}</h3>

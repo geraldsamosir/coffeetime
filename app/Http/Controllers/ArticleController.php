@@ -47,6 +47,21 @@ class ArticleController extends Controller
         return view('frontend.pages.detailArticle', compact('article', 'articlesForAnchor', 'productsForAnchor', 'relatedArticle'));
     }
 
+    public function showMobile($articleId) {
+        $article = Article::find($articleId);
+        $article->views = $article->views + 1;
+        $tagNames = $article->tagNames();
+        $article->save();
+        if (empty($article)) {
+            return response()->view('errors.404',['message'=>'Artikel tidak ditemukan']);
+        }
+        $articlesForAnchor = Article::distinct()->select(['title','id'])->groupBy('title')->get(['title','id']);
+        $productsForAnchor = Product::distinct()->select(['name','id'])->groupBy('name')->get(['name','id']);
+        $relatedArticle = Article::withAnyTag($tagNames)->inRandomOrder()->take(2)->get();
+
+        return view('mobile.pages.detailResep', compact('article', 'articlesForAnchor', 'productsForAnchor', 'relatedArticle'));
+    }
+
     public function createArticle() {
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
         $existingTags =  Article::existingTags();
@@ -98,7 +113,7 @@ class ArticleController extends Controller
             $article->title = $input['lblJudul'];
             $article->content = $input['lblKonten'];
             $article->category_id = $input['lblCategory'];
-            $article->product_id = $input['lblProduct'];
+            $article->product_id = isset($input['lblProduct']) ? $input['lblProduct'] : null;
 
             if (!empty($file)) {
                 $filename = Str::random(20);
@@ -111,12 +126,15 @@ class ArticleController extends Controller
                 Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
                 $article->header_image = $fullPath;
             } else {
-                $article->header_image = $input['oldHeaderImage'];
+                $article->header_image = isset($input['oldHeaderImage']) ? $input['oldHeaderImage'] : null;
             }
 
 
             $article->save();
-            $article->tag(explode(",",$input['tags']));
+            $arrTags = explode(",",$input['tags']);
+            if (!empty(array_filter($arrTags))) {
+                $article->tag(explode(",",$input['tags']));
+            }
 
             return redirect('article/view/'.$article->id)->with('status', 'Artikel Berhasil ditambahkan');
         } catch (Exception $e) {
@@ -125,6 +143,23 @@ class ArticleController extends Controller
     }
 
     public function likeArticle($id) {
+        $article = Article::where('id',$id)->first();
+        $article->likes = $article->likes + 1;
+
+        if(UserArticlesLike::where([['user_id', Auth::user()->id], ['article_id', $id]])->first()) {
+            return redirect('article/view/'.$article->id)->with('status', 'Artikel sudah pernah Disukai');
+        }
+
+        $articleLikes = new UserArticlesLike();
+        $articleLikes->user_id = Auth::user()->id;
+        $articleLikes->article_id = $id;
+        $articleLikes->save();
+        $article->save();
+
+        return redirect('article/view/'.$article->id)->with('status', 'Artikel Disukai');
+    }
+
+    public function likeArticleMobile($id) {
         $article = Article::where('id',$id)->first();
         $article->likes = $article->likes + 1;
 

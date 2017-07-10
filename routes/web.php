@@ -186,20 +186,16 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.panelAkun');
 	});
 
-	Route::get('/customer/cart', function(){
-		return view('frontend.pages.panelCart');
-	});
-
 	Route::get('/customer/edit', function(){
 		return view('frontend.pages.editAkun');
 	});
 
-	Route::get('/customer/portofolio',function(){
-		return view('frontend.pages.panelPortofolio');
+	Route::get('/customer/portfolio',function(){
+		return view('frontend.pages.panelportfolio');
 	});
 
-	Route::get('/customer/portofolio/edit',function(){
-		return view('frontend.pages.editPortofolio');
+	Route::get('/customer/portfolio/edit',function(){
+		return view('frontend.pages.editportfolio');
 	});
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
@@ -232,6 +228,8 @@ else {
 	    return view('mobile.pages.home');
 	});
 
+    Route::get('/article/like/{id}', 'ArticleController@likeArticleMobile');
+
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
         $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
         $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
@@ -251,9 +249,7 @@ else {
 		return view('mobile.pages.detailMesin');
 	});
 
-	Route::get('/detail-resep', function(){
-		return view('mobile.pages.detailResep');
-	});
+    Route::get('/article/view/{id}', 'ArticleController@showMobile');
 
 	Route::get('/list-coffee', function(){
 		return view('mobile.pages.listCoffee');
@@ -348,13 +344,22 @@ else {
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
+    Route::get('/checkout/{orderId}', 'OrderController@showMobile');
+
 	Route::get('/komparasi', function(){
 		return view('mobile.pages.komparasi');
 	});
 
-	Route::get('/cart', function(){
-		return view('mobile.pages.cart');
-	});
+    Route::get('/cart', function(){
+        $cart = Cart::content();
+        return view('mobile.pages.cart', compact('cart'));
+    });
+
+    Route::get('/pembayaran', function(){
+        return view('mobile.pages.pembayaran');
+    });
+
+    Route::get('/order/summary/{id}', 'OrderController@getOrderSummaryMobile');
 
 
 }
