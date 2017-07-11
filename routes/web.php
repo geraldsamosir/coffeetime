@@ -374,7 +374,11 @@ else {
 
     Route::get('/customer/transaksi', function(){
         return view('mobile.pages.panelTransaksi');
-    });    
+    });
+
+     Route::get('/customer/artikel', function(){
+        return view('mobile.pages.panelResep');
+    }); 
 
 
 }

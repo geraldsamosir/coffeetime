@@ -305,3 +305,9 @@ span.produk-detail-harga {
 .pagination li.active {
     background-color: #2ab27b !important;
 }
+
+.panel-resep-title {
+	color: #555555 !important;
+	font-size: 14px;
+	font-weight: 700;
+}
