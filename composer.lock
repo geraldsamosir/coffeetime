@@ -3013,12 +3013,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hugosvent/voyager.git",
-                "reference": "6d90bb30656b074d86acd94296bb069b825c6d8a"
+                "reference": "47818621613ebe9242b848346ae4a97181b801a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hugosvent/voyager/zipball/6d90bb30656b074d86acd94296bb069b825c6d8a",
-                "reference": "6d90bb30656b074d86acd94296bb069b825c6d8a",
+                "url": "https://api.github.com/repos/hugosvent/voyager/zipball/47818621613ebe9242b848346ae4a97181b801a6",
+                "reference": "47818621613ebe9242b848346ae4a97181b801a6",
                 "shasum": ""
             },
             "require": {
@@ -3070,7 +3070,7 @@
                 "issues": "https://github.com/the-control-group/voyager/issues",
                 "source": "https://github.com/the-control-group/voyager"
             },
-            "time": "2017-07-07 12:13:13"
+            "time": "2017-07-11 07:40:24"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
