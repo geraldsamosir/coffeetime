@@ -28,6 +28,7 @@
 		<script src="{{ asset('/js/mobile.js') }}"></script>
 
 		<script src="{{ asset('/js/lib.js') }}"></script>
+		<script src="{{asset('/js/ckeditor/ckeditor.js')}}"></script>
 		@yield('js')
 
 		<script>

@@ -63,12 +63,28 @@ class ArticleController extends Controller
     }
 
     public function createArticle() {
+        if(!Auth::check()) {
+            return redirect('/login');
+        }
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
         $existingTags =  Article::existingTags();
-        if(!empty($permissions)) {
+        if(Auth::check()) {
             return view('frontend.pages.createArticle', ['permissions' => $permissions, 'existingTags' => $existingTags]);
         } else {
-            return response()->view('errors.403');
+            return redirect('/login');
+        }
+    }
+
+    public function createArticleMobile() {
+        if(!Auth::check()) {
+            return redirect('/login');
+        }
+        $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
+        $existingTags =  Article::existingTags();
+        if(Auth::check()) {
+            return view('mobile.pages.createArticle', ['permissions' => $permissions, 'existingTags' => $existingTags]);
+        } else {
+            return redirect('/login');
         }
     }
 
@@ -143,6 +159,7 @@ class ArticleController extends Controller
     }
 
     public function likeArticle($id) {
+
         $article = Article::where('id',$id)->first();
         $article->likes = $article->likes + 1;
 

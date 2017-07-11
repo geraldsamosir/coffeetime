@@ -228,6 +228,8 @@ else {
 	    return view('mobile.pages.home');
 	});
 
+    Route::get('/customer/article/create', 'ArticleController@createArticleMobile');
+
     Route::get('/article/like/{id}', 'ArticleController@likeArticleMobile');
 
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
