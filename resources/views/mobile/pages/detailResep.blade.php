@@ -14,14 +14,26 @@
   {{-- Section Resep Image --}}
   <div class="row">
     @if (session('status'))
-      <div class="chip">
-        {{ session('status') }}
+      <div class="total">
+        <p class="p14">{{session('status')}}</p>
       </div>
     @endif
 
     @if (session('error'))
-      <div class="chip">
-        {{ session('error') }}
+      <div class="total">
+        <p class="p14">{{session('error')}}</p>
+      </div>
+    @endif
+  </div>
+  <div class="row">
+    @if(Auth::check())
+      <div class="col s6" style="padding: 0 8px;">
+        <button class="waves-effect waves-light col s12 btn" style="background: #ff8c00">Copy artikel</button>
+      </div>
+    @endif
+    @if(Auth::check() && $article->user_id == Auth::user()->id)
+      <div class="col s6" style="padding: 0 8px;">
+        <button class="waves-effect waves-light col s12 btn">Edit artikel</button>
       </div>
     @endif
   </div>
@@ -81,43 +93,43 @@
   </div>
 
   @if(count($relatedArticle) > 0)
-  {{-- Section Deskripsi --}}
-  <div class="row">
-    <div class="col s12">
-      <div class="card">
-        <h3 class="subtitle2">Artikel Terkait</h3>
-      </div>
-      @foreach($relatedArticle as $related)
-        <a href="/article/view/{{$related->id}}">
-        <div class="col s12 m6">
-          <div class="card horizontal">
-            <div class="card-image card-image-resep">
-              <img
-                src="{{ !empty($related->header_image) ? Voyager::image($related->header_image) : asset('images/placeholder-image.png') }}">
-            </div>
-            <div class="card-stacked card-stacked-resep">
-              <div class="card-content">
-                <p class="ptitle">{{$related->title}} <span
-                    class="pdate">Date: {{ date('F d, Y', strtotime($related->created_at)) }}</span></span>
-                <p class="pcreated">Created by : <a href="">{{App\User::find($article->user_id)->name}}</a></p>
-                <p class="p12 social-stat">
-                  <i class="material-icons" style="font-size:14px;">content_copy</i>{{$related->copies}}
-                  <i class="material-icons" style="font-size:14px;">visibility</i>{{$related->views}}
-                  <i class="material-icons" style="font-size:14px;">thumb_up</i>{{$related->likes}}
-                </p>
-                <p>
-                  @foreach($related->tagged as $tag)
-                    <span class="chip">{{$tag->tag_name}}</span>
-                  @endforeach
-                </p>
+    {{-- Section Deskripsi --}}
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <h3 class="subtitle2">Artikel Terkait</h3>
+        </div>
+        @foreach($relatedArticle as $related)
+          <a href="/article/view/{{$related->id}}">
+            <div class="col s12 m6">
+              <div class="card horizontal">
+                <div class="card-image card-image-resep">
+                  <img
+                    src="{{ !empty($related->header_image) ? Voyager::image($related->header_image) : asset('images/placeholder-image.png') }}">
+                </div>
+                <div class="card-stacked card-stacked-resep">
+                  <div class="card-content">
+                    <p class="ptitle">{{$related->title}} <span
+                        class="pdate">Date: {{ date('F d, Y', strtotime($related->created_at)) }}</span></span>
+                    <p class="pcreated">Created by : <a href="">{{App\User::find($article->user_id)->name}}</a></p>
+                    <p class="p12 social-stat">
+                      <i class="material-icons" style="font-size:14px;">content_copy</i>{{$related->copies}}
+                      <i class="material-icons" style="font-size:14px;">visibility</i>{{$related->views}}
+                      <i class="material-icons" style="font-size:14px;">thumb_up</i>{{$related->likes}}
+                    </p>
+                    <p>
+                      @foreach($related->tagged as $tag)
+                        <span class="chip">{{$tag->tag_name}}</span>
+                      @endforeach
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        </a>
-      @endforeach
+          </a>
+        @endforeach
+      </div>
     </div>
-  </div>
   @endif
   {{-- End Section Deskripsi --}}
   {{-- ========================================== --}}
@@ -152,13 +164,13 @@
       shareWidget.injectInterface(".oss-widget-interface");
       shareWidget.setWidgetTheme(".oss-widget-interface");
 
-      function keywordconvertArticle(str, id)  {
-          return "<a href=\"/article/view/"+encodeURIComponent(id)+"\">"+str+"</a>";
+      function keywordconvertArticle(str, id) {
+          return "<a href=\"/article/view/" + encodeURIComponent(id) + "\">" + str + "</a>";
       }
 
       function searchArticle(keyword, id) {
           var content = document.getElementById("content");
-          var re = new RegExp("("+keyword+")","g");
+          var re = new RegExp("(" + keyword + ")", "g");
           content.innerHTML = content.innerHTML.replace(re, keywordconvertArticle(string, id));
       }
 
@@ -168,13 +180,13 @@
       searchArticle(string, id)
       @endforeach
 
-      function keywordconvertProduct(str, id)  {
-          return "<a href=\"/detail-coffee/"+encodeURIComponent(id)+"\">"+str+"</a>";
+      function keywordconvertProduct(str, id) {
+          return "<a href=\"/detail-coffee/" + encodeURIComponent(id) + "\">" + str + "</a>";
       }
 
       function searchProduct(keyword, id) {
           var content = document.getElementById("content");
-          var re = new RegExp("("+keyword+")","g");
+          var re = new RegExp("(" + keyword + ")", "g");
           content.innerHTML = content.innerHTML.replace(re, keywordconvertProduct(string, id));
       }
 

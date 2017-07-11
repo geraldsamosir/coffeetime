@@ -257,6 +257,8 @@ else {
 		return view('mobile.pages.listCoffee');
 	});
 
+    Route::post('/customer/article/save', 'ArticleController@saveArticle');
+
 	Route::get('/list-mesin', function(){
 		return view('mobile.pages.listMesin');
 	});

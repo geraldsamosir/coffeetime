@@ -3,3 +3,20 @@
 // @import "mobile/components/header";
 // @import "mobile/components/footer";
 // @import "mobile/components/navbar";
+
+// taggle
+.taggleContainer {
+  ul {
+    -webkit-padding-start: 8px !important;
+  }
+
+  .taggle_list .taggle:hover {
+    padding-right: 20px !important;
+  }
+
+  .taggle_list .taggle .close {
+    font-size: 22pt !important;
+    color: #990033 !important;
+  }
+  @import "node_modules/taggle/example/scss/taggle";
+}
