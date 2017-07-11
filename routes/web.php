@@ -41,7 +41,7 @@ if ($agent->isDesktop()) {
     Route::get('/article/view/{id}', 'ArticleController@show');
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->get();
+        $coffees = App\Product::where('category_id', $category->id)->orderBy('created_at', 'DESC')->get();
         $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         return view('frontend.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
@@ -87,6 +87,9 @@ if ($agent->isDesktop()) {
             case 'oldest':
                 $coffees = $coffees->orderBy('created_at', 'ASC');
                 break;
+            default :
+                $coffees = $coffees->orderBy('created_at', 'DESC');
+                break;
         }
 
         $coffees = $coffees->get();
@@ -115,13 +118,13 @@ if ($agent->isDesktop()) {
                 $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
                 break;
             default:
-                $articles = $articles->paginate(5);
+                $articles = $articles->orderBy('created_at','DESC')->paginate(5);
         }
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
-        $articles = App\Article::where('category_id', $category->id)->paginate(5);
+        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at','DESC')->paginate(5);
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
@@ -285,18 +288,18 @@ else {
                 $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
                 break;
             default:
-                $articles = $articles->paginate(5);
+                $articles = $articles->orderBy('created_at','DESC')->paginate(5);
         }
         return view('mobile.pages.listArtikel', compact('articles'));
     });
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
-        $articles = App\Article::where('category_id', $category->id)->paginate(5);
+        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at','DESC')->paginate(5);
         return view('mobile.pages.listArtikel', compact('articles'));
     });
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->get();
+        $coffees = App\Product::where('category_id', $category->id)->orderBy('created_at','DESC')->get();
         $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
@@ -341,6 +344,9 @@ else {
                 break;
             case 'oldest':
                 $coffees = $coffees->orderBy('created_at', 'ASC');
+                break;
+            default:
+                $coffees = $coffees->orderBy('created_at', 'DESC');
                 break;
         }
 
