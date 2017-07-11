@@ -364,8 +364,12 @@ else {
         return view('mobile.pages.pembayaran');
     });
 
-     Route::get('/customer/akun', function(){
+    Route::get('/customer/akun', function(){
         return view('mobile.pages.panelAkun');
+    });
+
+    Route::get('/customer/portofolio', function(){
+        return view('mobile.pages.panelPortofolio');
     });
 
 

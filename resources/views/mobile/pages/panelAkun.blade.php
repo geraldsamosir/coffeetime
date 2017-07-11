@@ -21,6 +21,8 @@
 	    </div>
 	</div>
 {{-- End Section Detail Akun --}}
+{{-- ========================================== --}}
+
 
 {{-- Section Edit Detail Akun --}}
 	<div id="editakunmodal" class="modal modal-fixed-footer">
@@ -76,8 +78,8 @@
 	      	<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Simpan</a>
 	    </div>
 	</div>
-
 {{-- End Section Edit Detail Akun --}}
+{{-- ========================================== --}}
 	
 @endsection
 
