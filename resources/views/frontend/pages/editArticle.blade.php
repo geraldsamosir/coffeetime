@@ -60,7 +60,7 @@
                   {!! Form::label('lblCategory',"Kategori Artikel",['class'=>'required']) !!}
                   {!! Form::select('lblCategory',App\ArticleCategory::all()->mapWithKeys(function ($item) {
                     return [$item['id'] => $item['name']];
-                  }),null,['class'=>'form-control', 'required']) !!}
+                  }),$article->category_id,['class'=>'form-control', 'required']) !!}
                 </div>
 
                 <div class="form-group">
@@ -75,7 +75,6 @@
 
                 <input id="tags" type="hidden" name="tags"/>
 
-                <a href="/customer/panelResep" class="btn btn-tohome">Batal</a>
                 {!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}
               </div>
               {!! Form::close() !!}
