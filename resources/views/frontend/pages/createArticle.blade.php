@@ -78,7 +78,6 @@
 
                 <input id="tags" type="hidden" name="tags"/>
 
-                <a href="/customer/panelResep" class="btn btn-tohome">Batal</a>
                 {!! Form::submit('Simpan',['class'=>'btn btn-primary']) !!}
               </div>
               {!! Form::close() !!}

@@ -28,12 +28,12 @@
   <div class="row">
     @if(Auth::check())
       <div class="col s6" style="padding: 0 8px;">
-        <button class="waves-effect waves-light col s12 btn" style="background: #ff8c00">Copy artikel</button>
+        <a href="/customer/article/copy/{{$article->id}}" class="waves-effect waves-light col s12 btn" style="background: #ff8c00">Copy artikel</a>
       </div>
     @endif
     @if(Auth::check() && $article->user_id == Auth::user()->id)
       <div class="col s6" style="padding: 0 8px;">
-        <button class="waves-effect waves-light col s12 btn">Edit artikel</button>
+        <a href="/customer/article/edit/{{$article->id}}" class="waves-effect waves-light col s12 btn">Edit artikel</a>
       </div>
     @endif
   </div>

@@ -97,11 +97,30 @@ class ArticleController extends Controller
         }
     }
 
+    public function editArticleMobile($id) {
+        $article = Article::find($id);
+        if(!empty($article) && Auth::check() && $article->user_id == Auth::user()->id) {
+            return view('mobile.pages.editArticle', ['article' => $article]);
+        } else {
+            return response()->view('errors.403');
+        }
+    }
+
     public function copyArticle($id) {
         $article = Article::find($id);
         $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
         if(!empty($article) && Auth::check()) {
             return view('frontend.pages.copyArticle', ['article' => $article, 'permissions' => $permissions]);
+        } else {
+            return response()->view('errors.403');
+        }
+    }
+
+    public function copyArticleMobile($id) {
+        $article = Article::find($id);
+        $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
+        if(!empty($article) && Auth::check()) {
+            return view('mobile.pages.copyArticle', ['article' => $article, 'permissions' => $permissions]);
         } else {
             return response()->view('errors.403');
         }
@@ -203,7 +222,7 @@ class ArticleController extends Controller
 
             $file = $request->file('lblHeaderImage');
 
-            $article = Article::find($articleId)->first();
+            $article = Article::where('id',$articleId)->first();
             $article->user_id = Auth::user()->id;
             $article->title = $input['lblJudul'];
             $article->content = $input['lblKonten'];
@@ -223,7 +242,11 @@ class ArticleController extends Controller
 
 
             $article->save();
-            $article->retag(explode(",",$input['tags']));
+            $arrTags = explode(",",$input['tags']);
+            if (!empty(array_filter($arrTags))) {
+                $article->retag(explode(",",$input['tags']));
+            }
+
 
             return redirect('article/view/'.$article->id)->with('status', 'Artikel Berhasil diperbaharui');
         } catch (Exception $e) {

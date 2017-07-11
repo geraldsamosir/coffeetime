@@ -232,6 +232,9 @@ else {
 	});
 
     Route::get('/customer/article/create', 'ArticleController@createArticleMobile');
+    Route::get('/customer/article/edit/{id}', 'ArticleController@editArticleMobile');
+    Route::post('/customer/article/update/{articleId}', 'ArticleController@updateArticle');
+    Route::get('/customer/article/copy/{id}', 'ArticleController@copyArticleMobile');
 
     Route::get('/article/like/{id}', 'ArticleController@likeArticleMobile');
 
