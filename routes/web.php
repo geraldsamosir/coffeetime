@@ -364,6 +364,10 @@ else {
         return view('mobile.pages.pembayaran');
     });
 
+     Route::get('/customer/akun', function(){
+        return view('mobile.pages.panelAkun');
+    });
+
 
 }
 

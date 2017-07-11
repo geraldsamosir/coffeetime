@@ -283,3 +283,17 @@ span.produk-detail-harga {
 .card-image-pembayaran {
 	width: 200px;
 }
+
+.card-akun-image img{
+	width: 200px !important;
+	margin: 0px auto !important;
+}
+
+.card-akun-content {
+	margin: 8px 0px !important;
+	text-align: center;
+}
+
+.card-akun-content p {
+	padding: 4px 0px !important;
+}
