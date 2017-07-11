@@ -297,3 +297,11 @@ span.produk-detail-harga {
 .card-akun-content p {
 	padding: 4px 0px !important;
 }
+
+.table12 tr td, .table12 thead{
+	font-size: 12px !important;
+}
+
+.pagination li.active {
+    background-color: #2ab27b !important;
+}

@@ -372,6 +372,10 @@ else {
         return view('mobile.pages.panelPortofolio');
     });
 
+    Route::get('/customer/transaksi', function(){
+        return view('mobile.pages.panelTransaksi');
+    });    
+
 
 }
 
