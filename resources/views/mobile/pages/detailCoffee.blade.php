@@ -124,11 +124,11 @@
       @if($coffee->discount_percent == 0)
         <div class="col s6 m3">
           <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
-            <div class="card">
+            <div style="height:220px;" class="card">
               <div class="card-image card-image-promo">
                 <img src="{{ Voyager::image($coffee->thumb_image) }}">
               </div>
-              <div class="card-content card-content-promo">
+              <div style="position:absolute; bottom:0;" class="card-content card-content-promo">
                 <h3 class="promo-title">{{$coffee->name}}</h3>
                 <p class="hargapromo">Rp {{number_format($coffee->original_price)}}</p>
               </div>
@@ -139,11 +139,11 @@
 
         <div class="col s6 m3">
           <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
-            <div class="card">
+            <div style="height:220px;" class="card">
               <div class="card-image card-image-promo">
                 <img src="{{ Voyager::image($coffee->thumb_image) }}">
               </div>
-              <div class="card-content card-content-promo">
+              <div style="position:absolute; bottom:0;" class="card-content card-content-promo">
                 <h3 class="promo-title">{{$coffee->name}}</h3>
                 <p class="hargapromo">Rp {{ number_format($coffee->discounted_price)}}<span
                     class="hargalamapromo">Rp. {{ number_format($coffee->original_price)}}</span> - <span
