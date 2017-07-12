@@ -19,27 +19,30 @@
 
   {{-- Section Detail --}}
   <div class="row">
+    {!! Form::open(['url'=>'ajax/addcartitem/'.$productCoffee->id, 'method'=>'POST']) !!}
     <div class="col s12 m7">
       <h3 class="subtitle">Pembelian</h3>
       <span class="produk-detail-title">{{$productCoffee->name}}</span>
-      <span class="produk-detail-harga">Rp. 100.000</span>
+      <span
+        class="produk-detail-harga">Rp. {{ $productCoffee->discounted_price > 0 ? number_format($productCoffee->discounted_price) : number_format($productCoffee->original_price) }}</span>
+      @if($productCoffee->discounted_price > 0) <span
+        style="text-decoration:line-through">Rp. {{ number_format($productCoffee->original_price) }}</span> @endif
+      @if($productCoffee->is_beans)
       <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Pilih Brew Method</option>
-          <option value="1">DRIP</option>
-          <option value="2">ESPRESSO</option>
-          <option value="3">AEROPRESS</option>
-        </select>
+        {!! Form::select('option', ['drip' => 'DRIP', 'espresso' => 'ESPRESSO', 'aeropress' => 'AEROPRESS', 'wholebean' => 'WHOLEBEAN'], 'wholebean', ['class' => 'brew-select form-control']) !!}
         <label>Brew Method</label>
       </div>
+      @endif
       <div class="input-field col s12">
-        <input placeholder="1" id="jumlah" type="number" class="validate">
+        {!! Form::number('qty',1,['class'=>'qty','data-min'=>'1']) !!}
         <label for="jumlah">Jumlah</label>
       </div>
       <div class="col s12">
-        <a class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;">Beli</a>
+        {!! Form::submit('Masukkan ke keranjang',['class'=>'btn waves-effect waves-light']) !!}
       </div>
     </div>
+
+    {!! Form::close() !!}
 
     <div class="col s12 m5">
       <h3 class="subtitle">Details</h3>
@@ -121,11 +124,11 @@
       @if($coffee->discount_percent == 0)
         <div class="col s6 m3">
           <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
-            <div class="card">
+            <div style="height:220px;" class="card">
               <div class="card-image card-image-promo">
                 <img src="{{ Voyager::image($coffee->thumb_image) }}">
               </div>
-              <div class="card-content card-content-promo">
+              <div style="position:absolute; bottom:0;" class="card-content card-content-promo">
                 <h3 class="promo-title">{{$coffee->name}}</h3>
                 <p class="hargapromo">Rp {{number_format($coffee->original_price)}}</p>
               </div>
@@ -136,11 +139,11 @@
 
         <div class="col s6 m3">
           <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
-            <div class="card">
+            <div style="height:220px;" class="card">
               <div class="card-image card-image-promo">
                 <img src="{{ Voyager::image($coffee->thumb_image) }}">
               </div>
-              <div class="card-content card-content-promo">
+              <div style="position:absolute; bottom:0;" class="card-content card-content-promo">
                 <h3 class="promo-title">{{$coffee->name}}</h3>
                 <p class="hargapromo">Rp {{ number_format($coffee->discounted_price)}}<span
                     class="hargalamapromo">Rp. {{ number_format($coffee->original_price)}}</span> - <span

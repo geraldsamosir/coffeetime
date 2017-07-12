@@ -41,7 +41,7 @@ if ($agent->isDesktop()) {
     Route::get('/article/view/{id}', 'ArticleController@show');
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->get();
+        $coffees = App\Product::where('category_id', $category->id)->orderBy('created_at', 'DESC')->get();
         $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         return view('frontend.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
@@ -87,6 +87,9 @@ if ($agent->isDesktop()) {
             case 'oldest':
                 $coffees = $coffees->orderBy('created_at', 'ASC');
                 break;
+            default :
+                $coffees = $coffees->orderBy('created_at', 'DESC');
+                break;
         }
 
         $coffees = $coffees->get();
@@ -115,13 +118,13 @@ if ($agent->isDesktop()) {
                 $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
                 break;
             default:
-                $articles = $articles->paginate(5);
+                $articles = $articles->orderBy('created_at','DESC')->paginate(5);
         }
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
-        $articles = App\Article::where('category_id', $category->id)->paginate(5);
+        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at','DESC')->paginate(5);
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
@@ -186,20 +189,16 @@ if ($agent->isDesktop()) {
 		return view('frontend.pages.panelAkun');
 	});
 
-	Route::get('/customer/cart', function(){
-		return view('frontend.pages.panelCart');
-	});
-
 	Route::get('/customer/edit', function(){
 		return view('frontend.pages.editAkun');
 	});
 
-	Route::get('/customer/portofolio',function(){
-		return view('frontend.pages.panelPortofolio');
+	Route::get('/customer/portfolio',function(){
+		return view('frontend.pages.panelportfolio');
 	});
 
-	Route::get('/customer/portofolio/edit',function(){
-		return view('frontend.pages.editPortofolio');
+	Route::get('/customer/portfolio/edit',function(){
+		return view('frontend.pages.editportfolio');
 	});
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
@@ -232,6 +231,13 @@ else {
 	    return view('mobile.pages.home');
 	});
 
+    Route::get('/customer/article/create', 'ArticleController@createArticleMobile');
+    Route::get('/customer/article/edit/{id}', 'ArticleController@editArticleMobile');
+    Route::post('/customer/article/update/{articleId}', 'ArticleController@updateArticle');
+    Route::get('/customer/article/copy/{id}', 'ArticleController@copyArticleMobile');
+
+    Route::get('/article/like/{id}', 'ArticleController@likeArticleMobile');
+
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
         $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
         $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
@@ -251,13 +257,13 @@ else {
 		return view('mobile.pages.detailMesin');
 	});
 
-	Route::get('/detail-resep', function(){
-		return view('mobile.pages.detailResep');
-	});
+    Route::get('/article/view/{id}', 'ArticleController@showMobile');
 
 	Route::get('/list-coffee', function(){
 		return view('mobile.pages.listCoffee');
 	});
+
+    Route::post('/customer/article/save', 'ArticleController@saveArticle');
 
 	Route::get('/list-mesin', function(){
 		return view('mobile.pages.listMesin');
@@ -285,18 +291,18 @@ else {
                 $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
                 break;
             default:
-                $articles = $articles->paginate(5);
+                $articles = $articles->orderBy('created_at','DESC')->paginate(5);
         }
         return view('mobile.pages.listArtikel', compact('articles'));
     });
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
-        $articles = App\Article::where('category_id', $category->id)->paginate(5);
+        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at','DESC')->paginate(5);
         return view('mobile.pages.listArtikel', compact('articles'));
     });
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->get();
+        $coffees = App\Product::where('category_id', $category->id)->orderBy('created_at','DESC')->get();
         $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
@@ -342,27 +348,31 @@ else {
             case 'oldest':
                 $coffees = $coffees->orderBy('created_at', 'ASC');
                 break;
+            default:
+                $coffees = $coffees->orderBy('created_at', 'DESC');
+                break;
         }
 
         $coffees = $coffees->get();
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
+    Route::get('/checkout/{orderId}', 'OrderController@showMobile');
+
 	Route::get('/komparasi', function(){
 		return view('mobile.pages.komparasi');
 	});
 
-	Route::get('/cart', function(){
-		return view('mobile.pages.cart');
-	});
-
-	Route::get('/checkout', function(){
-		return view('mobile.pages.checkout');
-	});
+    Route::get('/cart', function(){
+        $cart = Cart::content();
+        return view('mobile.pages.cart', compact('cart'));
+    });
 
     Route::get('/pembayaran', function(){
         return view('mobile.pages.pembayaran');
     });
+
+    Route::get('/order/summary/{id}', 'OrderController@getOrderSummaryMobile');
 
     Route::get('/customer/akun', function(){
         return view('mobile.pages.panelAkun');
@@ -378,7 +388,7 @@ else {
 
      Route::get('/customer/artikel', function(){
         return view('mobile.pages.panelResep');
-    }); 
+    });
 
 
 }

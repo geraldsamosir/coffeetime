@@ -32,7 +32,7 @@
           <span class="nav-login-dropdown">
             <li class="dropdown dropdown-profile">
               <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
-                @if(Auth::check()) <a href="{{ url('/user/albert') }}">Hello, {{ Auth::user()->name }}</a> @else <a href="">Login</a></span> @endif
+                @if(Auth::check()) <a href="{{ url('/user/'.Auth::user()->id) }}">Hello, {{ Auth::user()->name }}</a> @else <a href="">Login</a></span> @endif
                 <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu">

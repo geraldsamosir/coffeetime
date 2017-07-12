@@ -30,6 +30,11 @@ class OrderController extends Controller
         return view('frontend.pages.checkout', compact('order'));
     }
 
+    public function showMobile($orderId) {
+        $order = Order::find($orderId);
+        return view('mobile.pages.checkout', compact('order'));
+    }
+
     public function delete($id) {
         $orderDetail = OrderDetail::find($id);
         $orderDetail->delete();
@@ -79,6 +84,7 @@ class OrderController extends Controller
         $order->phone_number = $input['lblHp'];
 
         $order->save();
+        return redirect('/order/summary/'.$order->id);
         return view('frontend.pages.pembayaran', compact('order'));
     }
 
@@ -95,6 +101,14 @@ class OrderController extends Controller
         return view('frontend.pages.pembayaran', compact('order'));
     }
 
+    public function getOrderSummaryMobile($id) {
+        $order = Order::find($id);
+        if ($order->user_id != null && $order->user_id != Auth::user()->id) {
+            return response()->view('errors.403');
+        }
+        return view('mobile.pages.pembayaran', compact('order'));
+    }
+
     public function paymentConfirmation(Request $request, $id) {
         $order = Order::find($id);
         $input = $request->all();
@@ -103,7 +117,7 @@ class OrderController extends Controller
         $order->confirmation_transfer_amount = $input['lblAmount'];
         $order->status = Order::PAYMENT_CONFIRMED;
         $order->save();
-        return view('frontend.pages.pembayaran', compact('order'));
+        return redirect('/order/summary/'.$order->id);
     }
 
     private function generateUniqueCode($amount, $array) {
