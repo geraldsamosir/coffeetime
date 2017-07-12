@@ -55,6 +55,15 @@
   <li><a href="/login"><i class="material-icons">perm_identity</i>Login</a></li>
   <li><a href="/register"><i class="material-icons">assignment_ind</i>Register</a></li>
 
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li><a href="/customer/akun"><i class="material-icons">account_box</i>Detail Akun</a></li>
+  <li><a href="/customer/portofolio"><i class="material-icons">assignment</i>Portofolio</a></li>
+  <li><a href="/cart"><i class="material-icons">shopping_cart</i>Cart</a></li>
+  <li><a href="/customer/transaksi"><i class="material-icons">history</i>Riwayar Transaksi</a></li>
+  <li><a href="/customer/artikel"><i class="material-icons">description</i>Artikel</a></li>
+
   {{-- <li><div class="divider"></div></li> --}}
   {{-- <li><a class="subheader">Subheader</a></li> --}}
   {{-- <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> --}}
