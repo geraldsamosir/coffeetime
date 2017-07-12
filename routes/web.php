@@ -374,6 +374,22 @@ else {
 
     Route::get('/order/summary/{id}', 'OrderController@getOrderSummaryMobile');
 
+    Route::get('/customer/akun', function(){
+        return view('mobile.pages.panelAkun');
+    });
+
+    Route::get('/customer/portofolio', function(){
+        return view('mobile.pages.panelPortofolio');
+    });
+
+    Route::get('/customer/transaksi', function(){
+        return view('mobile.pages.panelTransaksi');
+    });
+
+     Route::get('/customer/artikel', function(){
+        return view('mobile.pages.panelResep');
+    });
+
 
 }
 
