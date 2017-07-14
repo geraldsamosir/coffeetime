@@ -310,3 +310,7 @@ span.produk-detail-harga {
 	font-size: 14px;
 	font-weight: 700;
 }
+
+.table-komparasi tr td:first-child {
+	font-weight: bold;
+}
