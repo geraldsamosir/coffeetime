@@ -16,7 +16,26 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
     Route::get('/', function () {
-        return view('frontend.pages.home');
+        $latestCoffee = DB::table('categories')
+            ->where('categories.id','1')
+            ->orWhere('categories.parent_id','1')
+            ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+            ->join('products as p', 'categories.id','=','p.category_id')
+            ->select('p.*')
+            ->orderBy('p.created_at','DESC')
+            ->get();
+
+        $latestMachine = DB::table('categories')
+            ->where('categories.id','9')
+            ->orWhere('categories.parent_id','9')
+            ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+            ->join('products as p', 'categories.id','=','p.category_id')
+            ->select('p.*')
+            ->orderBy('p.created_at','DESC')
+            ->get();
+
+
+        return view('frontend.pages.home', compact('latestCoffee', 'latestMachine'));
     });
 
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
@@ -41,7 +60,14 @@ if ($agent->isDesktop()) {
     Route::get('/article/view/{id}', 'ArticleController@show');
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->orderBy('created_at', 'DESC')->get();
+        $coffees = DB::table('categories')
+            ->where('categories.id',$category->id)
+            ->orWhere('categories.parent_id',$category->id)
+            ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+            ->join('products as p', 'categories.id','=','p.category_id')
+            ->select('p.*')
+            ->orderBy('p.created_at','DESC')
+            ->get();
         $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         return view('frontend.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
@@ -51,11 +77,19 @@ if ($agent->isDesktop()) {
         $sortQuery = isset(Request::all()['sort']) ? Request::all()['sort'] : null;
         $categoryQuery = isset(Request::all()['category']) ? Request::all()['category'] : null;
         $priceQuery = isset(Request::all()['price']) ? Request::all()['price'] : null;
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->where('parent_id', '!=', 8)->get();
+        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         $coffees = App\Product::where('name', 'like', '%' . $searchQuery . '%');
 
         if (!empty($categoryQuery)) {
-            $coffees = $coffees->where('category_id', $categoryQuery);
+            $coffees = DB::table('categories')
+                ->where(function($q) use ($categoryQuery) {
+                    $q->where('categories.id',$categoryQuery)
+                        ->orWhere('categories.parent_id',$categoryQuery);
+                })
+                ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+                ->join('products as p', 'categories.id','=','p.category_id')
+                ->select('p.*');
+            $coffees = $coffees->where('p.name', 'like', '%' . $searchQuery . '%');
         }
 
         if (!empty($priceQuery)) {
@@ -349,7 +383,14 @@ else {
     });
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
-        $coffees = App\Product::where('category_id', $category->id)->orderBy('created_at','DESC')->get();
+        $coffees = DB::table('categories')
+            ->where('categories.id',$category->id)
+            ->orWhere('categories.parent_id',$category->id)
+            ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+            ->join('products as p', 'categories.id','=','p.category_id')
+            ->select('p.*')
+            ->orderBy('p.created_at','DESC')
+            ->get();
         $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
@@ -359,11 +400,19 @@ else {
         $sortQuery = isset(Request::all()['sort']) ? Request::all()['sort'] : null;
         $categoryQuery = isset(Request::all()['category']) ? Request::all()['category'] : null;
         $priceQuery = isset(Request::all()['price']) ? Request::all()['price'] : null;
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->where('parent_id', '!=', 8)->get();
+        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
         $coffees = App\Product::where('name', 'like', '%' . $searchQuery . '%');
 
         if (!empty($categoryQuery)) {
-            $coffees = $coffees->where('category_id', $categoryQuery);
+            $coffees = DB::table('categories')
+                ->where(function($q) use ($categoryQuery) {
+                    $q->where('categories.id',$categoryQuery)
+                        ->orWhere('categories.parent_id',$categoryQuery);
+                })
+                ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+                ->join('products as p', 'categories.id','=','p.category_id')
+                ->select('p.*');
+            $coffees = $coffees->where('p.name', 'like', '%' . $searchQuery . '%');
         }
 
         if (!empty($priceQuery)) {
