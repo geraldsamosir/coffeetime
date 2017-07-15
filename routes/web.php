@@ -16,26 +16,30 @@ $agent = new Jenssegers\Agent\Agent();
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
     Route::get('/', function () {
-        $latestCoffee = DB::table('categories')
+        $coffee = DB::table('categories')
             ->where('categories.id','1')
             ->orWhere('categories.parent_id','1')
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
             ->join('products as p', 'categories.id','=','p.category_id')
-            ->select('p.*')
-            ->orderBy('p.created_at','DESC')
-            ->get();
+            ->select('p.*');
 
-        $latestMachine = DB::table('categories')
+        $machine = DB::table('categories')
             ->where('categories.id','9')
             ->orWhere('categories.parent_id','9')
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
             ->join('products as p', 'categories.id','=','p.category_id')
-            ->select('p.*')
-            ->orderBy('p.created_at','DESC')
-            ->get();
+            ->select('p.*');
+
+        $latestCoffee = $coffee->orderBy('p.created_at','DESC')->get(4);
+
+        $latestMachine = $machine->orderBy('p.created_at','DESC')->get(4);
+
+        $bestPromoCoffee = $coffee->orderBy('p.discount_percent','DESC')->get(4);
+        $bestPromoMachine = $machine->orderBy('p.discount_percent','DESC')->get(4);
 
 
-        return view('frontend.pages.home', compact('latestCoffee', 'latestMachine'));
+
+        return view('frontend.pages.home', compact('latestCoffee', 'latestMachine', 'bestPromoCoffee', 'bestPromoMachine'));
     });
 
     Route::get('/detail-coffee/{productCoffee}', function (App\Product $productCoffee) {
