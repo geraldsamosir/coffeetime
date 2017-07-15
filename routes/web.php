@@ -204,7 +204,7 @@ if ($agent->isDesktop()) {
     Route::get('/customer/transaksi', 'OrderController@getHistory');
 
     Route::get('/customer/article', function () {
-        $userArticles = Auth::user()->articles()->paginate(5);
+        $userArticles = Auth::user()->articles()->orderBy('created_at','DESC')->paginate(5);
         $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
         return view('frontend.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
@@ -378,16 +378,22 @@ else {
         return view('mobile.pages.panelAkun');
     });
 
-    Route::get('/customer/portofolio', function(){
-        return view('mobile.pages.panelPortofolio');
+    Route::post('/customer/edit/save', 'UserController@saveProfileMobile');
+
+    Route::get('/customer/portfolio', function(){
+        return view('mobile.pages.panelPortfolio');
     });
 
-    Route::get('/customer/transaksi', function(){
-        return view('mobile.pages.panelTransaksi');
-    });
+    Route::get('/customer/transaksi', 'OrderController@getHistoryMobile');
 
      Route::get('/customer/artikel', function(){
         return view('mobile.pages.panelResep');
+    });
+
+    Route::get('/customer/article', function () {
+        $userArticles = Auth::user()->articles()->orderBy('created_at','DESC')->paginate(5);
+        $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
+        return view('mobile.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
 
 
@@ -401,6 +407,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/ajax/cartcontent', 'CartController@getCartContent');
 
+Route::post('/customer/portfolio/save', 'UserController@savePortfolio');
 Route::post('/ajax/addcartitem/{id}', 'CartController@addItemToCart');
 Route::post('/checkout', 'CartController@cartCheckout');
 Route::get('/order/delete/{id}', 'OrderController@delete');

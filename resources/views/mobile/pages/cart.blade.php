@@ -36,7 +36,8 @@
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">&nbsp;<i class="material-icons right">close</i></span>
-            <a href="{{ url('ajax/deletecartitem/'.$cartItem->rowId) }}" class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
+            <a href="{{ url('ajax/deletecartitem/'.$cartItem->rowId) }}" class="waves-effect waves-light btn"
+               style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
           </div>
         </div>
       </div>
@@ -48,11 +49,15 @@
   {{-- Section Button --}}
   <div class="row">
     <div class="col s6 m6">
-      <button onclick="window.history.back()" class="waves-effect waves-light btn" style="background: #999999;">Lanjutkan Belanja</button>
+      <button onclick="window.history.back()" class="waves-effect waves-light btn" style="background: #999999;">
+        Kembali
+      </button>
     </div>
-    <div class="col s6 m6">
-      <button type="submit" class="waves-effect waves-light btn" style="background: #2ab27b;">Pembayaran</button>
-    </div>
+    @if($cart->count() > 0)
+      <div class="col s6 m6">
+        <button type="submit" class="waves-effect waves-light btn" style="background: #2ab27b;">Pembayaran</button>
+      </div>
+    @endif
   </div>
   {!! Form::close() !!}
   {{-- End Section Button --}}

@@ -57,10 +57,10 @@
   <li><a href="/register"><i class="material-icons">assignment_ind</i>Register</a></li>
 @else
   <li><a href="/customer/akun"><i class="material-icons">account_box</i>Detail Akun</a></li>
-  <li><a href="/customer/portofolio"><i class="material-icons">assignment</i>Portofolio</a></li>
+  <li><a href="/customer/portfolio"><i class="material-icons">assignment</i>Portofolio</a></li>
   <li><a href="/cart"><i class="material-icons">shopping_cart</i>Cart</a></li>
   <li><a href="/customer/transaksi"><i class="material-icons">history</i>Riwayat Transaksi</a></li>
-  <li><a href="/customer/artikel"><i class="material-icons">description</i>Artikel</a></li>
+  <li><a href="/customer/article"><i class="material-icons">description</i>Artikel</a></li>
       <li><a onclick="event.preventDefault(); document.getElementById('logout').submit()"><i class="material-icons">power_settings_new</i>Logout</a></li>
       <form id="logout" action="{{ url('/logout')}}" method="POST" style="display:none;">
         {{ csrf_field() }}
@@ -75,5 +75,7 @@
   <span data-activates="slide-out" class="button-collapse" class="menu-header"><i
       class="material-icons">menu</i></a></span>
   {{-- <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> --}}
-  <span class="menu-header">home</span>
+  <span class="menu-header">Coffee Time</span>
 </div>
+
+<div id="menu-padding-helper"></div>

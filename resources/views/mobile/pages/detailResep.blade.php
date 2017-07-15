@@ -5,7 +5,7 @@
 
 @section('content')
   <style>
-    .content, img {
+    #content, img {
       max-width: 100%;
       height: auto !important;
     }
@@ -41,7 +41,7 @@
     <div class="col s12">
       <div class="resep-image">
         <p class="ptitle">{{$article->title}} <span
-            class="pdate">Date: {{ date('F d, Y', strtotime($article->created_at)) }}</span></span>
+            class="pdate">Date: {{ date('F d, Y', strtotime($article->created_at)) }}</span></p>
         <p class="pcreated">Created by : <a
             href="{{url('/user/'.$article->user_id)}}">{{App\User::find($article->user_id)->name}}</a></p>
         @if($article->parent_id)
@@ -49,9 +49,7 @@
               href="{{url('/article/view/'.$article->parent_id)}}">{{App\Article::where('id', $article->parent_id)->first()->title}}</a>
           </p>
         @endif
-        <p>Share
-        <div class='pull-left oss-widget-interface'></div>
-        </p>
+        <div style="overflow:hidden;" class='pull-left oss-widget-interface'></div>
         <img src="{{ Voyager::image($article->header_image) }}"
              onerror="this.style.display='none'" alt="resep-image">
       </div>
@@ -110,7 +108,7 @@
                 <div class="card-stacked card-stacked-resep">
                   <div class="card-content">
                     <p class="ptitle">{{$related->title}} <span
-                        class="pdate">Date: {{ date('F d, Y', strtotime($related->created_at)) }}</span></span>
+                        class="pdate">Date: {{ date('F d, Y', strtotime($related->created_at)) }}</span></p>
                     <p class="pcreated">Created by : <a href="">{{App\User::find($article->user_id)->name}}</a></p>
                     <p class="p12 social-stat">
                       <i class="material-icons" style="font-size:14px;">content_copy</i>{{$related->copies}}

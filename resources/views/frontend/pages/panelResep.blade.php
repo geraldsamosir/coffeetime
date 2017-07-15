@@ -31,18 +31,18 @@
                   <ul class="list-group"><h3>Favorited</h3>
                     <hr>
                     <ul class="list-group list-article-favorited">
-                      @foreach($userLikedArticles as $userArticle)
-                        <a class="hover-overlay" href={{url('article/view/'.$userArticle->article->id)}}>
-                        <li class="list-group-item">{{$userArticle->article->title}}
+                      @foreach($userLikedArticles as $userLikedArticle)
+                        <a class="hover-overlay" href={{url('article/view/'.$userLikedArticle->article->id)}}>
+                        <li class="list-group-item">{{$userLikedArticle->article->title}}
                           <div class="resep-social-icon">
                             <i class="fa fa-copy"></i>
-                            <span class="icon-comment">{{$userArticle->article->copies}}</span>
+                            <span class="icon-comment">{{$userLikedArticle->article->copies}}</span>
 
                             <i class="fa fa-thumbs-up"></i>
-                            <span class="icon-like">{{$userArticle->article->likes}}</span>
+                            <span class="icon-like">{{$userLikedArticle->article->likes}}</span>
 
                             <i class="fa fa-eye"></i>
-                            <span class="icon-view">{{$userArticle->article->views}}</span>
+                            <span class="icon-view">{{$userLikedArticle->article->views}}</span>
                           </div></li>
                         </a>
                       @endforeach
