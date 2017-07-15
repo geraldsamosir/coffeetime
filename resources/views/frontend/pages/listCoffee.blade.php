@@ -145,11 +145,11 @@
                             </div>
                         </a>
                         <div class="caption">
-                            <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                            <h4 class="voucher-title">{{ str_limit($coffee->name, $limit = 30, $end = '...') }}</h4>
                             <div class="voucher-caption">
                                 <div class="price">
                                     <span class="price-new">Rp {{ number_format($coffee->original_price) }}</span>
-                                </div>  
+                                </div>
                             </div>
                         </div>
                         <div class="btn-beli">
@@ -169,7 +169,7 @@
           @else
           {{-- Baris Dengan Discount --}}
           <div class="col-md-3">
-              <div class="product-col"> 
+              <div class="product-col">
                 <div class="inner-product-col">
                     <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
                         <div class="image">
@@ -179,7 +179,7 @@
                         </div>
                     </a>
                     <div class="caption">
-                        <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                        <h4 class="voucher-title">{{ str_limit($coffee->name, $limit = 30, $end = '...') }}</h4>
                         <div class="voucher-caption">
                             <div class="price">
                               <span class="price-old">Rp {{ number_format($coffee->original_price) }}</span>
