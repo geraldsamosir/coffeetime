@@ -9,12 +9,12 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active srle">
-        <img src="{{asset('/images/slide-1.jpg')}}" alt="" class="img-responsie">
+        <img src="{{asset('/images/slide-1.jpg')}}" alt="" class="img-responsive">
         <div class="carousel-caption">
         </div>
       </div>
       <div class="item">
-        <img src="{{asset('/images/slide-2.jpg')}}" alt="" class="img-responsie">
+        <img src="{{asset('/images/slide-2.jpg')}}" alt="" class="img-responsive">
         <div class="carousel-caption">
         </div>
       </div>
