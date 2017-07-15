@@ -176,7 +176,7 @@
 	<script>
 		$(document).ready(function(){
 	      $('.slider').slider({
-	      	height: 200
+	      	height: 120
 	      });
 	    });
 	</script>
