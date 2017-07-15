@@ -3,6 +3,12 @@
 @section('title','| Komparasi Kopi')
 
 @section('content')
+  <style>
+    .select2-container--default {
+      display: table!important;
+      table-layout: fixed!important;
+    }
+  </style>
 
   <div class="section-komparasi">
     <div class="section-komparasi-header">

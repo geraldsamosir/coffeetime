@@ -39,7 +39,8 @@
 
   <ul class="collapsible" data-collapsible="accordion">
     <li>
-      <div class="collapsible-header collapsible-sidebar"><i class="material-icons icon-sidebar">assignment</i>Resep</div>
+      <div class="collapsible-header collapsible-sidebar"><i class="material-icons icon-sidebar">assignment</i>Artikel
+      </div>
       <ul class="collapsible-body collapsible-body-sidebar">
         @foreach($categoriesArticle as $category)
           <li><a href="{{url('list-article/'.$category->id)}}">{{$category->name}}</a></li>
@@ -47,25 +48,25 @@
       </ul>
     </li>
   </ul>
-  <li><a href="/"><i class="material-icons">live_help</i>Bantuan</a></li>
-  <li><a href="/"><i class="material-icons">contacts</i>Contact</a></li>
+  <li><a href="{{url('/komparasi')}}"><i class="material-icons">search</i>Komparasi</a></li>
+  <li><a href="/cart"><i class="material-icons">shopping_cart</i>Cart</a></li>
   <li>
     <div class="divider"></div>
   </li>
-    @if(!Auth::check())
-  <li><a href="/login"><i class="material-icons">perm_identity</i>Login</a></li>
-  <li><a href="/register"><i class="material-icons">assignment_ind</i>Register</a></li>
-@else
-  <li><a href="/customer/akun"><i class="material-icons">account_box</i>Detail Akun</a></li>
-  <li><a href="/customer/portfolio"><i class="material-icons">assignment</i>Portofolio</a></li>
-  <li><a href="/cart"><i class="material-icons">shopping_cart</i>Cart</a></li>
-  <li><a href="/customer/transaksi"><i class="material-icons">history</i>Riwayat Transaksi</a></li>
-  <li><a href="/customer/article"><i class="material-icons">description</i>Artikel</a></li>
-      <li><a onclick="event.preventDefault(); document.getElementById('logout').submit()"><i class="material-icons">power_settings_new</i>Logout</a></li>
-      <form id="logout" action="{{ url('/logout')}}" method="POST" style="display:none;">
-        {{ csrf_field() }}
-      </form>
-@endif
+  @if(!Auth::check())
+    <li><a href="/login"><i class="material-icons">perm_identity</i>Login</a></li>
+    <li><a href="/register"><i class="material-icons">assignment_ind</i>Register</a></li>
+  @else
+    <li><a href="/customer/akun"><i class="material-icons">account_box</i>Detail Akun</a></li>
+    <li><a href="/customer/portfolio"><i class="material-icons">assignment</i>Portofolio</a></li>
+    <li><a href="/customer/transaksi"><i class="material-icons">history</i>Riwayat Transaksi</a></li>
+    <li><a href="/customer/article"><i class="material-icons">description</i>Artikel</a></li>
+    <li><a onclick="event.preventDefault(); document.getElementById('logout').submit()"><i class="material-icons">power_settings_new</i>Logout</a>
+    </li>
+    <form id="logout" action="{{ url('/logout')}}" method="POST" style="display:none;">
+      {{ csrf_field() }}
+    </form>
+  @endif
   {{-- <li><div class="divider"></div></li> --}}
   {{-- <li><a class="subheader">Subheader</a></li> --}}
   {{-- <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> --}}

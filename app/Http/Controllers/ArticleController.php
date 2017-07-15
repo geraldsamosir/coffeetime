@@ -66,10 +66,10 @@ class ArticleController extends Controller
         if(!Auth::check()) {
             return redirect('/login');
         }
-        $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
+        $products = Product::get();
         $existingTags =  Article::existingTags();
         if(Auth::check()) {
-            return view('frontend.pages.createArticle', ['permissions' => $permissions, 'existingTags' => $existingTags]);
+            return view('frontend.pages.createArticle', ['products' => $products, 'existingTags' => $existingTags]);
         } else {
             return redirect('/login');
         }
@@ -79,10 +79,10 @@ class ArticleController extends Controller
         if(!Auth::check()) {
             return redirect('/login');
         }
-        $permissions = UsersArticlePermission::where('user_id', Auth::user()->id)->get();
+        $products = Product::get();
         $existingTags =  Article::existingTags();
         if(Auth::check()) {
-            return view('mobile.pages.createArticle', ['permissions' => $permissions, 'existingTags' => $existingTags]);
+            return view('mobile.pages.createArticle', ['products' => $products, 'existingTags' => $existingTags]);
         } else {
             return redirect('/login');
         }

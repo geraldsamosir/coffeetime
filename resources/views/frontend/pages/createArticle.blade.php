@@ -51,9 +51,12 @@
 
                 <div class="form-group">
                   {!! Form::label('lblProduct',"Product",[]) !!}
-                  {!! Form::select('lblProduct',$permissions->mapWithKeys(function ($item) {
-                    return [$item['id'] => $item->product->name];
-                  }),null,['class'=>'form-control']) !!}
+                  <select name="lblProduct" id="lblProduct" class="form-control">
+                    <option value="" selected>Pilih Produk</option>
+                    @foreach($products as $item)
+                      <option value="{{$item['id']}}">{{$item->name}}</option>
+                    @endforeach
+                  </select>
                 </div>
 
                 <div class="form-group">

@@ -48,8 +48,8 @@
     <div class="row input-field col s12">
       <select name="lblProduct" id="lblProduct">
         <option value="" selected>Pilih Produk</option>
-        @foreach($permissions as $item)
-          <option value="{{$item['id']}}">{{$item->product->name}}</option>
+        @foreach($products as $item)
+          <option value="{{$item['id']}}">{{$item->name}}</option>
           @endforeach
       </select>
       <label>Produk</label>

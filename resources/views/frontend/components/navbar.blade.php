@@ -80,9 +80,6 @@
             </div>
           </li>
           <li><a href="/komparasi">Komparasi</a></li>
-          <li><a href="">Panduan</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Contact Us</a></li>
         </ul>
       </div>
       <!-- Navbar Cat collapse Ends -->

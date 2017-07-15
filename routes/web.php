@@ -231,6 +231,53 @@ else {
 	    return view('mobile.pages.home');
 	});
 
+    Route::get('/komparasi', function () {
+        $products = App\Product::get();
+        $komparasi3 = isset(Request::all()['komparasi3']);
+        $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
+        $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
+        $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
+        if($idProduct1) {
+            $product1 = App\Product::where('id', $idProduct1)->first();
+            $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
+            $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
+        }
+        if($idProduct2) {
+            $product2 = App\Product::where('id', $idProduct2)->first();
+            $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
+            $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
+        }
+        if($idProduct3) {
+            $product3 = App\Product::where('id', $idProduct3)->first();
+            $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
+            $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
+        }
+        return view('mobile.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+    });
+    Route::get('/komparasi3', function () {
+        $products = App\Product::get();
+        $komparasi3 = true;
+        $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
+        $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
+        $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
+        if($idProduct1) {
+            $product1 = App\Product::where('id', $idProduct1)->first();
+            $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
+            $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
+        }
+        if($idProduct2) {
+            $product2 = App\Product::where('id', $idProduct2)->first();
+            $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
+            $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
+        }
+        if($idProduct3) {
+            $product3 = App\Product::where('id', $idProduct3)->first();
+            $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
+            $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
+        }
+        return view('mobile.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+    });
+
     Route::get('/customer/article/create', 'ArticleController@createArticleMobile');
     Route::get('/customer/article/edit/{id}', 'ArticleController@editArticleMobile');
     Route::post('/customer/article/update/{articleId}', 'ArticleController@updateArticle');
@@ -358,10 +405,6 @@ else {
     });
 
     Route::get('/checkout/{orderId}', 'OrderController@showMobile');
-
-	Route::get('/komparasi', function(){
-		return view('mobile.pages.komparasi');
-	});
 
     Route::get('/cart', function(){
         $cart = Cart::content();

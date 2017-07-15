@@ -4,13 +4,31 @@
 
 @section('content')
 
-  <div class="section-slider">
-    <a href="">
-      <img src="/images/slide-1.jpg" alt="">
+  <div id="carousel-details" class="carousel slide" data-ride="carousel"
+       data-interval="3000">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active srle">
+        <img src="{{asset('/images/slide-1.jpg')}}" alt="" class="img-responsie">
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <div class="item">
+        <img src="{{asset('/images/slide-2.jpg')}}" alt="" class="img-responsie">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-details" role="button"
+       data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
-    <a href="">
-      <img src="/images/slide-2.jpg" alt="">
+    <a class="right carousel-control" href="#carousel-details" role="button"
+       data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
+
   </div>
 
   <div class="section-new-product">
