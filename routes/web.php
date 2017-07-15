@@ -265,9 +265,32 @@ if ($agent->isDesktop()) {
     });
 } /*Route for Mobile*/
 else {
-	Route::get('/', function () {
-	    return view('mobile.pages.home');
-	});
+    Route::get('/', function () {
+        $coffee = DB::table('categories')
+            ->where('categories.id','1')
+            ->orWhere('categories.parent_id','1')
+            ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+            ->join('products as p', 'categories.id','=','p.category_id')
+            ->select('p.*');
+
+        $machine = DB::table('categories')
+            ->where('categories.id','9')
+            ->orWhere('categories.parent_id','9')
+            ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
+            ->join('products as p', 'categories.id','=','p.category_id')
+            ->select('p.*');
+
+        $latestCoffee = $coffee->orderBy('p.created_at','DESC')->limit(4)->get();
+
+        $latestMachine = $machine->orderBy('p.created_at','DESC')->limit(4)->get();
+
+        $bestPromoCoffee = $coffee->orderBy('p.discount_percent','DESC')->limit(4)->get();
+        $bestPromoMachine = $machine->orderBy('p.discount_percent','DESC')->limit(4)->get();
+
+
+
+        return view('mobile.pages.home', compact('latestCoffee', 'latestMachine', 'bestPromoCoffee', 'bestPromoMachine'));
+    });
 
     Route::get('/komparasi', function () {
         $products = App\Product::get();
