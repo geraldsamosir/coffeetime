@@ -30,12 +30,12 @@ if ($agent->isDesktop()) {
             ->join('products as p', 'categories.id','=','p.category_id')
             ->select('p.*');
 
-        $latestCoffee = $coffee->orderBy('p.created_at','DESC')->get(4);
+        $latestCoffee = $coffee->orderBy('p.created_at','DESC')->limit(4)->get();
 
-        $latestMachine = $machine->orderBy('p.created_at','DESC')->get(4);
+        $latestMachine = $machine->orderBy('p.created_at','DESC')->limit(4)->get();
 
-        $bestPromoCoffee = $coffee->orderBy('p.discount_percent','DESC')->get(4);
-        $bestPromoMachine = $machine->orderBy('p.discount_percent','DESC')->get(4);
+        $bestPromoCoffee = $coffee->orderBy('p.discount_percent','DESC')->limit(4)->get();
+        $bestPromoMachine = $machine->orderBy('p.discount_percent','DESC')->limit(4)->get();
 
 
 
