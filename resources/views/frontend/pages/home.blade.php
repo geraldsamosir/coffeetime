@@ -237,7 +237,7 @@
                       <a class="voucher-link" href="{{url('detail-coffee/'.$bestPromoCoffee->first()->id)}}">
                         <div class="image">
                           <img src="{{Voyager::image($bestPromoCoffee->first()->thumb_image)}}" alt="product"
-                               class="lazy img-responsive product"/>
+                               class="lazy img-responsive"/>
                         </div>
                       </a>
                       <div class="caption">
@@ -279,7 +279,7 @@
                                   <div class="col-md-6 no-padding">
                                     <div class="image">
                                       <img src="{{Voyager::image($coffee->thumb_image)}}" alt="product"
-                                           class="lazy img-responsive product"/>
+                                           class="lazy img-responsive"/>
                                     </div>
                                   </div>
                                 </a>
