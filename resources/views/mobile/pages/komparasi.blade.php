@@ -78,9 +78,9 @@
         <table class="bordered table-komparasi">
           <tr>
             <td colspan="2">
-              @if($product1->discounted_price > 0) <span style="text-decoration:line-through"
+              @if($product2->discounted_price > 0) <span style="text-decoration:line-through"
                                                          class="price-old">Rp. {{ number_format($product1->original_price) }}</span> @endif
-              Rp. {{ $product1->discounted_price > 0 ? number_format($product1->discounted_price) : number_format($product1->original_price) }}
+              Rp. {{ $product2->discounted_price > 0 ? number_format($product1->discounted_price) : number_format($product1->original_price) }}
             </td>
           </tr>
         </table>
