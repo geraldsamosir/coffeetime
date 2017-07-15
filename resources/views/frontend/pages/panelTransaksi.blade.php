@@ -38,7 +38,7 @@
 													{{$order->created_at}}
 												</td>
 												<td>
-													{{$order->amount}}
+													Rp. {{number_format($order->amount)}}
 												</td>
 												<td>
 													{{App\Order::status[$order->status]}}

@@ -17,7 +17,7 @@
                   <div class="details-slide-header">
                     <div class="col-md-12">
                       <div id="carousel-details" class="carousel slide" data-ride="carousel"
-                           data-interval="false">
+                           data-interval="3000">
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">

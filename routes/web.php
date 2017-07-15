@@ -204,7 +204,7 @@ if ($agent->isDesktop()) {
     Route::get('/customer/transaksi', 'OrderController@getHistory');
 
     Route::get('/customer/article', function () {
-        $userArticles = Auth::user()->articles()->paginate(5);
+        $userArticles = Auth::user()->articles()->orderBy('created_at','DESC')->paginate(5);
         $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
         return view('frontend.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
@@ -230,6 +230,53 @@ else {
 	Route::get('/', function () {
 	    return view('mobile.pages.home');
 	});
+
+    Route::get('/komparasi', function () {
+        $products = App\Product::get();
+        $komparasi3 = isset(Request::all()['komparasi3']);
+        $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
+        $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
+        $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
+        if($idProduct1) {
+            $product1 = App\Product::where('id', $idProduct1)->first();
+            $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
+            $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
+        }
+        if($idProduct2) {
+            $product2 = App\Product::where('id', $idProduct2)->first();
+            $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
+            $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
+        }
+        if($idProduct3) {
+            $product3 = App\Product::where('id', $idProduct3)->first();
+            $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
+            $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
+        }
+        return view('mobile.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+    });
+    Route::get('/komparasi3', function () {
+        $products = App\Product::get();
+        $komparasi3 = true;
+        $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
+        $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
+        $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
+        if($idProduct1) {
+            $product1 = App\Product::where('id', $idProduct1)->first();
+            $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
+            $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
+        }
+        if($idProduct2) {
+            $product2 = App\Product::where('id', $idProduct2)->first();
+            $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
+            $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
+        }
+        if($idProduct3) {
+            $product3 = App\Product::where('id', $idProduct3)->first();
+            $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
+            $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
+        }
+        return view('mobile.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+    });
 
     Route::get('/customer/article/create', 'ArticleController@createArticleMobile');
     Route::get('/customer/article/edit/{id}', 'ArticleController@editArticleMobile');
@@ -359,10 +406,6 @@ else {
 
     Route::get('/checkout/{orderId}', 'OrderController@showMobile');
 
-	Route::get('/komparasi', function(){
-		return view('mobile.pages.komparasi');
-	});
-
     Route::get('/cart', function(){
         $cart = Cart::content();
         return view('mobile.pages.cart', compact('cart'));
@@ -378,16 +421,22 @@ else {
         return view('mobile.pages.panelAkun');
     });
 
-    Route::get('/customer/portofolio', function(){
-        return view('mobile.pages.panelPortofolio');
+    Route::post('/customer/edit/save', 'UserController@saveProfileMobile');
+
+    Route::get('/customer/portfolio', function(){
+        return view('mobile.pages.panelPortfolio');
     });
 
-    Route::get('/customer/transaksi', function(){
-        return view('mobile.pages.panelTransaksi');
-    });
+    Route::get('/customer/transaksi', 'OrderController@getHistoryMobile');
 
      Route::get('/customer/artikel', function(){
         return view('mobile.pages.panelResep');
+    });
+
+    Route::get('/customer/article', function () {
+        $userArticles = Auth::user()->articles()->orderBy('created_at','DESC')->paginate(5);
+        $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
+        return view('mobile.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
 
 
@@ -401,6 +450,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/ajax/cartcontent', 'CartController@getCartContent');
 
+Route::post('/customer/portfolio/save', 'UserController@savePortfolio');
 Route::post('/ajax/addcartitem/{id}', 'CartController@addItemToCart');
 Route::post('/checkout', 'CartController@cartCheckout');
 Route::get('/order/delete/{id}', 'OrderController@delete');

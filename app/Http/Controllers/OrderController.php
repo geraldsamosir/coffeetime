@@ -89,8 +89,13 @@ class OrderController extends Controller
     }
 
     public function getHistory() {
-        $orderHistory = Order::where('user_id', Auth::user()->id)->paginate(10);
+        $orderHistory = Order::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(10);
         return view('frontend.pages.panelTransaksi', compact('orderHistory'));
+    }
+
+    public function getHistoryMobile() {
+        $orderHistory = Order::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(5);
+        return view('mobile.pages.panelTransaksi', compact('orderHistory'));
     }
 
     public function getOrderSummary($id) {

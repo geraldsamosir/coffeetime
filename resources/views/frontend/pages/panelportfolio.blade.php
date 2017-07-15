@@ -18,7 +18,7 @@
 								<h3 class="panel-title">Portfolio user {{isset($user) ? $user->name : Auth::user()->name}}</h3>
 							</div>
               @if(!isset($user) || $user->id == Auth::user()->id)
-							<a class="btn btn-primary" href="/customer/portfolio/edit""><i class="fa fa-edit fa-1g"></i> Edit Portfolio</a>
+							<a class="btn btn-primary" href="/customer/portfolio/edit"><i class="fa fa-edit fa-1g"></i> Edit Portfolio</a>
               @endif
 							<hr>
 							<div class="panel-card-body">

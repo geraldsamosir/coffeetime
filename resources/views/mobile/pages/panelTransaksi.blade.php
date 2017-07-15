@@ -19,32 +19,26 @@
 		        </thead>
 
 		        <tbody>
-			        <tr>
-			            <td><a href="">10</a></td>
-			            <td>2017-05-28 07:08:21</td>
-			            <td>3200000</td>
-			            <td>Pembayaran Sedang Diproses</td>
-			        </tr>
-			        <tr>
-			            <td><a href="">20</a></td>
-			            <td>2017-05-28 07:08:21</td>
-			            <td>3200000</td>
-			            <td>Pembayaran Sedang Diproses</td>
-			        </tr>
+							@foreach($orderHistory as $order)
+								<tr>
+									<td>
+										<a href="{{ url('order/summary/'.$order->id) }}">{{$order->id}}</a>
+									</td>
+									<td>
+										{{$order->created_at}}
+									</td>
+									<td>
+										Rp. {{number_format($order->amount)}}
+									</td>
+									<td>
+										{{App\Order::status[$order->status]}}
+									</td>
+								</tr>
+							@endforeach
 		        </tbody>
 	      	</table>
+			<center>{{ $orderHistory->links() }}</center>
 	    </div>
-	</div>
-
-	<div class="row">
-		<div class="col s12">
-			<ul class="pagination" style="bottom: 10px;text-align: center;">
-			    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-			    <li class="active"><a href="#!">1</a></li>
-			    <li class="waves-effect"><a href="#!">2</a></li>
-			    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-			</ul>
-		</div>
 	</div>
 {{-- End Section History Transaksi Akun --}}
 {{-- ========================================== --}}

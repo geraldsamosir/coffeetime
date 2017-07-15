@@ -50,7 +50,8 @@
                             Rp {{ number_format($cartItem->price)}}</p>
                         </td>
                         <td class="cart-item-quantity">
-                          <input id="qty-{{$cartItem->rowId}}" name="qty-{{$cartItem->rowId}}" type="number" min="1" value="{{$cartItem->qty}}">
+                          <input id="qty-{{$cartItem->rowId}}" name="qty-{{$cartItem->rowId}}" type="number" min="1"
+                                 value="{{$cartItem->qty}}">
                         </td>
                         <td class="cart-item-subtotal">
                           <p id="subtotal-{{$cartItem->rowId}}" class="cart-subtotal">
@@ -73,8 +74,11 @@
               </div>
             </div>
             <div class="panel-cart-footer">
-              <button type="button" onclick="window.history.back()" href="/" class="btn btn-tohome">Lanjut Belanja</button>
-              {!! Form::submit('Lanjutkan Pembayaran', ['class'=>'btn btn-success btn-tocheckout']) !!}
+              <button type="button" onclick="window.history.back()" href="/" class="btn btn-tohome">Kembali
+              </button>
+              @if($cart->count() > 0)
+                {!! Form::submit('Lanjutkan Pembayaran', ['class'=>'btn btn-success btn-tocheckout']) !!}
+              @endif
             </div>
             {!! Form::close() !!}
           </div>
@@ -86,10 +90,10 @@
 
 @section('js')
   <script>
-    @foreach($cart as $cartItem)
+      @foreach($cart as $cartItem)
 
-      document.getElementById('qty-{{$cartItem->rowId}}').onchange = function () {
-        $('#subtotal-{{$cartItem->rowId}}').text('Rp ' + numeral(parseInt({{$cartItem->price}}) * parseInt(document.getElementById('qty-{{$cartItem->rowId}}').value)).format('0,0'))
+document.getElementById('qty-{{$cartItem->rowId}}').onchange = function () {
+          $('#subtotal-{{$cartItem->rowId}}').text('Rp ' + numeral(parseInt({{$cartItem->price}}) * parseInt(document.getElementById('qty-{{$cartItem->rowId}}').value)).format('0,0'))
       };
     @endforeach
   </script>
