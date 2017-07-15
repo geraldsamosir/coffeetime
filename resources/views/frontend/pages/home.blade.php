@@ -39,279 +39,178 @@
         <div class="panel-default-header">
           <div class="panel-header-title">Kopi</div>
           <div class="panel-header-link">
-            <a href="">Lihat semua</a>
+            <a href="{{url('list-product/1')}}">Lihat semua</a>
           </div>
         </div>
         <div class="panel-default-body">
           <div class="row">
-            {{-- Baris Tanpa Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/detail-coffee">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product"/>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-new">Rp 100.000</span>
+            @foreach($latestCoffee as $coffee)
+              @if($coffee->discount_percent == 0)
+                {{-- Baris Tanpa Discount --}}
+                <div class="col-md-3">
+                  <div class="product-col">
+                    <div class="inner-product-col">
+                      <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+                        <div class="image">
+                          <i class="fa fa-search overlayhover"></i>
+                          <img src="{{ Voyager::image($coffee->thumb_image) }}" alt="product"
+                               class="lazy img-responsive product"/>
+                        </div>
+                      </a>
+                      <div class="caption">
+                        <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                        <div class="voucher-caption">
+                          <div class="price">
+                            <span class="price-new">Rp {{ number_format($coffee->original_price) }}</span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      <i class="fa fa-shopping-cart"></i>
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
-                </div>
-              </div>
-            </div>
-            {{-- Baris Tanpa Discount End --}}
-
-            {{-- Baris Dengan Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/coffee/sesuatu">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product"/>
-                      <span class="price-disc">50<sup>%</sup></span>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-old">Rp 2.000.000</span>
-                        <span class="price-new">Rp 1.000.000</span>
+                      <div class="btn-beli">
+                        <a href="{{ url('detail-coffee/'.$coffee->id) }}">
+                          <button class="btn btn-lg">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Beli</span>
+                          </button>
+                        </a>
                       </div>
+                      <div class="clear" style="clear:both"></div>
                     </div>
                   </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      <i class="fa fa-shopping-cart"></i>
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
                 </div>
-              </div>
-            </div>
-            {{-- Baris Dengan Discount End --}}
+                {{-- Baris Tanpa Discount End --}}
 
-            {{-- Baris Tanpa Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/coffee/sesuatu">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product"/>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-new">Rp 100.000</span>
+              @else
+                {{-- Baris Dengan Discount --}}
+                <div class="col-md-3">
+                  <div class="product-col">
+                    <div class="inner-product-col">
+                      <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+                        <div class="image">
+                          <i class="fa fa-search overlayhover"></i>
+                          <img src="{{ Voyager::image($coffee->thumb_image) }}" alt="product"
+                               class="lazy img-responsive product"/>
+                          <span class="price-disc">{{ $coffee->discount_percent }}<sup>%</sup></span>
+                        </div>
+                      </a>
+                      <div class="caption">
+                        <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                        <div class="voucher-caption">
+                          <div class="price">
+                            <span class="price-old">Rp {{ number_format($coffee->original_price) }}</span>
+                            <span class="price-new">Rp {{ number_format($coffee->discounted_price) }}</span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      <i class="fa fa-shopping-cart"></i>
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
-                </div>
-              </div>
-            </div>
-            {{-- Baris Tanpa Discount End --}}
-
-            {{-- Baris Dengan Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/coffee/sesuatu">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example10.jpg" alt="product" class="lazy img-responsive product"/>
-                      <span class="price-disc">50<sup>%</sup></span>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-old">Rp 2.000.000</span>
-                        <span class="price-new">Rp 1.000.000</span>
+                      <div class="btn-beli">
+                        <a href="{{ url('detail-coffee/'.$coffee->id) }}">
+                          <button class="btn btn-lg">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Beli</span>
+                          </button>
+                        </a>
                       </div>
+                      <div class="clear" style="clear:both"></div>
                     </div>
                   </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      <i class="fa fa-shopping-cart"></i>
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
                 </div>
-              </div>
-            </div>
-            {{-- Baris Dengan Discount End --}}
-
+              @endif
+              {{-- Baris Dengan Discount End --}}
+            @endforeach
           </div>
         </div>
       </div>
       {{-- Produk Kopi Terbaru End--}}
 
-      {{-- Produk Mesin Kopi Terbaru --}}
-      <div class="panel-default">
-        <div class="panel-default-header">
-          <div class="panel-header-title">Mesin Kopi</div>
-          <div class="panel-header-link">
-            <a href="">Lihat semua</a>
+      @if(count($latestMachine) > 0)
+        {{-- Produk Mesin Kopi Terbaru --}}
+        <div class="panel-default">
+          <div class="panel-default-header">
+            <div class="panel-header-title">Mesin Kopi</div>
+            <div class="panel-header-link">
+              <a href="">Lihat semua</a>
+            </div>
+          </div>
+          <div class="panel-header-body">
+            <div class="row">
+              @foreach($latestMachine as $coffee)
+                @if($coffee->discount_percent == 0)
+                  {{-- Baris Tanpa Discount --}}
+                  <div class="col-md-3">
+                    <div class="product-col">
+                      <div class="inner-product-col">
+                        <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+                          <div class="image">
+                            <i class="fa fa-search overlayhover"></i>
+                            <img src="{{ Voyager::image($coffee->thumb_image) }}" alt="product"
+                                 class="lazy img-responsive product"/>
+                          </div>
+                        </a>
+                        <div class="caption">
+                          <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                          <div class="voucher-caption">
+                            <div class="price">
+                              <span class="price-new">Rp {{ number_format($coffee->original_price) }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="btn-beli">
+                          <a href="{{ url('detail-coffee/'.$coffee->id) }}">
+                            <button class="btn btn-lg">
+                              <i class="fa fa-shopping-cart"></i>
+                              <span>Beli</span>
+                            </button>
+                          </a>
+                        </div>
+                        <div class="clear" style="clear:both"></div>
+                      </div>
+                    </div>
+                  </div>
+                  {{-- Baris Tanpa Discount End --}}
+
+                @else
+                  {{-- Baris Dengan Discount --}}
+                  <div class="col-md-3">
+                    <div class="product-col">
+                      <div class="inner-product-col">
+                        <a class="voucher-link" href="{{ url('detail-coffee/'.$coffee->id) }}">
+                          <div class="image">
+                            <i class="fa fa-search overlayhover"></i>
+                            <img src="{{ Voyager::image($coffee->thumb_image) }}" alt="product"
+                                 class="lazy img-responsive product"/>
+                            <span class="price-disc">{{ $coffee->discount_percent }}<sup>%</sup></span>
+                          </div>
+                        </a>
+                        <div class="caption">
+                          <h4 class="voucher-title">{{ $coffee->name }}</h4>
+                          <div class="voucher-caption">
+                            <div class="price">
+                              <span class="price-old">Rp {{ number_format($coffee->original_price) }}</span>
+                              <span class="price-new">Rp {{ number_format($coffee->discounted_price) }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="btn-beli">
+                          <a href="{{ url('detail-coffee/'.$coffee->id) }}">
+                            <button class="btn btn-lg">
+                              <i class="fa fa-shopping-cart"></i>
+                              <span>Beli</span>
+                            </button>
+                          </a>
+                        </div>
+                        <div class="clear" style="clear:both"></div>
+                      </div>
+                    </div>
+                  </div>
+                @endif
+                {{-- Baris Dengan Discount End --}}
+              @endforeach
+
+
+            </div>
           </div>
         </div>
-        <div class="panel-header-body">
-          <div class="row">
-            {{-- Baris Tanpa Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/detail-mesin">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product"/>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-new">Rp 100.000</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      {{-- <i class="fa fa-shopping-cart"></i> --}}
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
-                </div>
-              </div>
-            </div>
-            {{-- Baris Tanpa Discount End --}}
-
-            {{-- Baris Dengan Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/coffee/sesuatu">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product"/>
-                      <span class="price-disc">50<sup>%</sup></span>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-old">Rp 2.000.000</span>
-                        <span class="price-new">Rp 1.000.000</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      {{-- <i class="fa fa-shopping-cart"></i> --}}
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
-                </div>
-              </div>
-            </div>
-            {{-- Baris Dengan Discount End --}}
-
-            {{-- Baris Tanpa Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/coffee/sesuatu">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product"/>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-new">Rp 100.000</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      {{-- <i class="fa fa-shopping-cart"></i> --}}
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
-                </div>
-              </div>
-            </div>
-            {{-- Baris Tanpa Discount End --}}
-
-            {{-- Baris Dengan Discount --}}
-            <div class="col-md-3">
-              <div class="product-col">
-                <div class="inner-product-col">
-                  <a class="voucher-link" href="/coffee/sesuatu">
-                    <div class="image">
-                      <i class="fa fa-search overlayhover"></i>
-                      <img src="/images/coffee/example9.jpg" alt="product" class="lazy img-responsive product"/>
-                      <span class="price-disc">50<sup>%</sup></span>
-                    </div>
-                  </a>
-                  <div class="caption">
-                    <h4 class="voucher-title">Nias 200g Kopi Arabica</h4>
-                    <div class="voucher-caption">
-                      <div class="price">
-                        <span class="price-old">Rp 2.000.000</span>
-                        <span class="price-new">Rp 1.000.000</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="btn-beli">
-                    <button class="btn btn-lg">
-                      {{-- <i class="fa fa-shopping-cart"></i> --}}
-                      <span>Beli</span>
-                    </button>
-                  </div>
-                  <div class="clear" style="clear:both"></div>
-                </div>
-              </div>
-            </div>
-            {{-- Baris Dengan Discount End --}}
-
-
-          </div>
-        </div>
-      </div>
-      {{-- Produk Mesin Kopi Terbaru End--}}
+        {{-- Produk Mesin Kopi Terbaru End--}}
+      @endif
     </div>
   </div>
 
