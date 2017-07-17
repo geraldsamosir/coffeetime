@@ -132,6 +132,12 @@
   {{-- End Section Deskripsi --}}
   {{-- ========================================== --}}
 
+  <div class="row">
+    <div class="card">
+      <div class="fb-comments" data-href={{Request::url()}} data-numposts="5"></div>
+    </div>
+  </div>
+
 
 
 @endsection
