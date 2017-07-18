@@ -17,26 +17,25 @@ $agent = new Jenssegers\Agent\Agent();
 if ($agent->isDesktop()) {
     Route::get('/', function () {
         $coffee = DB::table('categories')
-            ->where('categories.id','1')
-            ->orWhere('categories.parent_id','1')
+            ->where('categories.id', '1')
+            ->orWhere('categories.parent_id', '1')
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-            ->join('products as p', 'categories.id','=','p.category_id')
+            ->join('products as p', 'categories.id', '=', 'p.category_id')
             ->select('p.*');
 
         $machine = DB::table('categories')
-            ->where('categories.id','9')
-            ->orWhere('categories.parent_id','9')
+            ->where('categories.id', '9')
+            ->orWhere('categories.parent_id', '9')
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-            ->join('products as p', 'categories.id','=','p.category_id')
+            ->join('products as p', 'categories.id', '=', 'p.category_id')
             ->select('p.*');
 
-        $latestCoffee = $coffee->orderBy('p.created_at','DESC')->limit(4)->get();
+        $latestCoffee = $coffee->orderBy('p.created_at', 'DESC')->limit(4)->get();
 
-        $latestMachine = $machine->orderBy('p.created_at','DESC')->limit(4)->get();
+        $latestMachine = $machine->orderBy('p.created_at', 'DESC')->limit(4)->get();
 
-        $bestPromoCoffee = $coffee->orderBy('p.discount_percent','DESC')->limit(4)->get();
-        $bestPromoMachine = $machine->orderBy('p.discount_percent','DESC')->limit(4)->get();
-
+        $bestPromoCoffee = $coffee->orderBy('p.discount_percent', 'DESC')->limit(4)->get();
+        $bestPromoMachine = $machine->orderBy('p.discount_percent', 'DESC')->limit(4)->get();
 
 
         return view('frontend.pages.home', compact('latestCoffee', 'latestMachine', 'bestPromoCoffee', 'bestPromoMachine'));
@@ -65,14 +64,14 @@ if ($agent->isDesktop()) {
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
         $coffees = DB::table('categories')
-            ->where('categories.id',$category->id)
-            ->orWhere('categories.parent_id',$category->id)
+            ->where('categories.id', $category->id)
+            ->orWhere('categories.parent_id', $category->id)
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-            ->join('products as p', 'categories.id','=','p.category_id')
+            ->join('products as p', 'categories.id', '=', 'p.category_id')
             ->select('p.*')
-            ->orderBy('p.created_at','DESC')
+            ->orderBy('p.created_at', 'DESC')
             ->get();
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
+        $categoryProduct = \App\Category::where('name', '!=', 'parentless')->get();
         return view('frontend.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
@@ -81,17 +80,17 @@ if ($agent->isDesktop()) {
         $sortQuery = isset(Request::all()['sort']) ? Request::all()['sort'] : null;
         $categoryQuery = isset(Request::all()['category']) ? Request::all()['category'] : null;
         $priceQuery = isset(Request::all()['price']) ? Request::all()['price'] : null;
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
+        $categoryProduct = \App\Category::where('name', '!=', 'parentless')->get();
         $coffees = App\Product::where('name', 'like', '%' . $searchQuery . '%');
 
         if (!empty($categoryQuery)) {
             $coffees = DB::table('categories')
-                ->where(function($q) use ($categoryQuery) {
-                    $q->where('categories.id',$categoryQuery)
-                        ->orWhere('categories.parent_id',$categoryQuery);
+                ->where(function ($q) use ($categoryQuery) {
+                    $q->where('categories.id', $categoryQuery)
+                        ->orWhere('categories.parent_id', $categoryQuery);
                 })
                 ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-                ->join('products as p', 'categories.id','=','p.category_id')
+                ->join('products as p', 'categories.id', '=', 'p.category_id')
                 ->select('p.*');
             $coffees = $coffees->where('p.name', 'like', '%' . $searchQuery . '%');
         }
@@ -99,14 +98,14 @@ if ($agent->isDesktop()) {
         if (!empty($priceQuery)) {
             switch ($priceQuery) {
                 case 'to100':
-                    $coffees = $coffees->where('original_price', '<=' ,100000);
-        break;
+                    $coffees = $coffees->where('original_price', '<=', 100000);
+                    break;
                 case 'between100-500':
-                    $coffees = $coffees->whereBetween('original_price', [100000,500000]);
-        break;
+                    $coffees = $coffees->whereBetween('original_price', [100000, 500000]);
+                    break;
                 case 'over500':
                     $coffees = $coffees->where('original_price', '>=', 500000);
-        break;
+                    break;
                 default:
 
             }
@@ -156,13 +155,13 @@ if ($agent->isDesktop()) {
                 $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
                 break;
             default:
-                $articles = $articles->orderBy('created_at','DESC')->paginate(5);
+                $articles = $articles->orderBy('created_at', 'DESC')->paginate(5);
         }
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
-        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at','DESC')->paginate(5);
+        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at', 'DESC')->paginate(5);
         return view('frontend.pages.listArticle', compact('articles'));
     });
 
@@ -172,22 +171,22 @@ if ($agent->isDesktop()) {
         $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
         $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
         $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
-        if($idProduct1) {
+        if ($idProduct1) {
             $product1 = App\Product::where('id', $idProduct1)->first();
             $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
             $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
         }
-        if($idProduct2) {
+        if ($idProduct2) {
             $product2 = App\Product::where('id', $idProduct2)->first();
             $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
             $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
         }
-        if($idProduct3) {
+        if ($idProduct3) {
             $product3 = App\Product::where('id', $idProduct3)->first();
             $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
             $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
         }
-        return view('frontend.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+        return view('frontend.pages.komparasi', compact('products', 'komparasi3', 'product1', 'product2', 'product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
     });
     Route::get('/komparasi3', function () {
         $products = App\Product::get();
@@ -195,22 +194,22 @@ if ($agent->isDesktop()) {
         $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
         $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
         $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
-        if($idProduct1) {
+        if ($idProduct1) {
             $product1 = App\Product::where('id', $idProduct1)->first();
             $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
             $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
         }
-        if($idProduct2) {
+        if ($idProduct2) {
             $product2 = App\Product::where('id', $idProduct2)->first();
             $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
             $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
         }
-        if($idProduct3) {
+        if ($idProduct3) {
             $product3 = App\Product::where('id', $idProduct3)->first();
             $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
             $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
         }
-        return view('frontend.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+        return view('frontend.pages.komparasi', compact('products', 'komparasi3', 'product1', 'product2', 'product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
     });
 
 
@@ -218,31 +217,35 @@ if ($agent->isDesktop()) {
 
     Route::get('/order/summary/{id}', 'OrderController@getOrderSummary');
 
-	Route::get('/cart', function(){
-    $cart = Cart::content();
-		return view('frontend.pages.cart', compact('cart'));
-	});
+    Route::get('/cart', function () {
+        $cart = Cart::content();
+        return view('frontend.pages.cart', compact('cart'));
+    });
 
-	Route::get('/customer/akun', function(){
-		return view('frontend.pages.panelAkun');
-	});
+    Route::get('/customer/akun', function () {
+        return view('frontend.pages.panelAkun');
+    });
 
-	Route::get('/customer/edit', function(){
-		return view('frontend.pages.editAkun');
-	});
+    Route::get('/customer/edit', function () {
+        return view('frontend.pages.editAkun');
+    });
 
-	Route::get('/customer/portfolio',function(){
-		return view('frontend.pages.panelportfolio');
-	});
+    Route::get('/customer/portfolio', function () {
+        return view('frontend.pages.panelportfolio');
+    });
 
-	Route::get('/customer/portfolio/edit',function(){
-		return view('frontend.pages.editportfolio');
-	});
+    Route::get('/user/portfolio/{user}', function (App\User $user) {
+        return view('frontend.pages.panelportfolio', compact('user'));
+    });
+
+    Route::get('/customer/portfolio/edit', function () {
+        return view('frontend.pages.editportfolio');
+    });
 
     Route::get('/customer/transaksi', 'OrderController@getHistory');
 
     Route::get('/customer/article', function () {
-        $userArticles = Auth::user()->articles()->orderBy('created_at','DESC')->paginate(5);
+        $userArticles = Auth::user()->articles()->orderBy('created_at', 'DESC')->paginate(5);
         $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
         return view('frontend.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
@@ -261,32 +264,31 @@ if ($agent->isDesktop()) {
     Route::get('/user/{user}', function (App\User $user) {
         $userArticles = $user->articles()->paginate(5);
         $userLikedArticles = \App\UserArticlesLike::where('user_id', $user->id)->paginate(5, ['*'], 'liked_page');
-        return view('frontend.pages.socialAkun', compact('user','userArticles', 'userLikedArticles'));
+        return view('frontend.pages.socialAkun', compact('user', 'userArticles', 'userLikedArticles'));
     });
 } /*Route for Mobile*/
 else {
     Route::get('/', function () {
         $coffee = DB::table('categories')
-            ->where('categories.id','1')
-            ->orWhere('categories.parent_id','1')
+            ->where('categories.id', '1')
+            ->orWhere('categories.parent_id', '1')
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-            ->join('products as p', 'categories.id','=','p.category_id')
+            ->join('products as p', 'categories.id', '=', 'p.category_id')
             ->select('p.*');
 
         $machine = DB::table('categories')
-            ->where('categories.id','9')
-            ->orWhere('categories.parent_id','9')
+            ->where('categories.id', '9')
+            ->orWhere('categories.parent_id', '9')
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-            ->join('products as p', 'categories.id','=','p.category_id')
+            ->join('products as p', 'categories.id', '=', 'p.category_id')
             ->select('p.*');
 
-        $latestCoffee = $coffee->orderBy('p.created_at','DESC')->limit(4)->get();
+        $latestCoffee = $coffee->orderBy('p.created_at', 'DESC')->limit(4)->get();
 
-        $latestMachine = $machine->orderBy('p.created_at','DESC')->limit(4)->get();
+        $latestMachine = $machine->orderBy('p.created_at', 'DESC')->limit(4)->get();
 
-        $bestPromoCoffee = $coffee->orderBy('p.discount_percent','DESC')->limit(4)->get();
-        $bestPromoMachine = $machine->orderBy('p.discount_percent','DESC')->limit(4)->get();
-
+        $bestPromoCoffee = $coffee->orderBy('p.discount_percent', 'DESC')->limit(4)->get();
+        $bestPromoMachine = $machine->orderBy('p.discount_percent', 'DESC')->limit(4)->get();
 
 
         return view('mobile.pages.home', compact('latestCoffee', 'latestMachine', 'bestPromoCoffee', 'bestPromoMachine'));
@@ -298,22 +300,22 @@ else {
         $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
         $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
         $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
-        if($idProduct1) {
+        if ($idProduct1) {
             $product1 = App\Product::where('id', $idProduct1)->first();
             $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
             $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
         }
-        if($idProduct2) {
+        if ($idProduct2) {
             $product2 = App\Product::where('id', $idProduct2)->first();
             $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
             $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
         }
-        if($idProduct3) {
+        if ($idProduct3) {
             $product3 = App\Product::where('id', $idProduct3)->first();
             $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
             $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
         }
-        return view('mobile.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+        return view('mobile.pages.komparasi', compact('products', 'komparasi3', 'product1', 'product2', 'product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
     });
     Route::get('/komparasi3', function () {
         $products = App\Product::get();
@@ -321,22 +323,22 @@ else {
         $idProduct1 = isset(Request::all()['product1']) ? Request::all()['product1'] : null;
         $idProduct2 = isset(Request::all()['product2']) ? Request::all()['product2'] : null;
         $idProduct3 = isset(Request::all()['product3']) ? Request::all()['product3'] : null;
-        if($idProduct1) {
+        if ($idProduct1) {
             $product1 = App\Product::where('id', $idProduct1)->first();
             $characteristics1 = preg_split("/\\r\\n|\\r|\\n/", $product1->characteristics);
             $graphs1 = preg_split("/\\r\\n|\\r|\\n/", $product1->graph);
         }
-        if($idProduct2) {
+        if ($idProduct2) {
             $product2 = App\Product::where('id', $idProduct2)->first();
             $characteristics2 = preg_split("/\\r\\n|\\r|\\n/", $product2->characteristics);
             $graphs2 = preg_split("/\\r\\n|\\r|\\n/", $product2->graph);
         }
-        if($idProduct3) {
+        if ($idProduct3) {
             $product3 = App\Product::where('id', $idProduct3)->first();
             $characteristics3 = preg_split("/\\r\\n|\\r|\\n/", $product3->characteristics);
             $graphs3 = preg_split("/\\r\\n|\\r|\\n/", $product3->graph);
         }
-        return view('mobile.pages.komparasi',compact('products', 'komparasi3', 'product1', 'product2','product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
+        return view('mobile.pages.komparasi', compact('products', 'komparasi3', 'product1', 'product2', 'product3', 'characteristics1', 'characteristics2', 'characteristics3', 'graphs1', 'graphs2', 'graphs3'));
     });
 
     Route::get('/customer/article/create', 'ArticleController@createArticleMobile');
@@ -361,21 +363,21 @@ else {
         ]);
     });
 
-	Route::get('/detail-mesin', function(){
-		return view('mobile.pages.detailMesin');
-	});
+    Route::get('/detail-mesin', function () {
+        return view('mobile.pages.detailMesin');
+    });
 
     Route::get('/article/view/{id}', 'ArticleController@showMobile');
 
-	Route::get('/list-coffee', function(){
-		return view('mobile.pages.listCoffee');
-	});
+    Route::get('/list-coffee', function () {
+        return view('mobile.pages.listCoffee');
+    });
 
     Route::post('/customer/article/save', 'ArticleController@saveArticle');
 
-	Route::get('/list-mesin', function(){
-		return view('mobile.pages.listMesin');
-	});
+    Route::get('/list-mesin', function () {
+        return view('mobile.pages.listMesin');
+    });
 
     Route::get('/search-article', function () {
         $searchQuery = isset(Request::all()['query']) ? Request::all()['query'] : null;
@@ -399,26 +401,26 @@ else {
                 $articles = $articles->orderBy('copies', 'DESC')->paginate(5);
                 break;
             default:
-                $articles = $articles->orderBy('created_at','DESC')->paginate(5);
+                $articles = $articles->orderBy('created_at', 'DESC')->paginate(5);
         }
         return view('mobile.pages.listArtikel', compact('articles'));
     });
 
     Route::get('/list-article/{category}', function (App\ArticleCategory $category) {
-        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at','DESC')->paginate(5);
+        $articles = App\Article::where('category_id', $category->id)->orderBy('created_at', 'DESC')->paginate(5);
         return view('mobile.pages.listArtikel', compact('articles'));
     });
 
     Route::get('/list-product/{category}', function (TCG\Voyager\Models\Category $category) {
         $coffees = DB::table('categories')
-            ->where('categories.id',$category->id)
-            ->orWhere('categories.parent_id',$category->id)
+            ->where('categories.id', $category->id)
+            ->orWhere('categories.parent_id', $category->id)
             ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-            ->join('products as p', 'categories.id','=','p.category_id')
+            ->join('products as p', 'categories.id', '=', 'p.category_id')
             ->select('p.*')
-            ->orderBy('p.created_at','DESC')
+            ->orderBy('p.created_at', 'DESC')
             ->get();
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
+        $categoryProduct = \App\Category::where('name', '!=', 'parentless')->get();
         return view('mobile.pages.listCoffee', compact('coffees', 'categoryProduct'));
     });
 
@@ -427,17 +429,17 @@ else {
         $sortQuery = isset(Request::all()['sort']) ? Request::all()['sort'] : null;
         $categoryQuery = isset(Request::all()['category']) ? Request::all()['category'] : null;
         $priceQuery = isset(Request::all()['price']) ? Request::all()['price'] : null;
-        $categoryProduct = \App\Category::where('name','!=', 'parentless')->get();
+        $categoryProduct = \App\Category::where('name', '!=', 'parentless')->get();
         $coffees = App\Product::where('name', 'like', '%' . $searchQuery . '%');
 
         if (!empty($categoryQuery)) {
             $coffees = DB::table('categories')
-                ->where(function($q) use ($categoryQuery) {
-                    $q->where('categories.id',$categoryQuery)
-                        ->orWhere('categories.parent_id',$categoryQuery);
+                ->where(function ($q) use ($categoryQuery) {
+                    $q->where('categories.id', $categoryQuery)
+                        ->orWhere('categories.parent_id', $categoryQuery);
                 })
                 ->join('categories as c2', 'categories.parent_id', '=', 'c2.id')
-                ->join('products as p', 'categories.id','=','p.category_id')
+                ->join('products as p', 'categories.id', '=', 'p.category_id')
                 ->select('p.*');
             $coffees = $coffees->where('p.name', 'like', '%' . $searchQuery . '%');
         }
@@ -445,10 +447,10 @@ else {
         if (!empty($priceQuery)) {
             switch ($priceQuery) {
                 case 'to100':
-                    $coffees = $coffees->where('original_price', '<=' ,100000);
+                    $coffees = $coffees->where('original_price', '<=', 100000);
                     break;
                 case 'between100-500':
-                    $coffees = $coffees->whereBetween('original_price', [100000,500000]);
+                    $coffees = $coffees->whereBetween('original_price', [100000, 500000]);
                     break;
                 case 'over500':
                     $coffees = $coffees->where('original_price', '>=', 500000);
@@ -482,42 +484,41 @@ else {
 
     Route::get('/checkout/{orderId}', 'OrderController@showMobile');
 
-    Route::get('/cart', function(){
+    Route::get('/cart', function () {
         $cart = Cart::content();
         return view('mobile.pages.cart', compact('cart'));
     });
 
-    Route::get('/pembayaran', function(){
+    Route::get('/pembayaran', function () {
         return view('mobile.pages.pembayaran');
     });
 
     Route::get('/order/summary/{id}', 'OrderController@getOrderSummaryMobile');
 
-    Route::get('/customer/akun', function(){
+    Route::get('/customer/akun', function () {
         return view('mobile.pages.panelAkun');
     });
 
     Route::post('/customer/edit/save', 'UserController@saveProfileMobile');
 
-    Route::get('/customer/portfolio', function(){
+    Route::get('/customer/portfolio', function () {
         return view('mobile.pages.panelPortfolio');
     });
 
     Route::get('/customer/transaksi', 'OrderController@getHistoryMobile');
 
-     Route::get('/customer/artikel', function(){
+    Route::get('/customer/artikel', function () {
         return view('mobile.pages.panelResep');
     });
 
     Route::get('/customer/article', function () {
-        $userArticles = Auth::user()->articles()->orderBy('created_at','DESC')->paginate(5);
+        $userArticles = Auth::user()->articles()->orderBy('created_at', 'DESC')->paginate(5);
         $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
         return view('mobile.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
 
 
 }
-
 
 
 Route::group(['prefix' => 'admin'], function () {
