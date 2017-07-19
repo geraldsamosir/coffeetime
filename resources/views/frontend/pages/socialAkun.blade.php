@@ -166,7 +166,7 @@
       $("#rateYo").rateYo({
           precision: 1,
           readOnly: true,
-          rating: {{$user->rating()}}
+          rating: {{$user->rating() ? $user->rating : 0}}
       });
 
       $("#rateYoSend").rateYo({
