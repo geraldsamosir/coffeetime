@@ -8,6 +8,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 		<link rel="stylesheet" href="{{ asset('select2/css/select2.css') }}">
+			<link rel="stylesheet" href="{{ asset('css/jquery.rateyo.min.css') }}">
 		<script src="{{asset('/js/ckeditor/ckeditor.js')}}"></script>
 		@yield('css')
 	</head>

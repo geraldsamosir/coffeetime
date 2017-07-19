@@ -15,6 +15,26 @@ $agent = new Jenssegers\Agent\Agent();
 
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
+
+    Route::post('/user/rate/{user}',function (Illuminate\Http\Request $request, App\User $user) {
+        $input = $request->all();
+
+        if (App\UserRating::where([['rater_user_id', Auth::user()->id], ['rated_user_id', $user->id]])->first()) {
+            $updateRating = App\UserRating::where([['rater_user_id', Auth::user()->id], ['rated_user_id', $user->id]])->first();
+            $updateRating->rating = $input['rating'];
+            $updateRating->save();
+
+            return redirect('/user/'.$user->id)->with('status', 'Berhasil memperbaharui rating menjadi '.$input['rating']. ' pada user');
+        } else {
+            $newRating = new App\UserRating();
+            $newRating->rater_user_id = Auth::user()->id;
+            $newRating->rated_user_id = $user->id;
+            $newRating->rating = $input['rating'];
+            $newRating->save();
+        }
+
+        return redirect('/user/'.$user->id)->with('status', 'Berhasil memberi rating '.$input['rating']. ' pada user');
+    });
     Route::get('/', function () {
         $coffee = DB::table('categories')
             ->where('categories.id', '1')

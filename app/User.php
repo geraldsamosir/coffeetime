@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Article as Article;
+use DB;
 
 class User extends Authenticatable
 {
@@ -30,5 +31,11 @@ class User extends Authenticatable
 
     public function articles() {
         return $this->hasMany(Article::class);
+    }
+
+    public function rating() {
+        return DB::table('user_ratings')
+            ->where('rated_user_id', $this->id)
+            ->avg('rating');
     }
 }

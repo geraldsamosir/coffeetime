@@ -16,6 +16,11 @@
 
 
 @section('content')
+  @if (session('status'))
+    <div class="alert alert-success">
+      <center>{{ session('status') }}</center>
+    </div>
+  @endif
   <div class="section-profil">
     <div class="container">
       <div class="row">
@@ -30,12 +35,43 @@
         {{-- Profile Kiri Start --}}
         <div class="col-md-4">
           <div class="card-social-left">
-            <img src="{{ Voyager::image($user->avatar) }}" class="img-responsive" alt="User Images">
+            <img style="margin: 0 auto;" src="{{ Voyager::image($user->avatar) }}" class="img-responsive"
+                 alt="User Images">
+            <hr>
+            <h3>Rating ({{number_format($user->rating(),1)}})</h3>
+            <center>
+              <div id="rateYo"></div>
+            </center>
+            @if(Auth::check() && Auth::user()->id != $user->id)
+              <center style="margin-top: 12px;">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Berikan Rating
+                </button>
+              </center>@endif
             <hr>
             <div class='oss-widget-interface'></div>
           </div>
         </div>
         {{-- Profile Kiri End --}}
+
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-body">
+                <center><div id="rateYoSend"></div></center>
+              </div>
+              <div class="modal-footer">
+                {!! Form::open(['url'=>'/user/rate/'.$user->id, 'method'=>'POST']) !!}
+                <input id="rating" type="hidden" name="rating"/>
+                <button type="submit" class="btn btn-info">Rate</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                {!! Form::close() !!}
+              </div>
+            </div>
+
+          </div>
+        </div>
 
         {{-- Profile Kanan Start --}}
         <div class="col-md-8">
@@ -81,7 +117,8 @@
 
                                 <i class="fa fa-eye"></i>
                                 <span class="icon-view">{{$userArticle->article->views}}</span>
-                              </div></li>
+                              </div>
+                            </li>
                           </a>
                         @endforeach
                         {{$userLikedArticles->appends(array_except(Request::query(), 'liked_page'))->links()}}
@@ -102,7 +139,8 @@
 
                                 <i class="fa fa-eye"></i>
                                 <span class="icon-view">{{$userArticle->views}}</span>
-                              </div></li>
+                              </div>
+                            </li>
                           </a>
                         @endforeach
                         {{$userArticles->appends(array_except(Request::query(), 'page'))->links()}}
@@ -125,6 +163,19 @@
   <script type="text/javascript" src="//sharecdn.social9.com/v2/js/opensocialsharedefaulttheme.js"></script>
   <link rel="stylesheet" type="text/css" href="//sharecdn.social9.com/v2/css/os-share-widget-style.css"/>
   <script>
+      $("#rateYo").rateYo({
+          precision: 1,
+          readOnly: true,
+          rating: {{$user->rating()}}
+      });
+
+      $("#rateYoSend").rateYo({
+          precision: 0,
+          onChange: function (rating, rateYoInstance) {
+              $('input#rating').val(rating);
+          }
+      });
+
       var shareWidget = new OpenSocialShare();
       shareWidget.init({
           isHorizontalLayout: 1,

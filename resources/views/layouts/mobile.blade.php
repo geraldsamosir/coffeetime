@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ asset('css/mob.css') }}">
   <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
   <link rel="stylesheet" href="{{ asset('select2/css/select2.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/jquery.rateyo.min.css') }}">
 @yield('css')
 
 <!--Let browser know website is optimized for mobile-->
