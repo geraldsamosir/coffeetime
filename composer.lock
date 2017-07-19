@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c64879f51834f533b2b7b835df7bd467",
-    "content-hash": "8c34364f9a02b32c7379ed1c74b72a0b",
+    "hash": "b9870a2efbda0dc63da99d992a93b683",
+    "content-hash": "03680613f5d9f330cd83d7588ed8cc54",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -3009,16 +3009,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.12",
+            "version": "dev-javentVoyager",
             "source": {
                 "type": "git",
-                "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d"
+                "url": "https://github.com/hugosvent/voyager.git",
+                "reference": "0d9e32c76dce9188b6ab74870de1aba6b9c9cc9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/10622dc41248ac45747376a873ce3519f92d6f0d",
-                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d",
+                "url": "https://api.github.com/repos/hugosvent/voyager/zipball/0d9e32c76dce9188b6ab74870de1aba6b9c9cc9e",
+                "reference": "0d9e32c76dce9188b6ab74870de1aba6b9c9cc9e",
                 "shasum": ""
             },
             "require": {
@@ -3045,7 +3045,11 @@
                     "TCG\\Voyager\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "TCG\\Voyager\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -3062,7 +3066,11 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2017-05-24 09:21:25"
+            "support": {
+                "issues": "https://github.com/the-control-group/voyager/issues",
+                "source": "https://github.com/the-control-group/voyager"
+            },
+            "time": "2017-07-12 12:23:49"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4762,7 +4770,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "tcg/voyager": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
