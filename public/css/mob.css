@@ -95,9 +95,11 @@ h4 {
 
 .card-image-resep img {
     width: 100px !important;
-    top: 14px !important;
     margin: 0 auto;
-    padding: 4px;
+}
+
+.card-image-resep {
+    max-width: 100% !important;
 }
 
 .card .card-content {

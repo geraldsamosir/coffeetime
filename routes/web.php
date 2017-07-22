@@ -12,29 +12,30 @@
 */
 $agent = new Jenssegers\Agent\Agent();
 
+Route::post('/user/rate/{user}',function (Illuminate\Http\Request $request, App\User $user) {
+    $input = $request->all();
+
+    if (App\UserRating::where([['rater_user_id', Auth::user()->id], ['rated_user_id', $user->id]])->first()) {
+        $updateRating = App\UserRating::where([['rater_user_id', Auth::user()->id], ['rated_user_id', $user->id]])->first();
+        $updateRating->rating = $input['rating'];
+        $updateRating->save();
+
+        return redirect('/user/'.$user->id)->with('status', 'Berhasil memperbaharui rating menjadi '.$input['rating']. ' pada user');
+    } else {
+        $newRating = new App\UserRating();
+        $newRating->rater_user_id = Auth::user()->id;
+        $newRating->rated_user_id = $user->id;
+        $newRating->rating = $input['rating'];
+        $newRating->save();
+    }
+
+    return redirect('/user/'.$user->id)->with('status', 'Berhasil memberi rating '.$input['rating']. ' pada user');
+});
 
 /*Route for Desktop*/
 if ($agent->isDesktop()) {
 
-    Route::post('/user/rate/{user}',function (Illuminate\Http\Request $request, App\User $user) {
-        $input = $request->all();
 
-        if (App\UserRating::where([['rater_user_id', Auth::user()->id], ['rated_user_id', $user->id]])->first()) {
-            $updateRating = App\UserRating::where([['rater_user_id', Auth::user()->id], ['rated_user_id', $user->id]])->first();
-            $updateRating->rating = $input['rating'];
-            $updateRating->save();
-
-            return redirect('/user/'.$user->id)->with('status', 'Berhasil memperbaharui rating menjadi '.$input['rating']. ' pada user');
-        } else {
-            $newRating = new App\UserRating();
-            $newRating->rater_user_id = Auth::user()->id;
-            $newRating->rated_user_id = $user->id;
-            $newRating->rating = $input['rating'];
-            $newRating->save();
-        }
-
-        return redirect('/user/'.$user->id)->with('status', 'Berhasil memberi rating '.$input['rating']. ' pada user');
-    });
     Route::get('/', function () {
         $coffee = DB::table('categories')
             ->where('categories.id', '1')
@@ -536,8 +537,16 @@ else {
         $userLikedArticles = \App\UserArticlesLike::where('user_id', Auth::user()->id)->paginate(5, ['*'], 'liked_page');
         return view('mobile.pages.panelResep', compact('userArticles', 'userLikedArticles'));
     });
+// Untuk Social Media
+    Route::get('/user/{user}', function (App\User $user) {
+        $userArticles = $user->articles()->paginate(5);
+        $userLikedArticles = \App\UserArticlesLike::where('user_id', $user->id)->paginate(5, ['*'], 'liked_page');
+        return view('mobile.pages.socialAkun', compact('user', 'userArticles', 'userLikedArticles'));
+    });
 
-
+    Route::get('/user/portfolio/{user}', function (App\User $user) {
+        return view('mobile.pages.panelportfolio', compact('user'));
+    });
 }
 
 

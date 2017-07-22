@@ -43,8 +43,8 @@
           <div class="card-stacked card-stacked-resep">
             <div class="card-content">
               <p class="ptitle">{{$article->title}} <span
-                  class="pdate">Date: {{ date('F d, Y', strtotime($article->created_at)) }}</span></span>
-              <p class="pcreated">Created by : <a href="">{{App\User::find($article->user_id)->name}}</a></p>
+                  class="pdate">Date: {{ date('F d, Y', strtotime($article->created_at)) }}</span></p>
+              <p class="pcreated">Created by : {{App\User::find($article->user_id)->name}}</p>
               <p class="p12 social-stat">
                 <i class="material-icons" style="font-size:14px;">content_copy</i>{{$article->copies}}
                 <i class="material-icons" style="font-size:14px;">visibility</i>{{$article->views}}
@@ -52,7 +52,7 @@
               </p>
               <p>
                 @foreach($article->tagged as $tag)
-                  <span class="chip">{{$tag->tag_name}}</span>
+                  <span style="padding:4px 8px; border-radius: 2pt;height: auto; line-height: 1.2em" class="chip">{{$tag->tag_name}}</span>
                 @endforeach
               </p>
             </div>

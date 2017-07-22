@@ -143,6 +143,9 @@
 
                                   <i class="fa fa-eye"></i>
                                   <span class="icon-view">{{$article->views}}</span>
+
+                                  <i class="fa fa-copy"></i>
+                                  <span class="icon-copy">{{$article->copies}}</span>
                                 </div>
                               </div>
                             </div>
