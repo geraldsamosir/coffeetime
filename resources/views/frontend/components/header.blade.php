@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-md-2">
-        <div class="nav-login">
+        <div class="nav-login" style="margin:14px 0px">
           <span class="nav-login-dropdown">
             <li class="dropdown dropdown-profile">
               <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">

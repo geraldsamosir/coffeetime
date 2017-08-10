@@ -29,11 +29,12 @@
 			border-bottom: 3px solid $hitam;
 			text-align: center;
 			ul {
+				margin-bottom: 0px;
 				li {
 					list-style-type: none;
 					display: inline-block;
 					margin: 10px 20px;
-					font-size: 20px;
+					font-size: 30px;
 				}
 			}
 		}

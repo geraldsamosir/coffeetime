@@ -4,6 +4,18 @@
             <div class="col-md-4 col-md-offset-4">
                <div class="social-icon">
                     <ul>
+                        <li>&nbsp;</li>
+                    </ul>
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-footer">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="menu-footer-list">
+                    <ul>
                         <li>
                             <a href="">
                                 <i class="fa fa-twitter"></i>
@@ -18,35 +30,6 @@
                             <a href="">
                                 <i class="fa fa-instagram"></i>
                             </a>
-                        </li>
-                    </ul>
-               </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="menu-footer">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="menu-footer-list">
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li>
-                            <a href="/resep">Resep</a>
-                        </li>
-                        <li>
-                            <a href="/about">About</a>
-                        </li>
-                        <li>
-                            <a href="/terms">Terms</a>
-                        </li>
-                        <li>
-                            <a href="/contact">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="/carrers">Careers</a>
                         </li>
                     </ul>
                 </div>
