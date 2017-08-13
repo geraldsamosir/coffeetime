@@ -4,7 +4,7 @@
 
 @section('content')
   <style>
-    #content, img {
+    #content img {
       max-width: 100%;
       height: auto !important;
     }
