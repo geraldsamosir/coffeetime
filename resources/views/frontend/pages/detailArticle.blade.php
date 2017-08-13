@@ -3,6 +3,12 @@
 @section('title','| Detail Resep')
 
 @section('content')
+  <style>
+    #content, img {
+      max-width: 100%;
+      height: auto !important;
+    }
+  </style>
   <div class="section-details-resep">
     <div class="details-resep-title">
       <div class="container">
