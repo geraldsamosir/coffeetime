@@ -12,7 +12,7 @@
 		<script src="{{asset('/js/ckeditor/ckeditor.js')}}"></script>
 		@yield('css')
 	</head>
-	<body>
+	<body  style="overflow: hidden;">
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
