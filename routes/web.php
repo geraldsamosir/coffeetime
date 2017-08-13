@@ -66,7 +66,7 @@ if ($agent->isDesktop()) {
         $characteristics = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->characteristics);
         $graphs = preg_split("/\\r\\n|\\r|\\n/", $productCoffee->graph);
         $relatedArticle = \App\Article::where('product_id', $productCoffee->id)->inRandomOrder()->take(2)->get();
-        $relatedProduct = \App\Product::where('category_id', $productCoffee->category_id)->inRandomOrder()->take(4)->get();
+        $relatedProduct = \App\Product::where('category_id', $productCoffee->category_id)->where('id', '!=', $productCoffee->id)->inRandomOrder()->take(4)->get();
         return view('frontend.pages.detailCoffee')->with([
             'productCoffee' => $productCoffee,
             'productImages' => json_decode($productCoffee->images),
@@ -559,7 +559,6 @@ Route::get('/ajax/cartcontent', 'CartController@getCartContent');
 Route::post('/customer/portfolio/save', 'UserController@savePortfolio');
 Route::post('/ajax/addcartitem/{id}', 'CartController@addItemToCart');
 Route::post('/checkout', 'CartController@cartCheckout');
-Route::get('/order/delete/{id}', 'OrderController@delete');
 Route::post('/order/get-address', 'OrderController@getAddressData');
 
 Route::post('/order/summary/{id}', 'OrderController@postOrderSummary');

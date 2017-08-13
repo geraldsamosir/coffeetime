@@ -33,7 +33,6 @@
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">&nbsp;<i class="material-icons right">close</i></span>
-            <a href="{{ url('order/delete/'.$orderItem->id) }}" class="waves-effect waves-light btn" style="width:100%;margin-bottom: 16px;background: #ff5a5f">Hapus</a>
           </div>
         </div>
       </div>

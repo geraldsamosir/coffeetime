@@ -3,6 +3,12 @@
 @section('title','| '.$productCoffee->name)
 
 @section('content')
+
+  <style>
+    .slider-image {
+      margin: 0 auto;
+    }
+  </style>
   <div class="section-details-coffee">
     <div class="container">
       {{-- Baris Detail Produk Start --}}
@@ -24,7 +30,7 @@
                           @foreach($productImages as $key => $image)
                             <div class="item @if($key == 0) active srle @endif">
                               <img src="{{ Voyager::image($image) }}" alt="2.jpg"
-                                   class="img-responsive">
+                                   class="img-responsive slider-image">
                               <div class="carousel-caption">
                               </div>
                             </div>

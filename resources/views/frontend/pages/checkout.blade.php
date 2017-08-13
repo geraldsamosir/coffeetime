@@ -90,7 +90,6 @@
                         <td class="cart-item-quantity">
                           <p class="cart-item-price-new">{{ $orderItem->quantity }} x
                             Rp. {{ number_format($orderItem->price) }}</p>
-                          <a href="{{ url('order/delete/'.$orderItem->id) }}" class="btn btn-danger">hapus</a>
                         </td>
                         <td class="cart-item-subtotal">
                           <p class="cart-subtotal">Rp. {{ number_format($orderItem->price * $orderItem->quantity) }}</p>

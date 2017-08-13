@@ -35,14 +35,6 @@ class OrderController extends Controller
         return view('mobile.pages.checkout', compact('order'));
     }
 
-    public function delete($id) {
-        $orderDetail = OrderDetail::find($id);
-        $orderDetail->delete();
-        return back();
-        return redirect()->back();
-        return view('frontend.pages.checkout', compact('order'));
-    }
-
     public function getAddressData(Request $request) {
         $input = $request->all();
         switch($input['type']):

@@ -1,41 +1,41 @@
 <div class="section-footer">
-    <div class="social-media-footer">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-               <div class="social-icon">
-                    <ul>
-                        <li>&nbsp;</li>
-                    </ul>
-               </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="social-media-footer">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-4 col-md-offset-4">--}}
+               {{--<div class="social-icon">--}}
+                    {{--<ul>--}}
+                        {{--<li>&nbsp;</li>--}}
+                    {{--</ul>--}}
+               {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-    <div class="menu-footer">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="menu-footer-list">
-                    <ul>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="menu-footer">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-8 col-md-offset-2">--}}
+                {{--<div class="menu-footer-list">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<a href="">--}}
+                                {{--<i class="fa fa-twitter"></i>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="">--}}
+                                {{--<i class="fa fa-facebook"></i>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="">--}}
+                                {{--<i class="fa fa-instagram"></i>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     {{-- <div class="newsletter-footer">
         <div class="row">
