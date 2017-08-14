@@ -9,6 +9,10 @@
       max-width: 100%;
       height: auto !important;
     }
+
+    #content p {
+      word-wrap: break-word;
+    }
   </style>
 
   {{-- Section Resep Image --}}

@@ -8,6 +8,10 @@
       max-width: 100%;
       height: auto !important;
     }
+
+    #content p {
+      word-wrap: break-word;
+    }
   </style>
   <div class="section-details-resep">
     <div class="details-resep-title">
