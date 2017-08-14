@@ -35,6 +35,7 @@
                     <hr>
                     <ul class="list-group list-article-favorited">
                       <div class="row">
+                        @if(!empty($userLikedArticles))
                         @foreach($userLikedArticles as $userLikedArticle)
                           <a href={{url('/article/view/'.$userLikedArticle->article->id)}}>
                             <div class="col-md-12">
@@ -78,12 +79,14 @@
                         @endforeach
                       </div>
                       {{$userLikedArticles->appends(array_except(Request::query(), 'liked_page'))->links()}}
+                      @endif
                     </ul>
                   </ul>
                   <ul class="list-group"><h3>Created</h3>
                     <hr>
                     <ul class="list-group list-article-created">
                       <div class="row">
+                        @if(!empty($userArticles))
                         @foreach($userArticles as $userArticle)
                           <a href={{url('/article/view/'.$userArticle->id)}}>
                             <div class="col-md-12">
@@ -127,6 +130,7 @@
                         @endforeach
                       </div>
                       {{$userArticles->appends(array_except(Request::query(), 'page'))->links()}}
+                      @endif
                     </ul>
                   </ul>
                 </ul>
