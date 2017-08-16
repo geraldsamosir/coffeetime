@@ -37,8 +37,13 @@ class CartController extends Controller
         $input = $request->all();
         $product = Product::find($id);
         $quantity = $input['qty'];
-        Cart::add($product, $quantity, ['option' => isset($input['option']) ? $input['option'] : null]);
-        return redirect('/cart');
+
+        if ($quantity > $product->stock) {
+            return back()->withInput()->with('error', 'Stock Kurang');
+        } else {
+            Cart::add($product, $quantity, ['option' => isset($input['option']) ? $input['option'] : null]);
+            return redirect('/cart');
+        }
     }
 
     public function cartCheckout(Request $request)
@@ -57,10 +62,21 @@ class CartController extends Controller
                 $orderDetail = new OrderDetail;
                 $orderDetail->order_id = $order->id;
                 $orderDetail->product_id = $cartItem->id;
+
                 $orderDetail->price = $cartItem->price;
                 $orderDetail->option = !empty($cartItem->options) ? $cartItem->options->option : null;
                 $orderDetail->quantity = $input['qty-'.$cartItem->rowId];
                 $amount += $orderDetail->quantity * $orderDetail->price;
+
+                $product = Product::where('id',$cartItem->id)->first();
+                if ($product->stock >= $orderDetail->quantity) {
+                    $product->stock = $product->stock - $orderDetail->quantity;
+                    $product->save();
+                } else {
+                    Cart::destroy();
+                    return redirect('/')->with('error', 'Maaf, Stok telah habis untuk product '.$product->name);
+                }
+
                 $orderDetail->save();
                 echo $orderDetail;
             }

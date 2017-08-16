@@ -9,6 +9,11 @@
       margin: 0 auto;
     }
   </style>
+  @if (session('error'))
+    <div class="alert alert-danger">
+      <center>{{ session('error') }}</center>
+    </div>
+  @endif
   <div class="section-details-coffee">
     <div class="container">
       {{-- Baris Detail Produk Start --}}
@@ -107,6 +112,19 @@
 
                     <div class="coffee-harga">
                       <div class="row">
+                        <div class="col-md-12">
+                          <span class="sub-title">Stok</span>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="row">
+                            <div class="col-md-7 flex-direction-coloumn">
+                              <div class="harga-count-pembelian">
+                                <span
+                                  class="price-new">{{ number_format($productCoffee->stock) }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <div class="col-md-12">
                           <span class="sub-title">Harga</span>
                         </div>

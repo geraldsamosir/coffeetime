@@ -3,6 +3,11 @@
 @section('title','| Homepage')
 
 @section('content')
+  @if (session('error'))
+    <div class="alert alert-danger">
+      <center>{{ session('error') }}</center>
+    </div>
+  @endif
 
   <div id="carousel-details" class="carousel slide" data-ride="carousel"
        data-interval="3000">
