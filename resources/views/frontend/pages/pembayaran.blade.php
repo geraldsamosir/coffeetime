@@ -21,7 +21,7 @@
                   <p class="an">a/n. Albert Ang</p>
                 </div>
                 <blockquote>
-                  <p>- Silahkan Transfer ke rekening BCA kami di bawah ini.</p>
+                  <p>- Silahkan Transfer ke rekening BCA kami.</p>
                   <p>- Jangka waktu transfer dan konfirmasi adalah 1 Hari.</p>
                   <p>- Jika melewati batas waktu, maka request akan kami batalkan</p>
                   <p>- Harap Memasukkan berita <strong>Order#{{ $order->id }}</strong></p>

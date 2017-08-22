@@ -23,7 +23,7 @@
         </div>
         <div class="col s12">
           <blockquote style="margin:0px;">
-            <p class="p12 pnomargin">- Silahkan Transfer ke rekening BCA kami di bawah ini.</p>
+            <p class="p12 pnomargin">- Silahkan Transfer ke rekening BCA kami.</p>
             <p class="p12 pnomargin">- Jangka waktu transfer dan konfirmasi adalah 1 Hari.</p>
             <p class="p12 pnomargin">- Jika melewati batas waktu, maka request akan kami batalkan</p>
             <p class="p12 pnomargin">- Harap Memasukkan berita <strong>Order#{{$order->id}}</strong></p>
